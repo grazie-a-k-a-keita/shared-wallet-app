@@ -8,8 +8,7 @@ import theme from '../../configs/MUIconfigs/palette';
 
 import type { ToggleButtonProps } from '../../types/MUItypes/props';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-function Toggle_Button(props: ToggleButtonProps) {
+function MuiToggleButton(props: ToggleButtonProps) {
   const { leftButtonName, rightButtonName, setToggleStatus } = props;
 
   const [alignment, setAlignment] = React.useState('left');
@@ -41,4 +40,4 @@ function Toggle_Button(props: ToggleButtonProps) {
   );
 }
 
-export default Toggle_Button;
+export default MuiToggleButton;
