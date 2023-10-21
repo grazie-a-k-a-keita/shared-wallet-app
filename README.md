@@ -14,7 +14,7 @@
 
 ![GitFlow](https://github.com/grazie-a-k-a-keita/Shared-Wallet-App/assets/106722155/dfe354f3-8268-4d93-a6ef-4da9efdfd259)
 
-### ブランチの運用方法
+### ブランチの運用方法 ([参考](https://takeda-no-nao.net/programming/git/git-branch-naming-convention/))
 
 基本的に「develop ブランチ」から「feature ブランチ」を切る運用。
 
@@ -28,7 +28,7 @@ git checkout -b feature/#13_・・・
 # ※ [・・・]はIssueのタイトルなど
 ```
 
-### コミットメッセージ (推奨)
+### コミットメッセージ ([参考](https://qiita.com/konatsu_p/items/dfe199ebe3a7d2010b3e))
 
 - feat: 新しい機能
 - fix: バグの修正
@@ -45,7 +45,15 @@ git checkout -b feature/#13_・・・
 
 ## 開発について
 
-### React App
+### Skills
+
+| Skill                             | Description                                                           |
+| --------------------------------- | --------------------------------------------------------------------- |
+| [React](https://ja.react.dev/)    | Web とネイティブユーザインターフェースのためのライブラリ              |
+| CSS                               | CSS Modules + [Sass](https://sass-lang.com/)、[MUI](https://mui.com/) |
+| [supabase](https://supabase.com/) | PostgreSQL、Authentication System、API、Storage...                    |
+
+### Command List
 
 ```shell
 # パッケージインストール
