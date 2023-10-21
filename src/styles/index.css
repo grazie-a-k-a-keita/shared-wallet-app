@@ -1,10 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-v2.0 | 20110126
-License: none (public domain)
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
 
+/* Reset CSS */
 html,
 body,
 div,
@@ -108,6 +104,7 @@ section {
   display: block;
 }
 body {
+  /* font-family 設定 */
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1;
 }
@@ -129,4 +126,32 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* Custom */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+header {
+  height: auto;
+}
+
+main {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+footer {
+  height: auto;
 }
