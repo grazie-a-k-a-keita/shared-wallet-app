@@ -1,0 +1,49 @@
+@mixin text-2xs($color) {
+  font-size: 0.5rem; /* 8px */
+  color: $color;
+}
+
+@mixin text-xs($color) {
+  font-size: 0.75rem; /* 12px */
+  color: $color;
+}
+
+@mixin text-base($color) {
+  font-size: 1rem; /* 16px */
+  color: $color;
+}
+
+@mixin text-xl($color) {
+  font-size: 1.25rem; /* 20px */
+  color: $color;
+}
+
+@mixin text-2xl($color) {
+  font-size: 1.5rem; /* 24px */
+  color: $color;
+}
+
+@mixin text-3xl($color) {
+  font-size: 1.75rem; /* 28px */
+  color: $color;
+}
+
+@mixin text-4xl($color) {
+  font-size: 2rem; /* 32px */
+  color: $color;
+}
+
+@mixin text-5xl($color) {
+  font-size: 2.25rem; /* 36px */
+  color: $color;
+}
+
+@mixin text-6xl($color) {
+  font-size: 2.5rem; /* 40px */
+  color: $color;
+}
+
+@mixin text-7xl($color) {
+  font-size: 2.75rem; /* 44px */
+  color: $color;
+}

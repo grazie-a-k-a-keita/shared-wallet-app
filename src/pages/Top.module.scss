@@ -1,0 +1,14 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.container {
+  text-align: center;
+}
+
+.title {
+  @include text-7xl($black);
+}
+
+.button {
+  margin: 1rem;
+}

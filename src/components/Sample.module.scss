@@ -1,0 +1,6 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.text {
+  @include text-base($black);
+}
