@@ -1,4 +1,29 @@
-/* Color */
-$black: #333333;
+/* Color          */
+$red: #83001a;
+$yellow: #e7c200;
 $white: #f4f4f4;
-$gray: #d8d8d8;
+$whiteHover: #e2e2e2;
+$black: #333333;
+$darkGray: #888888;
+$lightGray: #c8c8c8;
+
+/* Size */
+// ※tailwind CSS のサイズ基準
+$size1: 0.25rem; /* 4px */
+$size2: 0.5rem; /* 8px */
+$size3: 0.75rem; /* 12px */
+$size4: 1rem; /* 16px */
+$size5: 1.25rem; /* 20px */
+$size6: 1.5rem; /* 24px */
+$size7: 1.75rem; /* 28px */
+$size8: 2rem; /* 32px */
+$size9: 2.25rem; /* 36px */
+$size10: 2.5rem; /* 40px */
+$size11: 2.75rem; /* 44px */
+$size12: 3rem; /* 48px */
+$size14: 3.5rem; /* 56px */
+$size16: 4rem; /* 64px */
+$size20: 5rem; /* 80px */
+$size24: 6rem; /* 96px */
+$size28: 7rem; /* 112px */
+$size32: 8rem; /* 128px */

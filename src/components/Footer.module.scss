@@ -1,0 +1,42 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.container {
+  height: $size20;
+  background-color: $white;
+  display: flex;
+  border-top: $size1 solid $red;
+}
+
+@mixin iconBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: $size2;
+  @include radius;
+  &:hover {
+    img {
+      transition: 0.3s all linear;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.iconBoxOn {
+  @include iconBox;
+  background-color: $lightGray;
+}
+
+.iconBoxOff {
+  @include iconBox();
+  transition: 0.3s all linear;
+  &:hover {
+    background-color: $whiteHover;
+  }
+}
+
+.icon {
+  height: $size10;
+}

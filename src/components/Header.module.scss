@@ -1,0 +1,12 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.container {
+  background-color: $red;
+  padding: $size14 $size16 $size4;
+}
+
+.toggleBack {
+  background-color: $white;
+  @include radius;
+}
