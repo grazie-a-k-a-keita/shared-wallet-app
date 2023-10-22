@@ -2,7 +2,7 @@
 @import '../styles/variables';
 
 .container {
-  height: $size20;
+  height: $size24;
   background-color: $white;
   display: flex;
   border-top: $size1 solid $red;
@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: $size2;
+  margin: $size2 $size2 $size6;
   @include radius;
   &:hover {
     img {
