@@ -1,0 +1,21 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.textFieldPadding {
+  padding: 16px;
+}
+
+.textFieldArea {
+  display: flex;
+  margin-bottom: $size4;
+}
+
+.textFieldLabel {
+  margin-left: $size4;
+  line-height: $size9;
+}
+
+.textField {
+  margin-right: $size4;
+  margin-left: auto;
+}
