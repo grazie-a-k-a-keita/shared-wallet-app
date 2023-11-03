@@ -1,4 +1,4 @@
-import { InputAdornment } from '@mui/material';
+import { InputAdornment, ThemeProvider, createTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -18,26 +18,36 @@ function MuiTextFieldDate(props: TextFieldDateProps) {
     return onValueChange && onValueChange(value);
   };
 
+  const RobotoFont = createTheme({
+    typography: {
+      fontFamily: ['Roboto'].join(','),
+    },
+  });
+
   return (
-    <Box
-      sx={{
-        width: 240,
-        maxWidth: '100%',
-      }}
-    >
-      <TextField
-        type='date'
-        label='日付'
-        id='outlined-size-small'
-        size='small'
-        fullWidth
-        defaultValue={today}
-        onChange={handleChange}
-        InputProps={{
-          startAdornment: <InputAdornment position='start'>{'>'}</InputAdornment>,
+    <ThemeProvider theme={RobotoFont}>
+      <Box
+        sx={{
+          width: 240,
+          maxWidth: '100%',
+          backgroundColor: '#f8f8f8',
+          borderRadius: '0.25rem',
         }}
-      />
-    </Box>
+      >
+        <TextField
+          type='date'
+          label='date'
+          id='outlined-size-small'
+          size='small'
+          fullWidth
+          defaultValue={today}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: <InputAdornment position='start' />,
+          }}
+        />
+      </Box>
+    </ThemeProvider>
   );
 }
 

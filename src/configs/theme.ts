@@ -26,6 +26,7 @@ declare module '@mui/material/Button' {
 
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
+  typography: { fontFamily: ['Noto Sans JP'].join(',') },
   // Theme customization goes here as usual, including tonalOffset and/or
   // contrastThreshold as the augmentColor() function relies on these
 });
