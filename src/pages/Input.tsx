@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import MuiButton from '../components/MUIcomponents/MuiButton';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
 import useTextField from '../hooks/useTextField';
@@ -20,6 +21,8 @@ function Input() {
     handleMajorItemChange,
   } = useTextField();
 
+  const totalAmount = '10,000';
+
   const saveButtonClick = () => {
     console.log('Date: ', date);
     console.log('Category: ', category);
@@ -33,29 +36,36 @@ function Input() {
       </header>
       <main>
         {toggleState ? (
-          <div className={classes.textFieldPadding}>
-            <div className={classes.textFieldArea}>
-              <p className={classes.textFieldLabel}>日付</p>
-              <div className={classes.textField}>
-                <MuiTextFieldDate onValueChange={handleDateChange} />
+          <>
+            <div className={classes.padding}>
+              <div className={classes.topBarArea}>
+                <p className={classes.totalAmount}>{`￥ ${totalAmount}`}</p>
+                <div className={classes.topBarButton}>
+                  <MuiButton buttonName='保存' onclick={saveButtonClick} />
+                </div>
               </div>
             </div>
-            <div className={classes.textFieldArea}>
-              <p className={classes.textFieldLabel}>カテゴリ</p>
-              <div className={classes.textField}>
-                <MuiTextField label='カテゴリ' onValueChange={handleCategoryChange} />
+            <div className={classes.padding}>
+              <div className={classes.textFieldArea}>
+                <p className={classes.textFieldLabel}>日付</p>
+                <div className={classes.textField}>
+                  <MuiTextFieldDate onValueChange={handleDateChange} />
+                </div>
+              </div>
+              <div className={classes.textFieldArea}>
+                <p className={classes.textFieldLabel}>カテゴリ</p>
+                <div className={classes.textField}>
+                  <MuiTextField label='カテゴリ' onValueChange={handleCategoryChange} />
+                </div>
+              </div>
+              <div className={classes.textFieldArea}>
+                <p className={classes.textFieldLabel}>大項目</p>
+                <div className={classes.textField}>
+                  <MuiTextField label='大項目' onValueChange={handleMajorItemChange} />
+                </div>
               </div>
             </div>
-            <div className={classes.textFieldArea}>
-              <p className={classes.textFieldLabel}>大項目</p>
-              <div className={classes.textField}>
-                <MuiTextField label='大項目' onValueChange={handleMajorItemChange} />
-              </div>
-            </div>
-            <button type='button' onClick={saveButtonClick}>
-              保存
-            </button>
-          </div>
+          </>
         ) : (
           <p>収入</p>
         )}
