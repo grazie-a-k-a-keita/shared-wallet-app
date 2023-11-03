@@ -6,13 +6,13 @@
   margin-left: auto;
 }
 
-.padding {
-  padding: 16px;
-}
-
 // ======================
 // topBar
 // ======================
+.topBarContainer {
+  padding: $size4;
+}
+
 .topBarArea {
   display: flex;
   margin: $size4 0;
@@ -20,6 +20,7 @@
 
 .totalAmount {
   color: $red;
+  font-size: $size8;
   margin-left: $size4;
   line-height: $size7;
 }
@@ -31,6 +32,9 @@
 // ======================
 // textField
 // ======================
+.textFieldContainer {
+  padding: $size4;
+}
 
 .textFieldArea {
   display: flex;
@@ -44,4 +48,11 @@
 
 .textField {
   @include rightAlignment();
+}
+
+// ======================
+// card
+// ======================
+.cardContainer {
+  margin: $size4 $size8;
 }
