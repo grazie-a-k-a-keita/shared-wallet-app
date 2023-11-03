@@ -10,6 +10,8 @@ export type ToggleButtonProps = {
 // TextField Props type
 export type TextFieldProps = {
   label: string;
+  type: 'text' | 'number';
+  select?: boolean;
   onValueChange?: (value: string) => void;
 };
 
@@ -22,4 +24,9 @@ export type TextFieldDateProps = {
 export type ButtonProps = {
   buttonName: string;
   onclick: () => void;
+};
+
+// Card Props type
+export type CardProps = {
+  itemNumber: number;
 };
