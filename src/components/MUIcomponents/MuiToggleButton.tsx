@@ -4,7 +4,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { ThemeProvider } from '@mui/material/styles';
 
-import theme from '../../configs/MUIconfigs/palette';
+import theme from '../../configs/theme';
 
 import type { ToggleButtonProps } from '../../types/MUItypes/props';
 
