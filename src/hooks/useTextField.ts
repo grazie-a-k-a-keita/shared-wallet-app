@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // 現在日付取得
 const now: Date = new Date();
-const YYYY: string = now.getFullYear().toString(9);
+const YYYY: string = now.getFullYear().toString();
 const MM: string = (now.getMonth() + 1).toString().padStart(2, '0');
 const DD: string = now.getDate().toString().padStart(2, '0');
 const today: string = `${YYYY}-${MM}-${DD}`;
