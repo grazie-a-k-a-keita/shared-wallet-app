@@ -17,3 +17,9 @@ export type TextFieldProps = {
 export type TextFieldDateProps = {
   onValueChange?: (value: string) => void;
 };
+
+// Button Props type
+export type ButtonProps = {
+  buttonName: string;
+  onclick: () => void;
+};
