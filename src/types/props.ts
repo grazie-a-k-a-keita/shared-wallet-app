@@ -16,12 +16,12 @@ export type TextFieldProps = {
   label: string;
   type: 'text' | 'number';
   select?: boolean;
-  onValueChange?: (value: string) => void;
+  onValueChange: (value: string) => void;
 };
 
 // TextFieldDate Props type
 export type TextFieldDateProps = {
-  onValueChange?: (value: string) => void;
+  onValueChange: (value: string) => void;
 };
 
 // Button Props type
@@ -33,6 +33,7 @@ export type ButtonProps = {
 // Card Props type
 export type CardProps = {
   itemNumber: number;
+  onValueChange: (index: number, value: { memo: string; amount: number }) => void;
 };
 
 // ========================

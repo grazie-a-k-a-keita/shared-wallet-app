@@ -1,61 +1,62 @@
-import { useState } from 'react';
-
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MuiButton from '../components/MUIcomponents/MuiButton';
 import MuiCard from '../components/MUIcomponents/MuiCard';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
-import useTextField from '../hooks/useTextField';
+import useInputPage from '../hooks/useInputPage';
 
 import classes from './Input.module.scss';
 
 function Input() {
-  const [toggleState, setToggleState] = useState<boolean>(true);
-
   const {
+    // State
+    toggleState,
+    setToggleState,
+    totalAmount,
     date,
-    handleDateChange,
     category,
-    handleCategoryChange,
     majorItem,
+    minorItems,
+    minorItemCount,
+    // Function
+    handleDateChange,
+    handleCategoryChange,
     handleMajorItemChange,
-  } = useTextField();
-
-  const totalAmount = '10,000';
-
-  const [minorItemCount] = useState(5);
-
-  const renderMinorItemCards = () => {
-    const cards = [];
-    for (let i = 1; i <= minorItemCount; i += 1) {
-      cards.push(<MuiCard key={i} itemNumber={i} />);
-    }
-    return cards;
-  };
+    handleMinorItemsChange,
+  } = useInputPage();
 
   const saveButtonClick = () => {
     console.log('Date: ', date);
     console.log('Category: ', category);
     console.log('MajorItem: ', majorItem);
+    console.log('MinorMemoItems: ', minorItems);
+  };
+
+  const renderMinorItemCards = () => {
+    const cards = [];
+    for (let i = 1; i <= minorItemCount; i += 1) {
+      cards.push(<MuiCard key={i} itemNumber={i} onValueChange={handleMinorItemsChange} />);
+    }
+    return cards;
   };
 
   return (
     <>
       <header>
         <Header leftButtonName='支出' rightButtonName='収入' setToggleStatus={setToggleState} />
+        <div className={classes.topBarContainer}>
+          <div className={classes.topBarArea}>
+            <p className={classes.totalAmount}>{`￥ ${totalAmount.toLocaleString()}`}</p>
+            <div className={classes.topBarButton}>
+              <MuiButton buttonName='保存' onclick={saveButtonClick} />
+            </div>
+          </div>
+        </div>
       </header>
       <main>
         {toggleState ? (
           <>
-            <div className={classes.topBarContainer}>
-              <div className={classes.topBarArea}>
-                <p className={classes.totalAmount}>{`￥ ${totalAmount}`}</p>
-                <div className={classes.topBarButton}>
-                  <MuiButton buttonName='保存' onclick={saveButtonClick} />
-                </div>
-              </div>
-            </div>
             <div className={classes.textFieldContainer}>
               <div className={classes.textFieldArea}>
                 <p className={classes.textFieldLabel}>日付</p>

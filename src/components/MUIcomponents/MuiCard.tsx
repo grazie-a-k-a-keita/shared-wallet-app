@@ -7,21 +7,30 @@ import MuiTextField from './MuiTextField';
 import type { CardProps } from '../../types/props';
 
 function MuiCard(props: CardProps) {
-  const { itemNumber } = props;
+  const { itemNumber, onValueChange } = props;
+
+  const handleMemoItemsChange = (value: string) =>
+    onValueChange && onValueChange(itemNumber, { memo: value, amount: 0 });
+
+  const handleAmountItemsChange = (value: string) =>
+    onValueChange &&
+    onValueChange(itemNumber, {
+      memo: '',
+      amount: Number(value),
+    });
 
   return (
     <ThemeProvider theme={theme}>
-      <Card sx={{ backgroundColor: '#e2e2e2', marginBottom: '1rem' }}>
+      <Card sx={{ backgroundColor: '#e2e2e2', marginBottom: '1rem', border: 'solid 1px #83001a' }}>
         <CardContent>
           <Typography
             fontSize='1.25rem'
             component='div'
             fontWeight='bold'
-            color='#333333'
+            color='#83001a'
             marginBottom='1rem'
-            style={{ color: '#83001a' }}
           >
-            {`小項目 ${itemNumber}`}
+            {`< 小項目 ${itemNumber} >`}
           </Typography>
 
           <Grid container marginBottom='1rem'>
@@ -36,7 +45,11 @@ function MuiCard(props: CardProps) {
               </Typography>
             </Grid>
             <Grid item xs={9}>
-              <MuiTextField label='memo' type='text' />
+              <MuiTextField
+                label='memo'
+                type='text'
+                onValueChange={(value) => handleMemoItemsChange(value)}
+              />
             </Grid>
           </Grid>
 
@@ -52,7 +65,11 @@ function MuiCard(props: CardProps) {
               </Typography>
             </Grid>
             <Grid item xs={9}>
-              <MuiTextField label='amount' type='number' />
+              <MuiTextField
+                label='amount'
+                type='number'
+                onValueChange={(value) => handleAmountItemsChange(value)}
+              />
             </Grid>
           </Grid>
         </CardContent>
