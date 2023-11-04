@@ -21,6 +21,7 @@ function useInputPage() {
   const [minorItems, setMinorItems] = useState<MinorItem[]>([{ memo: '', amount: 0 }]);
   const [minorItemCount, setMinorItemCount] = useState<number>(1);
 
+  const scrollTopRef = useRef<HTMLDivElement>(null);
   const scrollBottomRef = useRef<HTMLDivElement>(null);
 
   /**
@@ -62,6 +63,10 @@ function useInputPage() {
     // 一度 Card をリセットし、"TextFiled"と"minorItems"を同期させる
     setMinorItemCount(0);
     setMinorItemCount(tempCount);
+    // カード削除時に一番上までスクロール
+    setTimeout(() => {
+      scrollTopRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 1);
   };
 
   /**
@@ -92,6 +97,7 @@ function useInputPage() {
     setMinorItems,
     minorItemCount,
     // Ref
+    scrollTopRef,
     scrollBottomRef,
     // Function
     handleAddCard,

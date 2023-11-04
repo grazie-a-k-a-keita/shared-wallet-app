@@ -23,6 +23,7 @@ function Input() {
     minorItems,
     setMinorItems,
     minorItemCount,
+    scrollTopRef,
     scrollBottomRef,
     handleAddCard,
     handleDeleteCard,
@@ -68,6 +69,7 @@ function Input() {
       <main>
         {toggleState ? (
           <>
+            <div ref={scrollTopRef} style={{ height: '0px' }} />
             <div className={classes.textFieldContainer}>
               <div className={classes.textFieldArea}>
                 <p className={classes.textFieldLabel}>日付</p>
