@@ -13,7 +13,12 @@ function MuiButton(props: ButtonProps) {
     <ThemeProvider theme={theme}>
       <Stack spacing={2} direction='row'>
         <Button variant='contained' color='red' size='medium' onClick={onclick}>
-          <Typography fontSize='0.75rem' paddingRight='0.75rem' paddingLeft='0.75rem'>
+          <Typography
+            fontSize='0.75rem'
+            paddingRight='0.75rem'
+            paddingLeft='0.75rem'
+            style={{ color: '#e7c200' }}
+          >
             {buttonName}
           </Typography>
         </Button>
