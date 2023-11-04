@@ -1,59 +1,58 @@
-import { useState } from 'react';
-
 import { InputAdornment, MenuItem, ThemeProvider, createTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-import type { TextFieldProps } from '../../types/MUItypes/props';
+import type { TextFieldProps } from '../../types/props';
+
+// SelectComponent表示用
+const currencies = [
+  {
+    value: 'foodExpenses',
+    label: '食費',
+  },
+  {
+    value: 'eatingOutExpenses',
+    label: '外食費',
+  },
+  {
+    value: 'TransportationExpenses',
+    label: '交通費',
+  },
+  {
+    value: 'dailyNecessities',
+    label: '日用品',
+  },
+  {
+    value: 'entertainmentExpenses',
+    label: '娯楽費',
+  },
+  {
+    value: 'specialExpenses',
+    label: '特別費',
+  },
+  {
+    value: 'other',
+    label: 'その他',
+  },
+];
+
+// フォント用Theme
+const RobotoFont = createTheme({
+  typography: {
+    fontFamily: ['Roboto'].join(','),
+  },
+});
 
 function MuiTextField(props: TextFieldProps) {
-  const { label, type, select, onValueChange } = props;
-  const [fieldValue, setFieldValue] = useState<string>('');
-
-  const RobotoFont = createTheme({
-    typography: {
-      fontFamily: ['Roboto'].join(','),
-    },
-  });
-
-  const currencies = [
-    {
-      value: 'foodExpenses',
-      label: '食費',
-    },
-    {
-      value: 'eatingOutExpenses',
-      label: '外食費',
-    },
-    {
-      value: 'TransportationExpenses',
-      label: '交通費',
-    },
-    {
-      value: 'dailyNecessities',
-      label: '日用品',
-    },
-    {
-      value: 'entertainmentExpenses',
-      label: '娯楽費',
-    },
-    {
-      value: 'specialExpenses',
-      label: '特別費',
-    },
-    {
-      value: 'other',
-      label: 'その他',
-    },
-  ];
+  const { label, type, select, state, setStateString, setStateNumber } = props;
 
   let icon = '';
   if (type === 'number') icon = '$';
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setFieldValue(value);
-    return onValueChange && onValueChange(value);
+    if (type === 'text' && setStateString) setStateString(value);
+    if (type === 'number' && setStateNumber) setStateNumber(Number(value));
   };
 
   return (
@@ -67,13 +66,14 @@ function MuiTextField(props: TextFieldProps) {
         }}
       >
         {select ? (
+          // SelectComponent
           <TextField
             select
             label={label}
             id='outlined-size-small'
             size='small'
             fullWidth
-            value={fieldValue}
+            value={state}
             onChange={handleChange}
             InputProps={{
               startAdornment: <InputAdornment position='start' />,
@@ -86,13 +86,14 @@ function MuiTextField(props: TextFieldProps) {
             ))}
           </TextField>
         ) : (
+          // Not SelectComponent
           <TextField
             type={type}
             label={label}
             id='outlined-size-small'
             size='small'
             fullWidth
-            value={fieldValue}
+            value={state}
             onChange={handleChange}
             InputProps={{
               startAdornment: <InputAdornment position='start'>{icon}</InputAdornment>,

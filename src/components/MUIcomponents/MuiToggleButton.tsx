@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
 
-import type { ToggleButtonProps } from '../../types/MUItypes/props';
+import type { ToggleButtonProps } from '../../types/props';
 
 function MuiToggleButton(props: ToggleButtonProps) {
   const { leftButtonName, rightButtonName, setToggleStatus } = props;

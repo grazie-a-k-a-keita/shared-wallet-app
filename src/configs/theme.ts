@@ -23,6 +23,11 @@ declare module '@mui/material/Button' {
     red: true;
   }
 }
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    red: true;
+  }
+}
 
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
@@ -37,14 +42,18 @@ theme = createTheme(theme, {
     red: theme.palette.augmentColor({
       color: {
         main: '#83001A',
+        light: '#9b3347',
+        dark: '#5b0012',
       },
-      name: 'mainRed',
+      name: 'red',
     }),
     yellow: theme.palette.augmentColor({
       color: {
         main: '#E7C200',
+        light: '#ebce33',
+        dark: '#a18700',
       },
-      name: 'mainYellow',
+      name: 'yellow',
     }),
   },
 });

@@ -2,10 +2,11 @@
 @import '../styles/variables';
 
 .container {
-  height: $size24;
+  height: $size20;
   background-color: $white;
   display: flex;
   border-top: $size1 solid $red;
+  margin-bottom: $size6;
 }
 
 @mixin iconBox {
@@ -14,7 +15,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: $size2 $size2 $size6;
+  margin: $size2;
   @include radius;
   &:hover {
     img {
