@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
 
-import type { ButtonProps } from '../../types/MUItypes/props';
+import type { ButtonProps } from '../../types/props';
 
 function MuiButton(props: ButtonProps) {
   const { buttonName, onclick } = props;

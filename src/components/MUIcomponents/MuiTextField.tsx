@@ -4,7 +4,7 @@ import { InputAdornment, MenuItem, ThemeProvider, createTheme } from '@mui/mater
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-import type { TextFieldProps } from '../../types/MUItypes/props';
+import type { TextFieldProps } from '../../types/props';
 
 function MuiTextField(props: TextFieldProps) {
   const { label, type, select, onValueChange } = props;

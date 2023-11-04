@@ -4,7 +4,7 @@ import theme from '../../configs/theme';
 
 import MuiTextField from './MuiTextField';
 
-import type { CardProps } from '../../types/MUItypes/props';
+import type { CardProps } from '../../types/props';
 
 function MuiCard(props: CardProps) {
   const { itemNumber } = props;

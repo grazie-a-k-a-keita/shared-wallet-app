@@ -2,7 +2,7 @@ import { InputAdornment, ThemeProvider, createTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-import type { TextFieldDateProps } from '../../types/MUItypes/props';
+import type { TextFieldDateProps } from '../../types/props';
 
 // 現在日付取得
 const now: Date = new Date();
