@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // 現在日付取得
 const now: Date = new Date();
@@ -13,43 +13,65 @@ function useInputPage() {
   const [date, setDate] = useState<string>(today);
   const [category, setCategory] = useState<string>('');
   const [majorItem, setMajorItem] = useState<string>('');
-  const [minorItems, setMinorItems] = useState<{ memo: string; amount: number }[]>([]);
-  const [minorItemCount] = useState<number>(10);
+  const [minorItems, setMinorItems] = useState<{ memo: string; amount: number }[]>([
+    { memo: '', amount: 0 },
+  ]);
+  const [minorItemCount, setMinorItemCount] = useState<number>(1);
 
-  const handleDateChange = (value: string) => {
-    setDate(value);
-  };
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
 
-  const handleCategoryChange = (value: string) => {
-    setCategory(value);
-  };
+  /**
+   * 合計金額の算出
+   */
+  useEffect(() => {
+    let tempAmount = 0;
+    minorItems.forEach((item) => {
+      tempAmount += item.amount;
+    });
+    setTotalAmount(tempAmount);
+  }, [minorItems]);
 
-  const handleMajorItemChange = (value: string) => {
-    setMajorItem(value);
+  /**
+   * カードを追加する関数
+   */
+  const handleAddCard = () => {
+    setMinorItemCount((prevCount) => prevCount + 1);
+    // minorItemsに初期値オブジェクト追加
+    const prevItems = [...minorItems];
+    prevItems.push({ memo: '', amount: 0 });
+    setMinorItems(prevItems);
+    // カード追加時に一番下までスクロール
+    setTimeout(() => {
+      scrollBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 1);
   };
 
   /**
-   * カード内のTextFieldの更新時に"minorItems", "totalAmount"を更新する関数
-   * @param index カードの順番/番号
-   * @param value 更新された値
+   * カードを削除する関数
    */
-  const handleMinorItemsChange = (index: number, value: { memo: string; amount: number }) => {
+  const handleDeleteCard = (index: number) => {
+    const tempCount = minorItemCount - 1;
+    setMinorItemCount(tempCount);
+    // minorItemsから index - 1 番目のオブジェクト削除
     const prevItems = [...minorItems];
-    if (index > prevItems.length) {
-      for (let i = prevItems.length + 1; i <= index; i += 1) {
-        prevItems.push({ memo: '', amount: 0 });
-      }
-    }
-    if (value.memo) prevItems[index - 1].memo = value.memo;
-    if (value.memo === '') prevItems[index - 1].amount = value.amount;
-    setMinorItems(prevItems);
+    const tempItems = prevItems.filter((_, i) => i !== index - 1);
+    setMinorItems(tempItems);
+    // 一度 Card をリセットし、"TextFiled"と"minorItems"を同期させる
+    setMinorItemCount(0);
+    setMinorItemCount(tempCount);
+  };
 
-    // 合計金額の算出
-    let totalAmountTemp = 0;
-    prevItems.forEach((item) => {
-      totalAmountTemp += item.amount;
-    });
-    setTotalAmount(totalAmountTemp);
+  /**
+   * 保存ボタンクリック関数
+   */
+  const saveButtonClick = () => {
+    const obj = {
+      date,
+      category,
+      majorItem,
+      minorItems,
+    };
+    console.log(obj);
   };
 
   return {
@@ -57,18 +79,20 @@ function useInputPage() {
     toggleState,
     setToggleState,
     totalAmount,
-    setTotalAmount,
-    date,
+    setDate,
     category,
+    setCategory,
     majorItem,
+    setMajorItem,
     minorItems,
     setMinorItems,
     minorItemCount,
+    // Ref
+    scrollBottomRef,
     // Function
-    handleDateChange,
-    handleCategoryChange,
-    handleMajorItemChange,
-    handleMinorItemsChange,
+    handleAddCard,
+    handleDeleteCard,
+    saveButtonClick,
   };
 }
 

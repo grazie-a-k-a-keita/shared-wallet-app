@@ -1,5 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import AddCircleOutlineButton from '../components/MUIcomponents/AddCircleOutlineButton';
 import MuiButton from '../components/MUIcomponents/MuiButton';
 import MuiCard from '../components/MUIcomponents/MuiCard';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
@@ -10,33 +11,38 @@ import classes from './Input.module.scss';
 
 function Input() {
   const {
-    // State
     toggleState,
     setToggleState,
     totalAmount,
-    date,
+    setDate,
     category,
+    setCategory,
     majorItem,
+    setMajorItem,
     minorItems,
+    setMinorItems,
     minorItemCount,
-    // Function
-    handleDateChange,
-    handleCategoryChange,
-    handleMajorItemChange,
-    handleMinorItemsChange,
+    scrollBottomRef,
+    handleAddCard,
+    handleDeleteCard,
+    saveButtonClick,
   } = useInputPage();
 
-  const saveButtonClick = () => {
-    console.log('Date: ', date);
-    console.log('Category: ', category);
-    console.log('MajorItem: ', majorItem);
-    console.log('MinorMemoItems: ', minorItems);
-  };
-
+  /**
+   * カードを生成する関数
+   */
   const renderMinorItemCards = () => {
     const cards = [];
     for (let i = 1; i <= minorItemCount; i += 1) {
-      cards.push(<MuiCard key={i} itemNumber={i} onValueChange={handleMinorItemsChange} />);
+      cards.push(
+        <MuiCard
+          key={i}
+          itemNumber={i}
+          deleteButtonClick={handleDeleteCard}
+          minorItems={minorItems}
+          setMinorItems={setMinorItems}
+        />
+      );
     }
     return cards;
   };
@@ -45,14 +51,18 @@ function Input() {
     <>
       <header>
         <Header leftButtonName='支出' rightButtonName='収入' setToggleStatus={setToggleState} />
-        <div className={classes.topBarContainer}>
-          <div className={classes.topBarArea}>
-            <p className={classes.totalAmount}>{`￥ ${totalAmount.toLocaleString()}`}</p>
-            <div className={classes.topBarButton}>
-              <MuiButton buttonName='保存' onclick={saveButtonClick} />
+        {toggleState ? (
+          <div className={classes.topBarContainer}>
+            <div className={classes.topBarArea}>
+              <p className={classes.totalAmount}>{`￥ ${totalAmount.toLocaleString()}`}</p>
+              <div className={classes.topBarButton}>
+                <MuiButton buttonName='保存' onclick={saveButtonClick} />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div />
+        )}
       </header>
       <main>
         {toggleState ? (
@@ -61,7 +71,7 @@ function Input() {
               <div className={classes.textFieldArea}>
                 <p className={classes.textFieldLabel}>日付</p>
                 <div className={classes.textField}>
-                  <MuiTextFieldDate onValueChange={handleDateChange} />
+                  <MuiTextFieldDate setState={setDate} />
                 </div>
               </div>
               <div className={classes.textFieldArea}>
@@ -70,8 +80,9 @@ function Input() {
                   <MuiTextField
                     label='category'
                     type='text'
-                    onValueChange={handleCategoryChange}
                     select
+                    state={category}
+                    setStateString={setCategory}
                   />
                 </div>
               </div>
@@ -81,12 +92,17 @@ function Input() {
                   <MuiTextField
                     label='majorItem'
                     type='text'
-                    onValueChange={handleMajorItemChange}
+                    state={majorItem}
+                    setStateString={setMajorItem}
                   />
                 </div>
               </div>
             </div>
-            <div className={classes.cardContainer}>{renderMinorItemCards()}</div>
+            <div className={classes.cardContainer}>
+              {renderMinorItemCards()}
+              <div ref={scrollBottomRef} style={{ height: '0px' }} />
+            </div>
+            <AddCircleOutlineButton addButtonClick={handleAddCard} />
           </>
         ) : (
           <p>収入</p>
