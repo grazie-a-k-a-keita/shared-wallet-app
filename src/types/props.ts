@@ -16,12 +16,14 @@ export type TextFieldProps = {
   label: string;
   type: 'text' | 'number';
   select?: boolean;
-  onValueChange: (value: string) => void;
+  state: string | number;
+  setStateString?: React.Dispatch<React.SetStateAction<string>>;
+  setStateNumber?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // TextFieldDate Props type
 export type TextFieldDateProps = {
-  onValueChange: (value: string) => void;
+  setState: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // Button Props type
@@ -33,7 +35,20 @@ export type ButtonProps = {
 // Card Props type
 export type CardProps = {
   itemNumber: number;
-  onValueChange: (index: number, value: { memo: string; amount: number }) => void;
+  deleteButtonClick: (index: number) => void;
+  minorItems: { memo: string; amount: number }[];
+  setMinorItems: React.Dispatch<React.SetStateAction<{ memo: string; amount: number }[]>>;
+};
+
+// AddCircleOutlineButton Props type
+export type AddCircleOutlineButtonProps = {
+  addButtonClick: () => void;
+};
+
+// DeleteButton Props type
+export type DeleteButtonProps = {
+  itemNumber: number;
+  deleteButtonClick: (index: number) => void;
 };
 
 // ========================

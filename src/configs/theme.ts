@@ -23,6 +23,11 @@ declare module '@mui/material/Button' {
     red: true;
   }
 }
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    red: true;
+  }
+}
 
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
