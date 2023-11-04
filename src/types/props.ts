@@ -23,6 +23,7 @@ export type TextFieldProps = {
 
 // TextFieldDate Props type
 export type TextFieldDateProps = {
+  state: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
 };
 

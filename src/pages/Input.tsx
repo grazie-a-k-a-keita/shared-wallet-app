@@ -14,6 +14,7 @@ function Input() {
     toggleState,
     setToggleState,
     totalAmount,
+    date,
     setDate,
     category,
     setCategory,
@@ -71,7 +72,7 @@ function Input() {
               <div className={classes.textFieldArea}>
                 <p className={classes.textFieldLabel}>日付</p>
                 <div className={classes.textField}>
-                  <MuiTextFieldDate setState={setDate} />
+                  <MuiTextFieldDate state={date} setState={setDate} />
                 </div>
               </div>
               <div className={classes.textFieldArea}>

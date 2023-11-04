@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
+type MinorItem = {
+  memo: string;
+  amount: number;
+};
+
 // 現在日付取得
 const now: Date = new Date();
 const YYYY: string = now.getFullYear().toString();
@@ -13,9 +18,7 @@ function useInputPage() {
   const [date, setDate] = useState<string>(today);
   const [category, setCategory] = useState<string>('');
   const [majorItem, setMajorItem] = useState<string>('');
-  const [minorItems, setMinorItems] = useState<{ memo: string; amount: number }[]>([
-    { memo: '', amount: 0 },
-  ]);
+  const [minorItems, setMinorItems] = useState<MinorItem[]>([{ memo: '', amount: 0 }]);
   const [minorItemCount, setMinorItemCount] = useState<number>(1);
 
   const scrollBottomRef = useRef<HTMLDivElement>(null);
@@ -79,6 +82,7 @@ function useInputPage() {
     toggleState,
     setToggleState,
     totalAmount,
+    date,
     setDate,
     category,
     setCategory,
