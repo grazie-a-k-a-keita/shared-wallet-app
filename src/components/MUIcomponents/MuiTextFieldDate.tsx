@@ -10,19 +10,20 @@ const month: string = (now.getMonth() + 1).toString().padStart(2, '0');
 const date: string = now.getDate().toString().padStart(2, '0');
 const today: string = `${now.getFullYear()}-${month}-${date}`;
 
+// フォント用Theme
+const RobotoFont = createTheme({
+  typography: {
+    fontFamily: ['Roboto'].join(','),
+  },
+});
+
 function MuiTextFieldDate(props: TextFieldDateProps) {
-  const { onValueChange } = props;
+  const { setState } = props;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    return onValueChange && onValueChange(value);
+    setState(value);
   };
-
-  const RobotoFont = createTheme({
-    typography: {
-      fontFamily: ['Roboto'].join(','),
-    },
-  });
 
   return (
     <ThemeProvider theme={RobotoFont}>
