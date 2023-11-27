@@ -80,4 +80,7 @@ yarn tests:watch
 
 # coverage
 yarn coverage
+
+# ローカルで"json-server"を起動し、http://hocalhost:3001 でアクセスできる
+yarn server
 ```

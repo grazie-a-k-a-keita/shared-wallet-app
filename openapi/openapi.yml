@@ -1,12 +1,102 @@
 openapi: '3.0.2'
 info:
-  title: API Title
+  title: Shared-Wallet-App API
+  description: 共有家計簿アプリのAPI仕様
   version: '1.0'
 servers:
-  - url: https://api.server.test/v1
+  - url: http://localhost:3001
+    description: 開発環境
+  - url: https://api.example.com
+    description: 本番環境
 paths:
-  /test:
+  /spending/registration:
+    post:
+      summary: 支出のデータを登録する
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                  description: 支出日
+                category:
+                  type: string
+                  description: カテゴリ
+                majorItem:
+                  type: string
+                  description: 大項目
+                minorItems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      memo:
+                        type: string
+                        description: メモ
+                      amount:
+                        type: number
+                        description: 金額
+                  description: 小項目のリスト
+      responses:
+        '201':
+          description: 登録成功
+        '400':
+          description: バリデーションエラー
+          content:
+            application/json:
+              example:
+                message: バリデーションエラーが発生しました。
+                details:
+                  - field: date
+                    message: '無効な日付形式です。'
+                  - field: amount
+                    message: '金額は正の数である必要があります。'
+        '500':
+          description: DBエラー
+  /daily-summary:
     get:
+      summary: 月の各日の支出と収入の合計を取得する
+      parameters:
+        - name: month
+          in: query
+          description: 対象の月（1から12の数字）
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 12
+        - name: year
+          in: query
+          description: 対象の年
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
-          description: OK
+          description: 成功
+          content:
+            application/json:
+              example:
+                dailySummary:
+                  - date: '2023-11-01'
+                    spendingTotal: 1000
+                    incomeTotal: 500
+                  - date: '2023-11-02'
+                    spendingTotal: 1000
+                    incomeTotal: 500
+                  # ... 1月分の日付ごとのデータ
+        '400':
+          description: バリデーションエラー
+          content:
+            application/json:
+              example:
+                message: バリデーションエラーが発生しました。
+                details:
+                  - field: month
+                    message: '月は1から12の数字で指定してください。'
+                  - field: year
+                    message: '年は有効な数字で指定してください。'
