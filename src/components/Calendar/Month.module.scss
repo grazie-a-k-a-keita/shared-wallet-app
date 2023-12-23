@@ -1,0 +1,11 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.container_month {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container_day {
+  width: 14.28571428571429%;
+  border-bottom: $red solid 1px;
+}
