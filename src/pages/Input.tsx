@@ -56,7 +56,10 @@ function Input() {
         {toggleState ? (
           <div className={classes.topBarContainer}>
             <div className={classes.topBarArea}>
-              <p className={classes.totalAmount}>{`￥ ${totalAmount.toLocaleString()}`}</p>
+              <p className={classes.totalAmount}>
+                <span className={classes.span}>￥</span>
+                {` ${totalAmount.toLocaleString()}`}
+              </p>
               <div className={classes.topBarButton}>
                 <MuiButton buttonName='保存' onclick={saveButtonClick} />
               </div>
