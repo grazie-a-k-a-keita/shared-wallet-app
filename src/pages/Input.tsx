@@ -1,7 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AddCircleOutlineButton from '../components/MUIcomponents/AddCircleOutlineButton';
-import MuiButton from '../components/MUIcomponents/MuiButton';
 import MuiCard from '../components/MUIcomponents/MuiCard';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
@@ -13,7 +12,6 @@ function Input() {
   const {
     toggleState,
     setToggleState,
-    totalAmount,
     date,
     setDate,
     category,
@@ -27,7 +25,6 @@ function Input() {
     scrollBottomRef,
     handleAddCard,
     handleDeleteCard,
-    saveButtonClick,
   } = useInputPage();
 
   /**
@@ -52,21 +49,20 @@ function Input() {
   return (
     <>
       <header>
-        <Header leftButtonName='支出' rightButtonName='収入' setToggleStatus={setToggleState} />
         {toggleState ? (
-          <div className={classes.topBarContainer}>
-            <div className={classes.topBarArea}>
-              <p className={classes.totalAmount}>
-                <span className={classes.span}>￥</span>
-                {` ${totalAmount.toLocaleString()}`}
-              </p>
-              <div className={classes.topBarButton}>
-                <MuiButton buttonName='保存' onclick={saveButtonClick} />
-              </div>
-            </div>
-          </div>
+          <Header
+            headerType='Input'
+            leftButtonName='支出'
+            rightButtonName='補充'
+            setToggleStatus={setToggleState}
+          />
         ) : (
-          <div />
+          <Header
+            headerType='Input'
+            leftButtonName='支出'
+            rightButtonName='補充'
+            setToggleStatus={setToggleState}
+          />
         )}
       </header>
       <main>

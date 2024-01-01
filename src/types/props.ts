@@ -60,12 +60,18 @@ export type DialogProps = {
   setMonthTop: React.Dispatch<React.SetStateAction<number>>;
 };
 
+// IconButton Props type
+export type IconButtonProps = {
+  iconType: 'navigateBefore' | 'navigateNext';
+};
+
 // ========================
 // components
 // ========================
 
 // Header Props type
 export type HeaderProps = {
+  headerType: 'Default' | 'Input';
   leftButtonName: string;
   rightButtonName: string;
   setToggleStatus: Dispatch<SetStateAction<boolean>>;

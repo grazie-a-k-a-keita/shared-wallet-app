@@ -1,12 +1,50 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
-.container {
-  background-color: $red;
-  padding: $size4 $size16;
+/* toggleButton */
+.toggleButtonContainer {
+  width: $size58;
+  margin: 0 auto;
+  padding-bottom: $size4;
 }
 
-.toggleBack {
-  background-color: $white;
+.toggleButtonBackground {
+  background-color: $Background_Color_Light_Primary;
   @include radius;
+}
+
+/* totalAmount */
+.totalAmountContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $size20;
+  background-color: $Background_Color_Light_Tertiary;
+  border-bottom: $borderLine solid $Label_Color_Light_Secondary;
+}
+
+.totalAmount {
+  padding-left: $size8;
+  line-height: $size20;
+  @include text($Default_MainRed, $size6);
+}
+
+.totalAmount_Button {
+  height: $size8;
+  padding-right: $size8;
+}
+
+/* year-month */
+.year_month_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $size16;
+  height: $size12;
+}
+
+.year_month_text {
+  text-align: center;
+  padding: 0 $size4;
+  line-height: $size12;
+  @include text($Default_MainYellow, $size4);
 }
