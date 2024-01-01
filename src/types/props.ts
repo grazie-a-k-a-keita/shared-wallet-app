@@ -1,5 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
+import type { MonthlyBalance } from './fetchData';
+
 // ========================
 // MUI components
 // ========================
@@ -52,6 +54,12 @@ export type DeleteButtonProps = {
   deleteButtonClick: (index: number) => void;
 };
 
+// Dialog Props type
+export type DialogProps = {
+  setYearTop: React.Dispatch<React.SetStateAction<number>>;
+  setMonthTop: React.Dispatch<React.SetStateAction<number>>;
+};
+
 // ========================
 // components
 // ========================
@@ -61,4 +69,18 @@ export type HeaderProps = {
   leftButtonName: string;
   rightButtonName: string;
   setToggleStatus: Dispatch<SetStateAction<boolean>>;
+};
+
+// Calendar-Month Props type
+export type MonthProps = {
+  year: number;
+  month: number;
+  monthlyBalance: MonthlyBalance;
+};
+
+// Calendar-Day Props type
+export type DayProps = {
+  date?: number;
+  spendingTotal?: number;
+  incomeTotal?: number;
 };
