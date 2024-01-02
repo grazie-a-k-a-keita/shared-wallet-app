@@ -45,7 +45,12 @@ function Calendar() {
   return (
     <>
       <header>
-        <Header leftButtonName='月' rightButtonName='週' setToggleStatus={setToggleState} />
+        <Header
+          leftButtonName='月'
+          rightButtonName='週'
+          setToggleStatus={setToggleState}
+          headerType='Default'
+        />
         {toggleState ? (
           <div className={classes_input.topBarContainer}>
             <div className={classes_input.topBarArea}>

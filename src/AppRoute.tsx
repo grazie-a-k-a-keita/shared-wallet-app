@@ -9,8 +9,8 @@ import Setting from './pages/Setting';
 const router = createBrowserRouter([
   { path: '/', element: <Input />, errorElement: <Error /> },
   { path: 'calendar', element: <Calendar /> },
-  { path: 'graph', element: <Graph /> },
-  { path: 'setting', element: <Setting /> },
+  { path: 'wallet', element: <Graph /> },
+  { path: 'payments', element: <Setting /> },
 ]);
 
 export default router;

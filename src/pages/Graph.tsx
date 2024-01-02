@@ -8,7 +8,12 @@ function Graph() {
   return (
     <>
       <header>
-        <Header leftButtonName='xxx' rightButtonName='yyy' setToggleStatus={setToggleState} />
+        <Header
+          leftButtonName='xxx'
+          rightButtonName='yyy'
+          setToggleStatus={setToggleState}
+          headerType='Default'
+        />
       </header>
       <main>{toggleState ? <p>xxx</p> : <p>yyy</p>}</main>
       <footer>

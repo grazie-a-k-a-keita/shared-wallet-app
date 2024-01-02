@@ -9,8 +9,19 @@ $lightGray: #c8c8c8;
 $primary: #1976d2;
 $error: #d32f2f;
 
+$Default_MainRed: #83001a;
+$Default_MainYellow: #e7c200;
+$Label_Color_Light_Secondary: rgba(0, 0, 0, 0.5);
+$Background_Color_Light_Primary: #f5f5f5;
+$Background_Color_Light_Tertiary: #efefef;
+
+/* Font Weight */
+$Medium: 500;
+$Bold: 700;
+
 /* Size */
 // ※tailwind CSS のサイズ基準
+$borderLine: 1px;
 $size1: 0.25rem; /* 4px */
 $size2: 0.5rem; /* 8px */
 $size3: 0.75rem; /* 12px */
@@ -29,3 +40,4 @@ $size20: 5rem; /* 80px */
 $size24: 6rem; /* 96px */
 $size28: 7rem; /* 112px */
 $size32: 8rem; /* 128px */
+$size58: 14.5rem; /* 232px */

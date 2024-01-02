@@ -6,6 +6,6 @@
 }
 
 .title {
-  @include text($black, 4rem);
+  @include text($black, 4rem, $Bold);
   margin-bottom: 1rem;
 }

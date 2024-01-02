@@ -1,49 +1,28 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import AddCircleOutlineButton from '../components/MUIcomponents/AddCircleOutlineButton';
-import MuiButton from '../components/MUIcomponents/MuiButton';
 import MuiCard from '../components/MUIcomponents/MuiCard';
+import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
+import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
+import MuiTextFieldSelect from '../components/MUIcomponents/MuiTextFieldSelect';
 import useInputPage from '../hooks/useInputPage';
 
 import classes from './Input.module.scss';
 
 function Input() {
-  const {
-    toggleState,
-    setToggleState,
-    totalAmount,
-    date,
-    setDate,
-    category,
-    setCategory,
-    majorItem,
-    setMajorItem,
-    minorItems,
-    setMinorItems,
-    minorItemCount,
-    scrollTopRef,
-    scrollBottomRef,
-    handleAddCard,
-    handleDeleteCard,
-    saveButtonClick,
-  } = useInputPage();
+  const { toggleState, setToggleState, scrollTopRef, scrollBottomRef } = useInputPage();
 
   /**
    * カードを生成する関数
    */
   const renderMinorItemCards = () => {
     const cards = [];
-    for (let i = 1; i <= minorItemCount; i += 1) {
+    for (let i = 1; i <= 3; i += 1) {
       cards.push(
-        <MuiCard
-          key={i}
-          itemNumber={i}
-          deleteButtonClick={handleDeleteCard}
-          minorItems={minorItems}
-          setMinorItems={setMinorItems}
-        />
+        <div className={classes.cardContainer}>
+          <MuiCard itemNumber={i} />
+        </div>
       );
     }
     return cards;
@@ -52,66 +31,61 @@ function Input() {
   return (
     <>
       <header>
-        <Header leftButtonName='支出' rightButtonName='収入' setToggleStatus={setToggleState} />
         {toggleState ? (
-          <div className={classes.topBarContainer}>
-            <div className={classes.topBarArea}>
-              <p className={classes.totalAmount}>
-                <span className={classes.span}>￥</span>
-                {` ${totalAmount.toLocaleString()}`}
-              </p>
-              <div className={classes.topBarButton}>
-                <MuiButton buttonName='保存' onclick={saveButtonClick} />
-              </div>
-            </div>
-          </div>
+          <Header
+            headerType='Input'
+            leftButtonName='支出'
+            rightButtonName='補充'
+            setToggleStatus={setToggleState}
+          />
         ) : (
-          <div />
+          <Header
+            headerType='Input'
+            leftButtonName='支出'
+            rightButtonName='補充'
+            setToggleStatus={setToggleState}
+          />
         )}
       </header>
       <main>
         {toggleState ? (
           <>
             <div ref={scrollTopRef} style={{ height: '0px' }} />
-            <div className={classes.textFieldContainer}>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>日付</p>
-                <div className={classes.textField}>
-                  <MuiTextFieldDate state={date} setState={setDate} />
-                </div>
+
+            <div className={classes.mainContainer}>
+              <div className={classes.textFieldContainer}>
+                <MuiTextFieldDate />
               </div>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>カテゴリ</p>
-                <div className={classes.textField}>
-                  <MuiTextField
-                    label='category'
-                    type='text'
-                    select
-                    state={category}
-                    setStateString={setCategory}
-                  />
-                </div>
+              <div className={classes.textFieldContainer}>
+                <MuiTextFieldSelect label='カテゴリー' />
               </div>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>大項目</p>
-                <div className={classes.textField}>
-                  <MuiTextField
-                    label='majorItem'
-                    type='text'
-                    state={majorItem}
-                    setStateString={setMajorItem}
-                  />
-                </div>
+              <div className={classes.textFieldContainer}>
+                <MuiTextField label='メモ（店名など）' />
               </div>
-            </div>
-            <div className={classes.cardContainer}>
+
+              <div className={classes.margin8} />
+
               {renderMinorItemCards()}
-              <div ref={scrollBottomRef} style={{ height: '0px' }} />
+
+              <div className={classes.addButton}>
+                <MuiIconButton iconType='libraryAdd' iconSize={32} />
+              </div>
             </div>
-            <AddCircleOutlineButton addButtonClick={handleAddCard} />
+
+            <div ref={scrollBottomRef} style={{ height: '0px' }} />
           </>
         ) : (
-          <p>収入</p>
+          <div className={classes.mainContainer}>
+            <div className={classes.textFieldContainer}>
+              <MuiTextFieldDate />
+            </div>
+            <div className={classes.textFieldContainer}>
+              <MuiTextField label='メモ（名前など）' />
+            </div>
+            <div className={classes.textFieldContainer}>
+              <MuiTextFieldNumber label='金額' />
+            </div>
+          </div>
         )}
       </main>
       <footer>

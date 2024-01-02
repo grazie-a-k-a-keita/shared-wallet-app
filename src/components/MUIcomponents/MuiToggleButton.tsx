@@ -22,19 +22,27 @@ function MuiToggleButton(props: ToggleButtonProps) {
     if (newAlignment === 'right') setToggleStatus(false);
   };
 
+  const customTextStyle = {
+    fontSize: '12px',
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <ToggleButtonGroup
         color='yellow'
-        exclusive
+        style={{ height: '2rem' }}
+        exclusive // 1つの要素のみ選択可能
         fullWidth
         onChange={handleChange}
-        size='small'
         value={alignment}
         aria-label='Platform'
       >
-        <ToggleButton value='left'>{leftButtonName}</ToggleButton>
-        <ToggleButton value='right'>{rightButtonName}</ToggleButton>
+        <ToggleButton value='left' style={customTextStyle}>
+          {leftButtonName}
+        </ToggleButton>
+        <ToggleButton value='right' style={customTextStyle}>
+          {rightButtonName}
+        </ToggleButton>
       </ToggleButtonGroup>
     </ThemeProvider>
   );

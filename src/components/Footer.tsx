@@ -1,13 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import calendarOffIcon from '../assets/calendar_off.svg';
-import calendarOnIcon from '../assets/calendar_on.svg';
-import graphOffIcon from '../assets/graph_off.svg';
-import graphOnIcon from '../assets/graph_on.svg';
-import inputOffIcon from '../assets/input_off.svg';
-import inputOnIcon from '../assets/input_on.svg';
-import settingOffIcon from '../assets/setting_off.svg';
-import settingOnIcon from '../assets/setting_on.svg';
+import calendarMonthOff from '../assets/footerIcon/calendar_month_off.svg';
+import calendarMonthOn from '../assets/footerIcon/calendar_month_on.svg';
+import noteAltOff from '../assets/footerIcon/note_alt_off.svg';
+import noteAltOn from '../assets/footerIcon/note_alt_on.svg';
+import syncAltOff from '../assets/footerIcon/sync_alt_off.svg';
+import syncAltOn from '../assets/footerIcon/sync_alt_on.svg';
+import walletOff from '../assets/footerIcon/wallet_off.svg';
+import walletOn from '../assets/footerIcon/wallet_on.svg';
 
 import classes from './Footer.module.scss';
 
@@ -17,57 +17,59 @@ function Footer() {
 
   return (
     <div className={classes.container}>
-      {/* inputIcon */}
       <div
-        className={pathName === '/' ? classes.iconBoxOn : classes.iconBoxOff}
+        className={classes.iconButton}
         onClick={() => navigate('/')}
         onKeyDown={() => navigate('/')}
         role='button'
         tabIndex={-1}
       >
-        <img src={pathName === '/' ? inputOnIcon : inputOffIcon} className={classes.icon} alt='' />
+        <img src={pathName === '/' ? noteAltOn : noteAltOff} className={classes.icon} alt='' />
+        <p className={pathName === '/' ? classes.iconLabel_on : classes.iconLabel_off}>入力</p>
       </div>
-      {/* calendarIcon */}
       <div
-        className={pathName === '/calendar' ? classes.iconBoxOn : classes.iconBoxOff}
+        className={classes.iconButton}
         onClick={() => navigate('/calendar')}
         onKeyDown={() => navigate('/calendar')}
         role='button'
         tabIndex={-1}
       >
         <img
-          src={pathName === '/calendar' ? calendarOnIcon : calendarOffIcon}
+          src={pathName === '/calendar' ? calendarMonthOn : calendarMonthOff}
           className={classes.icon}
           alt=''
         />
+        <p className={pathName === '/calendar' ? classes.iconLabel_on : classes.iconLabel_off}>
+          カレンダー
+        </p>
       </div>
-      {/* graphIcon */}
       <div
-        className={pathName === '/graph' ? classes.iconBoxOn : classes.iconBoxOff}
-        onClick={() => navigate('/graph')}
-        onKeyDown={() => navigate('/graph')}
+        className={classes.iconButton}
+        onClick={() => navigate('/wallet')}
+        onKeyDown={() => navigate('/wallet')}
+        role='button'
+        tabIndex={-1}
+      >
+        <img src={pathName === '/wallet' ? walletOn : walletOff} className={classes.icon} alt='' />
+        <p className={pathName === '/wallet' ? classes.iconLabel_on : classes.iconLabel_off}>
+          資産
+        </p>
+      </div>
+      <div
+        className={classes.iconButton}
+        onClick={() => navigate('/payments')}
+        onKeyDown={() => navigate('/payments')}
         role='button'
         tabIndex={-1}
       >
         <img
-          src={pathName === '/graph' ? graphOnIcon : graphOffIcon}
+          src={pathName === '/payments' ? syncAltOn : syncAltOff}
           className={classes.icon}
           alt=''
         />
-      </div>
-      {/* settingIcon */}
-      <div
-        className={pathName === '/setting' ? classes.iconBoxOn : classes.iconBoxOff}
-        onClick={() => navigate('/setting')}
-        onKeyDown={() => navigate('/setting')}
-        role='button'
-        tabIndex={-1}
-      >
-        <img
-          src={pathName === '/setting' ? settingOnIcon : settingOffIcon}
-          className={classes.icon}
-          alt=''
-        />
+        <p className={pathName === '/payments' ? classes.iconLabel_on : classes.iconLabel_off}>
+          入出金
+        </p>
       </div>
     </div>
   );

@@ -13,20 +13,21 @@ export type ToggleButtonProps = {
   setToggleStatus: Dispatch<SetStateAction<boolean>>;
 };
 
+// TextFieldSelect Props type
+export type TextFieldSelectProps = {
+  label: string;
+};
+
 // TextField Props type
 export type TextFieldProps = {
   label: string;
-  type: 'text' | 'number';
-  select?: boolean;
-  state: string | number;
-  setStateString?: React.Dispatch<React.SetStateAction<string>>;
-  setStateNumber?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // TextFieldDate Props type
-export type TextFieldDateProps = {
-  state: string;
-  setState: React.Dispatch<React.SetStateAction<string>>;
+
+// TextFieldNumber Props type
+export type TextFieldNumberProps = {
+  label: string;
 };
 
 // Button Props type
@@ -38,9 +39,6 @@ export type ButtonProps = {
 // Card Props type
 export type CardProps = {
   itemNumber: number;
-  deleteButtonClick: (index: number) => void;
-  minorItems: { memo: string; amount: number }[];
-  setMinorItems: React.Dispatch<React.SetStateAction<{ memo: string; amount: number }[]>>;
 };
 
 // AddCircleOutlineButton Props type
@@ -60,12 +58,19 @@ export type DialogProps = {
   setMonthTop: React.Dispatch<React.SetStateAction<number>>;
 };
 
+// IconButton Props type
+export type IconButtonProps = {
+  iconType: 'navigateBefore' | 'navigateNext' | 'delete' | 'libraryAdd';
+  iconSize: 24 | 32;
+};
+
 // ========================
 // components
 // ========================
 
 // Header Props type
 export type HeaderProps = {
+  headerType: 'Default' | 'Input';
   leftButtonName: string;
   rightButtonName: string;
   setToggleStatus: Dispatch<SetStateAction<boolean>>;

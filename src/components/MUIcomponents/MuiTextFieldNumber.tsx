@@ -3,15 +3,15 @@ import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
 
-import type { TextFieldProps } from '../../types/props';
+import type { TextFieldNumberProps } from '../../types/props';
 
-function MuiTextField(props: TextFieldProps) {
+function MuiTextFieldNumber(props: TextFieldNumberProps) {
   const { label } = props;
   return (
     <ThemeProvider theme={theme}>
-      <TextField label={label} variant='standard' fullWidth />
+      <TextField type='number' label={label} variant='standard' fullWidth />
     </ThemeProvider>
   );
 }
 
-export default MuiTextField;
+export default MuiTextFieldNumber;
