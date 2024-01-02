@@ -1,13 +1,15 @@
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
+import Delete from '../../assets/svg/delete.svg';
+import libraryAdd from '../../assets/svg/library_add.svg';
 import navigateBefore from '../../assets/svg/navigate_before.svg';
 import navigateNext from '../../assets/svg/navigate_next.svg';
 
 import type { IconButtonProps } from '../../types/props';
 
 function MuiIconButton(props: IconButtonProps) {
-  const { iconType } = props;
+  const { iconType, iconSize } = props;
 
   let iconSrc = '';
 
@@ -18,13 +20,19 @@ function MuiIconButton(props: IconButtonProps) {
     case 'navigateNext':
       iconSrc = navigateNext;
       break;
+    case 'delete':
+      iconSrc = Delete;
+      break;
+    case 'libraryAdd':
+      iconSrc = libraryAdd;
+      break;
     default:
       break;
   }
 
   return (
     <IconButton aria-label={iconType}>
-      <Box component='img' sx={{ height: 32, width: 32 }} src={iconSrc} />
+      <Box component='img' sx={{ height: iconSize, width: iconSize }} src={iconSrc} />
     </IconButton>
   );
 }

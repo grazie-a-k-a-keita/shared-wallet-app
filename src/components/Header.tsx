@@ -32,9 +32,9 @@ function Header(props: HeaderProps) {
         </>
       ) : (
         <div className={classes.year_month_container}>
-          <MuiIconButton iconType='navigateBefore' />
+          <MuiIconButton iconType='navigateBefore' iconSize={32} />
           <p className={classes.year_month_text}>2024年 01月</p>
-          <MuiIconButton iconType='navigateNext' />
+          <MuiIconButton iconType='navigateNext' iconSize={32} />
         </div>
       )}
     </div>
