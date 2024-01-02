@@ -23,10 +23,10 @@
 
 .iconLabel_on {
   line-height: $size4;
-  @include text($Default_MainRed, $size2);
+  @include text($Default_MainRed, $size2, $Medium);
 }
 
 .iconLabel_off {
   line-height: $size4;
-  @include text($Label_Color_Light_Secondary, $size2);
+  @include text($Label_Color_Light_Secondary, $size2, $Medium);
 }

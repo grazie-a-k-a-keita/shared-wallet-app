@@ -26,7 +26,7 @@
 .totalAmount {
   padding-left: $size8;
   line-height: $size20;
-  @include text($Default_MainRed, $size6);
+  @include text($Default_MainRed, $size6, $Bold);
 }
 
 .totalAmount_Button {
@@ -46,5 +46,5 @@
   text-align: center;
   padding: 0 $size4;
   line-height: $size12;
-  @include text($Default_MainYellow, $size4);
+  @include text($Default_MainYellow, $size4, $Bold);
 }
