@@ -31,6 +31,7 @@ function Input() {
     incomeAmountInfo,
     setIncomeAmountInfo,
     scrollTopRef,
+    scrollBottomRef,
     handleAddCard,
     saveButtonClick,
   } = useInputPage();
@@ -118,6 +119,7 @@ function Input() {
               <MuiIconButton iconType='libraryAdd' iconSize={32} onClick={handleAddCard} />
             </div>
           </div>
+          <div ref={scrollBottomRef} style={{ height: '0px' }} />
         </div>
       </main>
       <footer>

@@ -100,6 +100,7 @@ function useInputPage() {
     setIncomeAmountInfo,
     // useRef
     scrollTopRef,
+    scrollBottomRef,
     // function
     handleAddCard,
     saveButtonClick,
