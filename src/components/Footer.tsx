@@ -29,6 +29,18 @@ function Footer() {
       </div>
       <div
         className={classes.iconButton}
+        onClick={() => navigate('/wallet')}
+        onKeyDown={() => navigate('/wallet')}
+        role='button'
+        tabIndex={-1}
+      >
+        <img src={pathName === '/wallet' ? walletOn : walletOff} className={classes.icon} alt='' />
+        <p className={pathName === '/wallet' ? classes.iconLabel_on : classes.iconLabel_off}>
+          資産
+        </p>
+      </div>
+      <div
+        className={classes.iconButton}
         onClick={() => navigate('/calendar')}
         onKeyDown={() => navigate('/calendar')}
         role='button'
@@ -41,18 +53,6 @@ function Footer() {
         />
         <p className={pathName === '/calendar' ? classes.iconLabel_on : classes.iconLabel_off}>
           カレンダー
-        </p>
-      </div>
-      <div
-        className={classes.iconButton}
-        onClick={() => navigate('/wallet')}
-        onKeyDown={() => navigate('/wallet')}
-        role='button'
-        tabIndex={-1}
-      >
-        <img src={pathName === '/wallet' ? walletOn : walletOff} className={classes.icon} alt='' />
-        <p className={pathName === '/wallet' ? classes.iconLabel_on : classes.iconLabel_off}>
-          資産
         </p>
       </div>
       <div

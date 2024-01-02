@@ -1,7 +1,7 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-function Calendar() {
+function Wallet() {
   return (
     <>
       <header>
@@ -15,4 +15,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default Wallet;

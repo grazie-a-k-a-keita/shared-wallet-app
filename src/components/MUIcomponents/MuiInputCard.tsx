@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { Card, CardContent, Grid, ThemeProvider, Typography } from '@mui/material';
 
 import theme from '../../configs/theme';
@@ -9,25 +11,64 @@ import MuiTextFieldNumber from './MuiTextFieldNumber';
 import type { InputCardProps } from '../../types/props';
 
 function MuiInputCard(props: InputCardProps) {
-  const { itemNumber, onClick } = props;
+  const { itemNumber, refObject, cardInfo, setCardInfo } = props;
+
+  const [cardVisible, setCardVisible] = useState<boolean>(true);
+  const [memoInfo, setMemoInfo] = useState<string>('');
+  const [amountInfo, setAmountInfo] = useState<number>(0);
+
+  // カード内のメモが入力された場合にカード情報を更新する
+  useEffect(() => {
+    const newInputCardInfo = [...cardInfo];
+    newInputCardInfo[itemNumber - 1].memo = memoInfo;
+    setCardInfo(newInputCardInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [memoInfo]);
+
+  // カード内の金額が入力された場合にカード情報を更新する
+  useEffect(() => {
+    const newInputCardInfo = [...cardInfo];
+    newInputCardInfo[itemNumber - 1].amount = amountInfo;
+    setCardInfo(newInputCardInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [amountInfo]);
+
+  // カード削除ボタン押下時の処理
+  const handleDeleteCard = () => {
+    // カードを非表示にする
+    setCardVisible(false);
+
+    // カードの入力情報削除
+    const newInputCardInfo = [...cardInfo];
+    newInputCardInfo[itemNumber - 1].valid = false;
+    setCardInfo(newInputCardInfo);
+
+    // カード削除時に一番上までスクロール
+    setTimeout(() => {
+      refObject.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 1);
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <Card sx={{ backgroundColor: '#E5E5E5' }}>
-        <CardContent>
-          <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography fontSize='1rem' fontWeight='bold' color='#83001a'>
-              {`Card ${itemNumber}`}
-            </Typography>
-            <MuiIconButton iconType='delete' iconSize={24} onClick={onClick} />
-          </Grid>
+      {cardVisible && (
+        <Card sx={{ backgroundColor: '#E5E5E5' }}>
+          <CardContent>
+            <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Typography fontSize='1rem' fontWeight='bold' color='#83001a'>
+                Detail
+              </Typography>
+              <MuiIconButton iconType='delete' iconSize={24} onClick={handleDeleteCard} />
+            </Grid>
 
-          <Grid sx={{ paddingTop: 1 }} />
-          <MuiTextField label='メモ（商品名など）' />
+            <Grid sx={{ paddingTop: 1 }} />
+            <MuiTextField label='メモ（商品名など）' setState={setMemoInfo} />
 
-          <Grid sx={{ paddingTop: 1 }} />
-          <MuiTextFieldNumber label='金額' />
-        </CardContent>
-      </Card>
+            <Grid sx={{ paddingTop: 1 }} />
+            <MuiTextFieldNumber label='金額' setState={setAmountInfo} isValue={false} />
+          </CardContent>
+        </Card>
+      )}
     </ThemeProvider>
   );
 }

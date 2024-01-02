@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-import type { MonthlyBalance } from './fetchData';
+import type { MonthlyBalance } from './api';
+import type { CardInfo } from './type';
 
 // ========================
 // Calendar
@@ -46,24 +47,37 @@ export type IconButtonProps = {
 // MuiInputCard Props type
 export type InputCardProps = {
   itemNumber: number;
-  onClick: () => void;
+  refObject: React.RefObject<HTMLDivElement>;
+  cardInfo: CardInfo;
+  setCardInfo: React.Dispatch<React.SetStateAction<CardInfo>>;
 };
 
 // MuiTextField Props type
 export type TextFieldProps = {
   label: string;
+  value?: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // MuiTextFieldDate Props type
+export type TextFieldDateProps = {
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+};
 
 // MuiTextFieldNumber Props type
 export type TextFieldNumberProps = {
   label: string;
+  value?: number;
+  setState: React.Dispatch<React.SetStateAction<number>>;
+  isValue: boolean;
 };
 
 // MuiTextFieldSelect Props type
 export type TextFieldSelectProps = {
   label: string;
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // MuiToggleButton Props type
@@ -80,7 +94,11 @@ export type ToggleButtonProps = {
 // Header Props type
 export type HeaderProps = {
   headerType: 'Default' | 'Input';
-  leftButtonName: string;
-  rightButtonName: string;
-  setToggleStatus: Dispatch<SetStateAction<boolean>>;
+  leftButtonName?: string;
+  rightButtonName?: string;
+  setToggleStatus?: Dispatch<SetStateAction<boolean>>;
+  amount?: number;
+  onClick1?: () => void;
+  onClick2?: () => void;
+  onClick3?: () => void;
 };

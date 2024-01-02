@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import getMonthDetails from '../../configs/util';
+import { getMonthDetails } from '../../configs/util';
 
 import Day from './Day';
 import classes from './Month.module.scss';
 
-import type { Days } from '../../types/days';
 import type { MonthProps } from '../../types/props';
+import type { Days } from '../../types/type';
 
 function Month(props: MonthProps) {
   const { year, month, monthlyBalance } = props;

@@ -1,107 +1,107 @@
 import { useEffect, useRef, useState } from 'react';
 
-type MinorItem = {
-  memo: string;
-  amount: number;
-};
+import { getCurrentDay } from '../configs/util';
 
-// 現在日付取得
-const now: Date = new Date();
-const YYYY: string = now.getFullYear().toString();
-const MM: string = (now.getMonth() + 1).toString().padStart(2, '0');
-const DD: string = now.getDate().toString().padStart(2, '0');
-const today: string = `${YYYY}-${MM}-${DD}`;
+import type { CardInfo } from '../types/type';
 
 function useInputPage() {
+  // トグルボタンの状態管理
   const [toggleState, setToggleState] = useState<boolean>(true);
+  // 支出情報の状態管理
   const [totalAmount, setTotalAmount] = useState<number>(0);
-  const [date, setDate] = useState<string>(today);
-  const [category, setCategory] = useState<string>('');
-  const [majorItem, setMajorItem] = useState<string>('');
-  const [minorItems, setMinorItems] = useState<MinorItem[]>([{ memo: '', amount: 0 }]);
-  const [minorItemCount, setMinorItemCount] = useState<number>(1);
-
+  const [cardCount, setCardCount] = useState<number>(1);
+  const [spendingDateInfo, setSpendingDateInfo] = useState<string>(getCurrentDay());
+  const [spendingCategoryInfo, setSpendingCategoryInfo] = useState<number>(1);
+  const [spendingMemoInfo, setSpendingMemoInfo] = useState<string>('');
+  const [cardInfo, setCardInfo] = useState<CardInfo>([{ memo: '', amount: 0, valid: true }]);
+  // 補充情報の状態管理
+  const [incomeDateInfo, setIncomeDateInfo] = useState<string>(getCurrentDay());
+  const [incomeMemoInfo, setIncomeMemoInfo] = useState<string>('');
+  const [incomeAmountInfo, setIncomeAmountInfo] = useState<number>(0);
+  // HTML要素
   const scrollTopRef = useRef<HTMLDivElement>(null);
   const scrollBottomRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * 合計金額の算出
-   */
+  // 合計金額を算出する
   useEffect(() => {
     let tempAmount = 0;
-    minorItems.forEach((item) => {
-      tempAmount += item.amount;
+    cardInfo.forEach((item) => {
+      if (item.valid === true) tempAmount += item.amount;
     });
     setTotalAmount(tempAmount);
-  }, [minorItems]);
+  }, [cardInfo]);
 
-  /**
-   * カードを追加する関数
-   */
+  // カードを追加する
   const handleAddCard = () => {
-    setMinorItemCount((prevCount) => prevCount + 1);
-    // minorItemsに初期値オブジェクト追加
-    const prevItems = [...minorItems];
-    prevItems.push({ memo: '', amount: 0 });
-    setMinorItems(prevItems);
+    // カードを追加
+    setCardCount(cardCount + 1);
+
+    // カードの入力情報を追加
+    const newInputCardInfo = [...cardInfo];
+    newInputCardInfo.push({ memo: '', amount: 0, valid: true });
+    setCardInfo(newInputCardInfo);
+
     // カード追加時に一番下までスクロール
     setTimeout(() => {
       scrollBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, 1);
   };
 
-  /**
-   * カードを削除する関数
-   */
-  const handleDeleteCard = (index: number) => {
-    const tempCount = minorItemCount - 1;
-    setMinorItemCount(tempCount);
-    // minorItemsから index - 1 番目のオブジェクト削除
-    const prevItems = [...minorItems];
-    const tempItems = prevItems.filter((_, i) => i !== index - 1);
-    setMinorItems(tempItems);
-    // 一度 Card をリセットし、"TextFiled"と"minorItems"を同期させる
-    setMinorItemCount(0);
-    setMinorItemCount(tempCount);
-    // カード削除時に一番上までスクロール
-    setTimeout(() => {
-      scrollTopRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 1);
-  };
-
-  /**
-   * 保存ボタンクリック関数
-   */
+  // 保存ボタン押下時の処理
   const saveButtonClick = () => {
-    const obj = {
-      date,
-      category,
-      majorItem,
-      minorItems,
-    };
-    console.log(obj);
+    let obj = {};
+    if (toggleState) {
+      obj = {
+        Date: spendingDateInfo,
+        Category: spendingCategoryInfo,
+        Memo: spendingMemoInfo,
+        Memos: cardInfo,
+      };
+    } else {
+      obj = {
+        Date: incomeDateInfo,
+        Memo: incomeMemoInfo,
+        Amount: incomeAmountInfo,
+      };
+    }
+
+    // 入力情報をリセット
+    setCardCount(0);
+    setSpendingDateInfo(getCurrentDay());
+    setSpendingCategoryInfo(1);
+    setSpendingMemoInfo('');
+    setCardInfo([]);
+    setIncomeDateInfo(getCurrentDay());
+    setIncomeMemoInfo('');
+    setIncomeAmountInfo(0);
+
+    return obj;
   };
 
   return {
-    // State
+    // useState
     toggleState,
     setToggleState,
     totalAmount,
-    date,
-    setDate,
-    category,
-    setCategory,
-    majorItem,
-    setMajorItem,
-    minorItems,
-    setMinorItems,
-    minorItemCount,
-    // Ref
+    cardCount,
+    spendingDateInfo,
+    setSpendingDateInfo,
+    spendingCategoryInfo,
+    setSpendingCategoryInfo,
+    spendingMemoInfo,
+    setSpendingMemoInfo,
+    cardInfo,
+    setCardInfo,
+    incomeDateInfo,
+    setIncomeDateInfo,
+    incomeMemoInfo,
+    setIncomeMemoInfo,
+    incomeAmountInfo,
+    setIncomeAmountInfo,
+    // useRef
     scrollTopRef,
-    scrollBottomRef,
-    // Function
+    // function
     handleAddCard,
-    handleDeleteCard,
     saveButtonClick,
   };
 }

@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { v4 as uuid } from 'uuid';
 
-import type { Days } from '../types/days';
+import type { Days } from '../types/type';
 
-function getMonthDetails(year: number, month: number) {
+export function getMonthDetails(year: number, month: number) {
   const daysArray: Days = [];
   const startDate: dayjs.Dayjs = dayjs(`${year}-${month}-01`);
   const endDate: dayjs.Dayjs = startDate.endOf('month');
@@ -65,4 +65,11 @@ function getMonthDetails(year: number, month: number) {
   return daysArray;
 }
 
-export default getMonthDetails;
+export function getCurrentDay() {
+  const now: Date = new Date();
+  const yyyy: string = now.getFullYear().toString();
+  const mm: string = (now.getMonth() + 1).toString().padStart(2, '0');
+  const dd: string = now.getDate().toString().padStart(2, '0');
+  const today: string = `${yyyy}-${mm}-${dd}`;
+  return today;
+}
