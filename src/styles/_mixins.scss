@@ -1,8 +1,13 @@
-@mixin text($color, $size) {
+@mixin text($color, $size, $weight) {
   color: $color;
   font-size: $size;
+  font-weight: $weight;
 }
 
 @mixin radius {
   border-radius: 0.25rem;
+}
+
+@mixin header_shadow {
+  box-shadow: 0 -0.125rem 2rem -1.25rem rgba(0, 0, 0, 0.5);
 }
