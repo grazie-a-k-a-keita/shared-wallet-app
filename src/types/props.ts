@@ -39,9 +39,6 @@ export type ButtonProps = {
 // Card Props type
 export type CardProps = {
   itemNumber: number;
-  deleteButtonClick: (index: number) => void;
-  minorItems: { memo: string; amount: number }[];
-  setMinorItems: React.Dispatch<React.SetStateAction<{ memo: string; amount: number }[]>>;
 };
 
 // AddCircleOutlineButton Props type
@@ -63,7 +60,8 @@ export type DialogProps = {
 
 // IconButton Props type
 export type IconButtonProps = {
-  iconType: 'navigateBefore' | 'navigateNext';
+  iconType: 'navigateBefore' | 'navigateNext' | 'delete' | 'libraryAdd';
+  iconSize: 24 | 32;
 };
 
 // ========================

@@ -1,7 +1,7 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import AddCircleOutlineButton from '../components/MUIcomponents/AddCircleOutlineButton';
 import MuiCard from '../components/MUIcomponents/MuiCard';
+import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
 import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
@@ -11,32 +11,18 @@ import useInputPage from '../hooks/useInputPage';
 import classes from './Input.module.scss';
 
 function Input() {
-  const {
-    toggleState,
-    setToggleState,
-    minorItems,
-    setMinorItems,
-    minorItemCount,
-    scrollTopRef,
-    scrollBottomRef,
-    handleAddCard,
-    handleDeleteCard,
-  } = useInputPage();
+  const { toggleState, setToggleState, scrollTopRef, scrollBottomRef } = useInputPage();
 
   /**
    * カードを生成する関数
    */
   const renderMinorItemCards = () => {
     const cards = [];
-    for (let i = 1; i <= minorItemCount; i += 1) {
+    for (let i = 1; i <= 3; i += 1) {
       cards.push(
-        <MuiCard
-          key={i}
-          itemNumber={i}
-          deleteButtonClick={handleDeleteCard}
-          minorItems={minorItems}
-          setMinorItems={setMinorItems}
-        />
+        <div className={classes.cardContainer}>
+          <MuiCard itemNumber={i} />
+        </div>
       );
     }
     return cards;
@@ -66,7 +52,7 @@ function Input() {
           <>
             <div ref={scrollTopRef} style={{ height: '0px' }} />
 
-            <div>
+            <div className={classes.mainContainer}>
               <div className={classes.textFieldContainer}>
                 <MuiTextFieldDate />
               </div>
@@ -76,16 +62,20 @@ function Input() {
               <div className={classes.textFieldContainer}>
                 <MuiTextField label='メモ（店名など）' />
               </div>
+
+              <div className={classes.margin8} />
+
+              {renderMinorItemCards()}
+
+              <div className={classes.addButton}>
+                <MuiIconButton iconType='libraryAdd' iconSize={32} />
+              </div>
             </div>
 
-            <div className={classes.cardContainer}>
-              {renderMinorItemCards()}
-              <div ref={scrollBottomRef} style={{ height: '0px' }} />
-            </div>
-            <AddCircleOutlineButton addButtonClick={handleAddCard} />
+            <div ref={scrollBottomRef} style={{ height: '0px' }} />
           </>
         ) : (
-          <div>
+          <div className={classes.mainContainer}>
             <div className={classes.textFieldContainer}>
               <MuiTextFieldDate />
             </div>

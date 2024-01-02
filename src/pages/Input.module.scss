@@ -1,16 +1,30 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
+.margin8 {
+  margin-top: $size8;
+}
+
+.mainContainer {
+  padding: 0 $size4;
+}
+
 // ======================
 // textField
 // ======================
 .textFieldContainer {
-  padding: $size4 $size4 0;
+  padding: $size4 0 0;
 }
 
 // ======================
 // card
 // ======================
 .cardContainer {
-  margin: $size4 $size8;
+  margin-bottom: $size4;
+}
+
+.addButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $size4;
 }
