@@ -30,7 +30,7 @@ function MuiToggleButton(props: ToggleButtonProps) {
     <ThemeProvider theme={theme}>
       <ToggleButtonGroup
         color='yellow'
-        style={{ height: '32px' }}
+        style={{ height: '2rem' }}
         exclusive // 1つの要素のみ選択可能
         fullWidth
         onChange={handleChange}

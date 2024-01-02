@@ -1,58 +1,11 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
-@mixin rightAlignment {
-  margin-right: $size4;
-  margin-left: auto;
-}
-
-// ======================
-// topBar
-// ======================
-.topBarContainer {
-  padding: $size4;
-  border-bottom: $red solid 1px;
-}
-
-.topBarArea {
-  display: flex;
-  margin: $size4 0;
-}
-
-.totalAmount {
-  color: $red;
-  font-size: $size8;
-  margin-left: $size4;
-  line-height: $size7;
-}
-
-.topBarButton {
-  @include rightAlignment();
-}
-
-.span {
-  font-size: $size7;
-}
-
 // ======================
 // textField
 // ======================
 .textFieldContainer {
-  padding: $size4;
-}
-
-.textFieldArea {
-  display: flex;
-  margin-bottom: $size4;
-}
-
-.textFieldLabel {
-  margin-left: $size4;
-  line-height: $size9;
-}
-
-.textField {
-  @include rightAlignment();
+  padding: $size4 $size4 0;
 }
 
 // ======================

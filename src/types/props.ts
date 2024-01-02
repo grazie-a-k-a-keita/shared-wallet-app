@@ -13,20 +13,21 @@ export type ToggleButtonProps = {
   setToggleStatus: Dispatch<SetStateAction<boolean>>;
 };
 
+// TextFieldSelect Props type
+export type TextFieldSelectProps = {
+  label: string;
+};
+
 // TextField Props type
 export type TextFieldProps = {
   label: string;
-  type: 'text' | 'number';
-  select?: boolean;
-  state: string | number;
-  setStateString?: React.Dispatch<React.SetStateAction<string>>;
-  setStateNumber?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // TextFieldDate Props type
-export type TextFieldDateProps = {
-  state: string;
-  setState: React.Dispatch<React.SetStateAction<string>>;
+
+// TextFieldNumber Props type
+export type TextFieldNumberProps = {
+  label: string;
 };
 
 // Button Props type

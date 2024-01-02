@@ -4,6 +4,8 @@ import AddCircleOutlineButton from '../components/MUIcomponents/AddCircleOutline
 import MuiCard from '../components/MUIcomponents/MuiCard';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
+import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
+import MuiTextFieldSelect from '../components/MUIcomponents/MuiTextFieldSelect';
 import useInputPage from '../hooks/useInputPage';
 
 import classes from './Input.module.scss';
@@ -12,12 +14,6 @@ function Input() {
   const {
     toggleState,
     setToggleState,
-    date,
-    setDate,
-    category,
-    setCategory,
-    majorItem,
-    setMajorItem,
     minorItems,
     setMinorItems,
     minorItemCount,
@@ -69,37 +65,19 @@ function Input() {
         {toggleState ? (
           <>
             <div ref={scrollTopRef} style={{ height: '0px' }} />
-            <div className={classes.textFieldContainer}>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>日付</p>
-                <div className={classes.textField}>
-                  <MuiTextFieldDate state={date} setState={setDate} />
-                </div>
+
+            <div>
+              <div className={classes.textFieldContainer}>
+                <MuiTextFieldDate />
               </div>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>カテゴリ</p>
-                <div className={classes.textField}>
-                  <MuiTextField
-                    label='category'
-                    type='text'
-                    select
-                    state={category}
-                    setStateString={setCategory}
-                  />
-                </div>
+              <div className={classes.textFieldContainer}>
+                <MuiTextFieldSelect label='カテゴリー' />
               </div>
-              <div className={classes.textFieldArea}>
-                <p className={classes.textFieldLabel}>大項目</p>
-                <div className={classes.textField}>
-                  <MuiTextField
-                    label='majorItem'
-                    type='text'
-                    state={majorItem}
-                    setStateString={setMajorItem}
-                  />
-                </div>
+              <div className={classes.textFieldContainer}>
+                <MuiTextField label='メモ（店名など）' />
               </div>
             </div>
+
             <div className={classes.cardContainer}>
               {renderMinorItemCards()}
               <div ref={scrollBottomRef} style={{ height: '0px' }} />
@@ -107,7 +85,17 @@ function Input() {
             <AddCircleOutlineButton addButtonClick={handleAddCard} />
           </>
         ) : (
-          <p>収入</p>
+          <div>
+            <div className={classes.textFieldContainer}>
+              <MuiTextFieldDate />
+            </div>
+            <div className={classes.textFieldContainer}>
+              <MuiTextField label='メモ（名前など）' />
+            </div>
+            <div className={classes.textFieldContainer}>
+              <MuiTextFieldNumber label='金額' />
+            </div>
+          </div>
         )}
       </main>
       <footer>
