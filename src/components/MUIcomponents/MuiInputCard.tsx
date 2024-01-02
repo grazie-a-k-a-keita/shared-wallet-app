@@ -6,10 +6,10 @@ import MuiIconButton from './MuiIconButton';
 import MuiTextField from './MuiTextField';
 import MuiTextFieldNumber from './MuiTextFieldNumber';
 
-import type { CardProps } from '../../types/props';
+import type { InputCardProps } from '../../types/props';
 
-function MuiCard(props: CardProps) {
-  const { itemNumber } = props;
+function MuiInputCard(props: InputCardProps) {
+  const { itemNumber, onClick } = props;
   return (
     <ThemeProvider theme={theme}>
       <Card sx={{ backgroundColor: '#E5E5E5' }}>
@@ -18,7 +18,7 @@ function MuiCard(props: CardProps) {
             <Typography fontSize='1rem' fontWeight='bold' color='#83001a'>
               {`Card ${itemNumber}`}
             </Typography>
-            <MuiIconButton iconType='delete' iconSize={24} />
+            <MuiIconButton iconType='delete' iconSize={24} onClick={onClick} />
           </Grid>
 
           <Grid sx={{ paddingTop: 1 }} />
@@ -31,4 +31,4 @@ function MuiCard(props: CardProps) {
     </ThemeProvider>
   );
 }
-export default MuiCard;
+export default MuiInputCard;
