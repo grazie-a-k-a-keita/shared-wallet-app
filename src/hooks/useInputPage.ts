@@ -18,6 +18,8 @@ function useInputPage() {
   const [incomeDateInfo, setIncomeDateInfo] = useState<string>(getCurrentDay());
   const [incomeMemoInfo, setIncomeMemoInfo] = useState<string>('');
   const [incomeAmountInfo, setIncomeAmountInfo] = useState<number>(0);
+  // ローディング画面の状態管理
+  const [isLoading] = useState<boolean>(false);
   // HTML要素
   const scrollTopRef = useRef<HTMLDivElement>(null);
   const scrollBottomRef = useRef<HTMLDivElement>(null);
@@ -98,6 +100,7 @@ function useInputPage() {
     setIncomeMemoInfo,
     incomeAmountInfo,
     setIncomeAmountInfo,
+    isLoading,
     // useRef
     scrollTopRef,
     scrollBottomRef,

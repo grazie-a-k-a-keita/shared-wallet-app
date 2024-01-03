@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import MuiProgress from '../components/MUIcomponents/MuiProgress';
 
 function Calendar() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <>
       <header>
@@ -11,6 +24,7 @@ function Calendar() {
       <footer>
         <Footer />
       </footer>
+      {isLoading ? <MuiProgress /> : null}
     </>
   );
 }

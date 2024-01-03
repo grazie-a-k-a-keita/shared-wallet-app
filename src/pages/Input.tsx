@@ -2,6 +2,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
 import MuiInputCard from '../components/MUIcomponents/MuiInputCard';
+import MuiProgress from '../components/MUIcomponents/MuiProgress';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
 import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
@@ -30,6 +31,7 @@ function Input() {
     setIncomeMemoInfo,
     incomeAmountInfo,
     setIncomeAmountInfo,
+    isLoading,
     scrollTopRef,
     scrollBottomRef,
     handleAddCard,
@@ -125,6 +127,7 @@ function Input() {
       <footer>
         <Footer />
       </footer>
+      {isLoading ? <MuiProgress /> : null}
     </>
   );
 }
