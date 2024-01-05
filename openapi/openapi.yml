@@ -9,9 +9,9 @@ servers:
   - url: https://api.example.com
     description: 本番環境
 paths:
-  /spending/registration:
+  /v1/payment/registration:
     post:
-      summary: 支出のデータを登録する
+      summary: Input画面から入力されたデータを登録するAPI
       requestBody:
         required: true
         content:
@@ -19,17 +19,23 @@ paths:
             schema:
               type: object
               properties:
-                date:
+                paymentDate:
                   type: string
                   format: date
-                  description: 支出日
-                category:
+                  description: 収支日
+                paymentType:
+                  type: boolean
+                  description: 収支種別
+                totalAmount:
+                  type: number
+                  description: 合計金額
+                categoryID:
+                  type: number
+                  description: カテゴリーID
+                memo:
                   type: string
-                  description: カテゴリ
-                majorItem:
-                  type: string
-                  description: 大項目
-                minorItems:
+                  description: メモ（大）
+                memos:
                   type: array
                   items:
                     type: object
@@ -40,23 +46,12 @@ paths:
                       amount:
                         type: number
                         description: 金額
-                  description: 小項目のリスト
+                  description: メモ（小）
       responses:
         '201':
-          description: 登録成功
-        '400':
-          description: バリデーションエラー
-          content:
-            application/json:
-              example:
-                message: バリデーションエラーが発生しました。
-                details:
-                  - field: date
-                    message: '無効な日付形式です。'
-                  - field: amount
-                    message: '金額は正の数である必要があります。'
+          description: OK
         '500':
-          description: DBエラー
+          description: Internal Server Error
   /daily-summary:
     get:
       summary: 月の各日の支出と収入の合計を取得する
