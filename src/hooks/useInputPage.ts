@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
+import axios from 'axios';
+
 import { getCurrentDay } from '../configs/util';
 
+import type { RegistrationData } from '../types/api';
 import type { CardInfo } from '../types/type';
 
 function useInputPage() {
@@ -19,7 +22,7 @@ function useInputPage() {
   const [incomeMemoInfo, setIncomeMemoInfo] = useState<string>('');
   const [incomeAmountInfo, setIncomeAmountInfo] = useState<number>(0);
   // ローディング画面の状態管理
-  const [isLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   // HTML要素
   const scrollTopRef = useRef<HTMLDivElement>(null);
   const scrollBottomRef = useRef<HTMLDivElement>(null);
@@ -50,21 +53,43 @@ function useInputPage() {
   };
 
   // 保存ボタン押下時の処理
-  const saveButtonClick = () => {
-    let obj = {};
+  const saveButtonClick = async () => {
+    setIsLoading(true);
+
+    const data: RegistrationData = {
+      paymentDate: '',
+      paymentType: true,
+      totalAmount: 0,
+      categoryID: 0,
+      memo: '',
+      memos: [],
+    };
+
     if (toggleState) {
-      obj = {
-        Date: spendingDateInfo,
-        Category: spendingCategoryInfo,
-        Memo: spendingMemoInfo,
-        Memos: cardInfo,
-      };
-    } else {
-      obj = {
-        Date: incomeDateInfo,
-        Memo: incomeMemoInfo,
-        Amount: incomeAmountInfo,
-      };
+      data.paymentDate = spendingDateInfo;
+      data.paymentType = true;
+      data.totalAmount = totalAmount;
+      data.categoryID = spendingCategoryInfo;
+      data.memo = spendingMemoInfo;
+      cardInfo.forEach((item) => {
+        if (item.valid) {
+          data.memos.push({ memo: item.memo, amount: item.amount });
+        }
+      });
+    }
+
+    if (!toggleState) {
+      data.paymentDate = incomeDateInfo;
+      data.paymentType = false;
+      data.totalAmount = incomeAmountInfo;
+      data.memo = incomeMemoInfo;
+    }
+
+    try {
+      await axios.post(import.meta.env.VITE_POST_PAYMENT_REGISTRATION, data);
+    } catch (error) {
+      setIsLoading(false);
+      return;
     }
 
     // 入力情報をリセット
@@ -77,7 +102,7 @@ function useInputPage() {
     setIncomeMemoInfo('');
     setIncomeAmountInfo(0);
 
-    return obj;
+    setIsLoading(false);
   };
 
   return {
