@@ -16,7 +16,13 @@ module.exports = {
     ecmaVersion: 'latest',
     project: ['./tsconfig.json'],
   },
-  ignorePatterns: ['vite.config.ts', '.eslintrc.cjs', 'vitest.setup.ts', 'serviceWorker.js'],
+  ignorePatterns: [
+    'vite.config.ts',
+    '.eslintrc.cjs',
+    'vitest.setup.ts',
+    'serviceWorker.js',
+    '**/*.mjs',
+  ],
   settings: {
     react: {
       version: 'detect',
