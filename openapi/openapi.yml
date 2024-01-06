@@ -11,7 +11,7 @@ servers:
 paths:
   /v1/payment/registration:
     post:
-      summary: Input画面から入力されたデータを登録するAPI
+      summary: Inputページから入力されたデータを登録するAPI
       requestBody:
         required: true
         content:

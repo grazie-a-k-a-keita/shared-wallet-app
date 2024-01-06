@@ -1,9 +1,6 @@
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
 import MuiInputCard from '../components/MUIcomponents/MuiInputCard';
-import MuiProgress from '../components/MUIcomponents/MuiProgress';
-import MuiSnackbar from '../components/MUIcomponents/MuiSnackbar';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
 import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
@@ -12,7 +9,9 @@ import useInputPage from '../hooks/useInputPage';
 
 import classes from './Input.module.scss';
 
-function Input() {
+import type { InputPageProps } from '../types/props';
+
+function Input(props: InputPageProps) {
   const {
     toggleState,
     setToggleState,
@@ -32,16 +31,13 @@ function Input() {
     setIncomeMemoInfo,
     incomeAmountInfo,
     setIncomeAmountInfo,
-    isLoading,
     spendingError,
     incomeError,
-    barInfo,
-    setBarInfo,
     scrollTopRef,
     scrollBottomRef,
     handleAddCard,
     saveButtonClick,
-  } = useInputPage();
+  } = useInputPage(props);
 
   // カードを生成する
   const renderCards = () => {
@@ -140,17 +136,7 @@ function Input() {
           </div>
           <div ref={scrollBottomRef} style={{ height: '0px' }} />
         </div>
-        <MuiSnackbar
-          open={barInfo.open}
-          severity={barInfo.severity}
-          message={barInfo.message}
-          setBarInfo={setBarInfo}
-        />
       </main>
-      <footer>
-        <Footer />
-      </footer>
-      {isLoading ? <MuiProgress /> : null}
     </>
   );
 }

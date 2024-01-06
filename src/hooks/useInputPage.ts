@@ -5,19 +5,17 @@ import axios from 'axios';
 import { getCurrentDay } from '../configs/util';
 
 import type { RegistrationData } from '../types/api';
-import type {
-  BarInfo,
-  CardInfo,
-  IncomeAmountErrorInfo,
-  SpendingAmountErrorInfo,
-} from '../types/type';
+import type { InputPageProps } from '../types/props';
+import type { CardInfo, IncomeAmountErrorInfo, SpendingAmountErrorInfo } from '../types/type';
 
 const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
 const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';
 const BAR_STATUS_MESSAGE_2 = '入力項目に誤りがあります。';
 
-function useInputPage() {
+function useInputPage(props: InputPageProps) {
+  const { setIsLoading, setBarInfo } = props;
+
   // トグルボタンの状態管理
   const [toggleState, setToggleState] = useState<boolean>(true);
   // 支出情報の状態管理
@@ -38,8 +36,6 @@ function useInputPage() {
   const [incomeDateInfo, setIncomeDateInfo] = useState<string>(getCurrentDay());
   const [incomeMemoInfo, setIncomeMemoInfo] = useState<string>('');
   const [incomeAmountInfo, setIncomeAmountInfo] = useState<number>(0);
-  // ローディング画面の状態管理
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   // TextFieldのエラー情報管理
   const [spendingError, setSpendingError] = useState<SpendingAmountErrorInfo>({
     memoErr: false,
@@ -50,12 +46,6 @@ function useInputPage() {
     memoMessage: '',
     amountErr: false,
     amountMessage: '',
-  });
-  // Snackbarの状態管理
-  const [barInfo, setBarInfo] = useState<BarInfo>({
-    open: false,
-    severity: 'success',
-    message: '',
   });
   // HTML要素
   const scrollTopRef = useRef<HTMLDivElement>(null);
@@ -239,11 +229,8 @@ function useInputPage() {
     setIncomeMemoInfo,
     incomeAmountInfo,
     setIncomeAmountInfo,
-    isLoading,
     spendingError,
     incomeError,
-    barInfo,
-    setBarInfo,
     // useRef
     scrollTopRef,
     scrollBottomRef,

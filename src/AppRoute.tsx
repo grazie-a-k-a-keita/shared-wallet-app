@@ -1,16 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Calendar from './pages/Calendar';
 import Error from './pages/Error';
-import Input from './pages/Input';
-import Payments from './pages/Payments';
-import Wallet from './pages/Wallet';
+import Home from './pages/Home';
 
-const router = createBrowserRouter([
-  { path: '/', element: <Input />, errorElement: <Error /> },
-  { path: 'wallet', element: <Wallet /> },
-  { path: 'calendar', element: <Calendar /> },
-  { path: 'payments', element: <Payments /> },
-]);
+const router = createBrowserRouter([{ path: '/', element: <Home />, errorElement: <Error /> }]);
 
 export default router;

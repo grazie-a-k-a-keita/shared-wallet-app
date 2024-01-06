@@ -112,3 +112,13 @@ export type HeaderProps = {
   onClick2?: () => void;
   onClick3?: () => void;
 };
+
+// ========================
+// Pages
+// ========================
+
+// InputPage Props type
+export type InputPageProps = {
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
