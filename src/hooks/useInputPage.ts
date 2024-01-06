@@ -153,7 +153,7 @@ function useInputPage() {
           errCardObj[i].errorInfo.memoMessage = '';
         }
         // カード内の金額が0円以下の場合
-        if (cardInfo[i].valid && !cardInfo[i].amount) {
+        if (cardInfo[i].valid && cardInfo[i].amount <= 0) {
           errCardObj[i].errorInfo.amountErr = true;
           errCardObj[i].errorInfo.amountMessage = ERROR_MESSAGE_2;
           errorFlag = true;
