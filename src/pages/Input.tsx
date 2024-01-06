@@ -32,6 +32,8 @@ function Input() {
     incomeAmountInfo,
     setIncomeAmountInfo,
     isLoading,
+    incomeError,
+    spendingError,
     scrollTopRef,
     scrollBottomRef,
     handleAddCard,
@@ -89,6 +91,10 @@ function Input() {
                   label='メモ（店名など）'
                   value={spendingMemoInfo}
                   setState={setSpendingMemoInfo}
+                  errorInfo={{
+                    error: spendingError.memoErr,
+                    message: spendingError.memoMessage,
+                  }}
                 />
               </div>
             </>
@@ -102,6 +108,10 @@ function Input() {
                   label='メモ（名前など）'
                   value={incomeMemoInfo}
                   setState={setIncomeMemoInfo}
+                  errorInfo={{
+                    error: incomeError.memoErr,
+                    message: incomeError.memoMessage,
+                  }}
                 />
               </div>
               <div className={classes.textFieldContainer}>
@@ -110,6 +120,10 @@ function Input() {
                   value={incomeAmountInfo}
                   setState={setIncomeAmountInfo}
                   isValue
+                  errorInfo={{
+                    error: incomeError.amountErr,
+                    message: incomeError.amountMessage,
+                  }}
                 />
               </div>
             </>

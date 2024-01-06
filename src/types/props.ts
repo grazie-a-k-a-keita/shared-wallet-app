@@ -57,6 +57,7 @@ export type TextFieldProps = {
   label: string;
   value?: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
+  errorInfo: { error: boolean; message: string };
 };
 
 // MuiTextFieldDate Props type
@@ -71,6 +72,7 @@ export type TextFieldNumberProps = {
   value?: number;
   setState: React.Dispatch<React.SetStateAction<number>>;
   isValue: boolean;
+  errorInfo: { error: boolean; message: string };
 };
 
 // MuiTextFieldSelect Props type

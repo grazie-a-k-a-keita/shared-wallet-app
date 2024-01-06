@@ -62,10 +62,25 @@ function MuiInputCard(props: InputCardProps) {
             </Grid>
 
             <Grid sx={{ paddingTop: 1 }} />
-            <MuiTextField label='メモ（商品名など）' setState={setMemoInfo} />
+            <MuiTextField
+              label='メモ（商品名など）'
+              setState={setMemoInfo}
+              errorInfo={{
+                error: cardInfo[itemNumber - 1].errorInfo.memoErr,
+                message: cardInfo[itemNumber - 1].errorInfo.memoMessage,
+              }}
+            />
 
             <Grid sx={{ paddingTop: 1 }} />
-            <MuiTextFieldNumber label='金額' setState={setAmountInfo} isValue={false} />
+            <MuiTextFieldNumber
+              label='金額'
+              setState={setAmountInfo}
+              isValue={false}
+              errorInfo={{
+                error: cardInfo[itemNumber - 1].errorInfo.amountErr,
+                message: cardInfo[itemNumber - 1].errorInfo.amountMessage,
+              }}
+            />
           </CardContent>
         </Card>
       )}
