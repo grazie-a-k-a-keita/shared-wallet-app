@@ -1,7 +1,7 @@
 import { DynamoDBClient, PutItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 
 const client = new DynamoDBClient('ap-northeast-1');
-const APPLICATION_ID = 'A001';
+const APPLICATION_ID = process.env.APPLICATION_ID;
 const now = new Date(Date.now() + (new Date().getTimezoneOffset() + 9 * 60) * 60 * 1000);
 
 /**
@@ -96,7 +96,7 @@ export const handler = async (event) => {
 
     console.log('PutItem Res: ', PaymentListPutItemRes);
 
-    return createResponse(200);
+    return createResponse(201);
   } catch (error) {
     console.error(error.message);
     return createResponse(500);

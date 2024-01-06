@@ -9,9 +9,11 @@ servers:
   - url: https://api.example.com
     description: 本番環境
 paths:
-  /v1/payment/registration:
-    post:
+  /registration:
+    put:
       summary: Inputページから入力されたデータを登録するAPI
+      tags:
+        - '/v1/payment'
       requestBody:
         required: true
         content:
@@ -49,49 +51,23 @@ paths:
                   description: メモ（小）
       responses:
         '201':
-          description: OK
+          description: Created
         '500':
           description: Internal Server Error
-  /daily-summary:
+  /get_all:
     get:
-      summary: 月の各日の支出と収入の合計を取得する
-      parameters:
-        - name: month
-          in: query
-          description: 対象の月（1から12の数字）
-          required: true
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 12
-        - name: year
-          in: query
-          description: 対象の年
-          required: true
-          schema:
-            type: integer
+      summary: 現在の総資産を取得するAPI
+      tags:
+        - '/v1/payment'
       responses:
         '200':
-          description: 成功
+          description: OK
           content:
             application/json:
-              example:
-                dailySummary:
-                  - date: '2023-11-01'
-                    spendingTotal: 1000
-                    incomeTotal: 500
-                  - date: '2023-11-02'
-                    spendingTotal: 1000
-                    incomeTotal: 500
-                  # ... 1月分の日付ごとのデータ
-        '400':
-          description: バリデーションエラー
-          content:
-            application/json:
-              example:
-                message: バリデーションエラーが発生しました。
-                details:
-                  - field: month
-                    message: '月は1から12の数字で指定してください。'
-                  - field: year
-                    message: '年は有効な数字で指定してください。'
+              schema:
+                type: object
+                properties:
+                  totalAssets:
+                    type: number
+        '500':
+          description: Internal Server Error
