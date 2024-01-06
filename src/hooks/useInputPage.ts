@@ -5,10 +5,17 @@ import axios from 'axios';
 import { getCurrentDay } from '../configs/util';
 
 import type { RegistrationData } from '../types/api';
-import type { CardInfo, IncomeAmountErrorInfo, SpendingAmountErrorInfo } from '../types/type';
+import type {
+  BarInfo,
+  CardInfo,
+  IncomeAmountErrorInfo,
+  SpendingAmountErrorInfo,
+} from '../types/type';
 
 const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
+const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';
+const BAR_STATUS_MESSAGE_2 = '入力項目に誤りがあります。';
 
 function useInputPage() {
   // トグルボタンの状態管理
@@ -43,6 +50,12 @@ function useInputPage() {
     memoMessage: '',
     amountErr: false,
     amountMessage: '',
+  });
+  // Snackbarの状態管理
+  const [barInfo, setBarInfo] = useState<BarInfo>({
+    open: false,
+    severity: 'success',
+    message: '',
   });
   // HTML要素
   const scrollTopRef = useRef<HTMLDivElement>(null);
@@ -178,6 +191,7 @@ function useInputPage() {
 
     if (errorFlag) {
       setIsLoading(false);
+      setBarInfo({ open: true, severity: 'error', message: BAR_STATUS_MESSAGE_2 });
       return;
     }
 
@@ -202,6 +216,7 @@ function useInputPage() {
     setIncomeError({ memoErr: false, memoMessage: '', amountErr: false, amountMessage: '' });
 
     setIsLoading(false);
+    setBarInfo({ open: true, severity: 'success', message: BAR_STATUS_MESSAGE_1 });
   };
 
   return {
@@ -227,6 +242,8 @@ function useInputPage() {
     isLoading,
     spendingError,
     incomeError,
+    barInfo,
+    setBarInfo,
     // useRef
     scrollTopRef,
     scrollBottomRef,

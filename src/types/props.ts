@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { MonthlyBalance } from './api';
-import type { CardInfo } from './type';
+import type { BarInfo, CardInfo } from './type';
 
 // ========================
 // Calendar
@@ -50,6 +50,14 @@ export type InputCardProps = {
   refObject: React.RefObject<HTMLDivElement>;
   cardInfo: CardInfo;
   setCardInfo: React.Dispatch<React.SetStateAction<CardInfo>>;
+};
+
+// MuiSnackbar Props type
+export type SnackbarProps = {
+  open: boolean;
+  severity: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
 
 // MuiTextField Props type

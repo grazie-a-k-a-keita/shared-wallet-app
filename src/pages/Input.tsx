@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
 import MuiInputCard from '../components/MUIcomponents/MuiInputCard';
 import MuiProgress from '../components/MUIcomponents/MuiProgress';
+import MuiSnackbar from '../components/MUIcomponents/MuiSnackbar';
 import MuiTextField from '../components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
 import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
@@ -32,8 +33,10 @@ function Input() {
     incomeAmountInfo,
     setIncomeAmountInfo,
     isLoading,
-    incomeError,
     spendingError,
+    incomeError,
+    barInfo,
+    setBarInfo,
     scrollTopRef,
     scrollBottomRef,
     handleAddCard,
@@ -137,6 +140,12 @@ function Input() {
           </div>
           <div ref={scrollBottomRef} style={{ height: '0px' }} />
         </div>
+        <MuiSnackbar
+          open={barInfo.open}
+          severity={barInfo.severity}
+          message={barInfo.message}
+          setBarInfo={setBarInfo}
+        />
       </main>
       <footer>
         <Footer />

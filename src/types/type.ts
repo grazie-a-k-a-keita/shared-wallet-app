@@ -22,6 +22,11 @@ export type IncomeAmountErrorInfo = {
   amountErr: boolean;
   amountMessage: string;
 };
+export type BarInfo = {
+  open: boolean;
+  severity: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+};
 
 // ========================
 //
