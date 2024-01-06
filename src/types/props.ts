@@ -1,79 +1,17 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-import type { MonthlyBalance } from './fetchData';
+import type { MonthlyBalance } from './api';
+import type { BarInfo, CardInfo } from './type';
 
 // ========================
-// MUI components
+// Calendar
 // ========================
 
-// ToggleButton Props type
-export type ToggleButtonProps = {
-  leftButtonName: string;
-  rightButtonName: string;
-  setToggleStatus: Dispatch<SetStateAction<boolean>>;
-};
-
-// TextFieldSelect Props type
-export type TextFieldSelectProps = {
-  label: string;
-};
-
-// TextField Props type
-export type TextFieldProps = {
-  label: string;
-};
-
-// TextFieldDate Props type
-
-// TextFieldNumber Props type
-export type TextFieldNumberProps = {
-  label: string;
-};
-
-// Button Props type
-export type ButtonProps = {
-  buttonName: string;
-  onclick: () => void;
-};
-
-// Card Props type
-export type CardProps = {
-  itemNumber: number;
-};
-
-// AddCircleOutlineButton Props type
-export type AddCircleOutlineButtonProps = {
-  addButtonClick: () => void;
-};
-
-// DeleteButton Props type
-export type DeleteButtonProps = {
-  itemNumber: number;
-  deleteButtonClick: (index: number) => void;
-};
-
-// Dialog Props type
-export type DialogProps = {
-  setYearTop: React.Dispatch<React.SetStateAction<number>>;
-  setMonthTop: React.Dispatch<React.SetStateAction<number>>;
-};
-
-// IconButton Props type
-export type IconButtonProps = {
-  iconType: 'navigateBefore' | 'navigateNext' | 'delete' | 'libraryAdd';
-  iconSize: 24 | 32;
-};
-
-// ========================
-// components
-// ========================
-
-// Header Props type
-export type HeaderProps = {
-  headerType: 'Default' | 'Input';
-  leftButtonName: string;
-  rightButtonName: string;
-  setToggleStatus: Dispatch<SetStateAction<boolean>>;
+// Calendar-Day Props type
+export type DayProps = {
+  date?: number;
+  spendingTotal?: number;
+  incomeTotal?: number;
 };
 
 // Calendar-Month Props type
@@ -83,9 +21,94 @@ export type MonthProps = {
   monthlyBalance: MonthlyBalance;
 };
 
-// Calendar-Day Props type
-export type DayProps = {
-  date?: number;
-  spendingTotal?: number;
-  incomeTotal?: number;
+// ========================
+// MUI Components
+// ========================
+
+// MuiButton Props type
+export type ButtonProps = {
+  buttonName: string;
+  onclick: () => void;
+};
+
+// MuiDialog Props type
+export type DialogProps = {
+  setYearTop: React.Dispatch<React.SetStateAction<number>>;
+  setMonthTop: React.Dispatch<React.SetStateAction<number>>;
+};
+
+// MuiIconButton Props type
+export type IconButtonProps = {
+  iconType: 'navigateBefore' | 'navigateNext' | 'delete' | 'libraryAdd';
+  iconSize: 24 | 32;
+  onClick: () => void;
+};
+
+// MuiInputCard Props type
+export type InputCardProps = {
+  itemNumber: number;
+  refObject: React.RefObject<HTMLDivElement>;
+  cardInfo: CardInfo;
+  setCardInfo: React.Dispatch<React.SetStateAction<CardInfo>>;
+};
+
+// MuiSnackbar Props type
+export type SnackbarProps = {
+  open: boolean;
+  severity: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
+
+// MuiTextField Props type
+export type TextFieldProps = {
+  label: string;
+  value?: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  errorInfo: { error: boolean; message: string };
+};
+
+// MuiTextFieldDate Props type
+export type TextFieldDateProps = {
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+};
+
+// MuiTextFieldNumber Props type
+export type TextFieldNumberProps = {
+  label: string;
+  value?: number;
+  setState: React.Dispatch<React.SetStateAction<number>>;
+  isValue: boolean;
+  errorInfo: { error: boolean; message: string };
+};
+
+// MuiTextFieldSelect Props type
+export type TextFieldSelectProps = {
+  label: string;
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<number>>;
+};
+
+// MuiToggleButton Props type
+export type ToggleButtonProps = {
+  leftButtonName: string;
+  rightButtonName: string;
+  setToggleStatus: Dispatch<SetStateAction<boolean>>;
+};
+
+// ========================
+// Components
+// ========================
+
+// Header Props type
+export type HeaderProps = {
+  headerType: 'Default' | 'Input';
+  leftButtonName?: string;
+  rightButtonName?: string;
+  setToggleStatus?: Dispatch<SetStateAction<boolean>>;
+  amount?: number;
+  onClick1?: () => void;
+  onClick2?: () => void;
+  onClick3?: () => void;
 };

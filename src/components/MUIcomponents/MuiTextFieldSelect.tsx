@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { MenuItem, ThemeProvider } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
@@ -9,42 +7,40 @@ import type { TextFieldSelectProps } from '../../types/props';
 
 const options = [
   {
-    value: 'foodExpenses',
+    value: '1',
     label: '食費',
   },
   {
-    value: 'eatingOutExpenses',
+    value: '2',
     label: '外食費',
   },
   {
-    value: 'TransportationExpenses',
+    value: '3',
     label: '交通費',
   },
   {
-    value: 'dailyNecessities',
+    value: '4',
     label: '日用品',
   },
   {
-    value: 'entertainmentExpenses',
+    value: '5',
     label: '娯楽費',
   },
   {
-    value: 'specialExpenses',
+    value: '6',
     label: '特別費',
   },
   {
-    value: 'other',
+    value: '7',
     label: 'その他',
   },
 ];
 
 function MuiTextFieldSelect(props: TextFieldSelectProps) {
-  const { label } = props;
-  const [state, setState] = useState<string>('');
+  const { label, setState, value } = props;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setState(value);
+  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState(Number(event.target.value));
   };
 
   return (
@@ -52,10 +48,10 @@ function MuiTextFieldSelect(props: TextFieldSelectProps) {
       <TextField
         select
         label={label}
-        value={state}
+        value={value}
         variant='standard'
         fullWidth
-        onChange={handleChange}
+        onChange={handleValueChange}
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>

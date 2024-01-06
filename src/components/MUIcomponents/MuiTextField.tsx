@@ -6,10 +6,23 @@ import theme from '../../configs/textFieldTheme';
 import type { TextFieldProps } from '../../types/props';
 
 function MuiTextField(props: TextFieldProps) {
-  const { label } = props;
+  const { label, value, setState, errorInfo } = props;
+
+  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState(event.target.value);
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <TextField label={label} variant='standard' fullWidth />
+      <TextField
+        label={label}
+        value={value}
+        variant='standard'
+        fullWidth
+        onChange={handleValueChange}
+        error={errorInfo.error}
+        helperText={errorInfo.error ? errorInfo.message : ''}
+      />
     </ThemeProvider>
   );
 }

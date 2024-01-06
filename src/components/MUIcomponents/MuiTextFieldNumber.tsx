@@ -6,10 +6,36 @@ import theme from '../../configs/textFieldTheme';
 import type { TextFieldNumberProps } from '../../types/props';
 
 function MuiTextFieldNumber(props: TextFieldNumberProps) {
-  const { label } = props;
+  const { label, value, setState, isValue, errorInfo } = props;
+
+  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState(Number(event.target.value));
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <TextField type='number' label={label} variant='standard' fullWidth />
+      {isValue ? (
+        <TextField
+          type='number'
+          label={label}
+          value={value || ''}
+          variant='standard'
+          fullWidth
+          onChange={handleValueChange}
+          error={errorInfo.error}
+          helperText={errorInfo.error ? errorInfo.message : ''}
+        />
+      ) : (
+        <TextField
+          type='number'
+          label={label}
+          variant='standard'
+          fullWidth
+          onChange={handleValueChange}
+          error={errorInfo.error}
+          helperText={errorInfo.error ? errorInfo.message : ''}
+        />
+      )}
     </ThemeProvider>
   );
 }

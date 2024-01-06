@@ -9,7 +9,7 @@ import navigateNext from '../../assets/svg/navigate_next.svg';
 import type { IconButtonProps } from '../../types/props';
 
 function MuiIconButton(props: IconButtonProps) {
-  const { iconType, iconSize } = props;
+  const { iconType, iconSize, onClick } = props;
 
   let iconSrc = '';
 
@@ -31,7 +31,7 @@ function MuiIconButton(props: IconButtonProps) {
   }
 
   return (
-    <IconButton aria-label={iconType}>
+    <IconButton aria-label={iconType} onClick={onClick}>
       <Box component='img' sx={{ height: iconSize, width: iconSize }} src={iconSrc} />
     </IconButton>
   );

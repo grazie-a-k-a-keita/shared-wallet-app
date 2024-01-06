@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MuiProgress from '../components/MUIcomponents/MuiProgress';
 
-function Calendar() {
+function Wallet() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default Wallet;
