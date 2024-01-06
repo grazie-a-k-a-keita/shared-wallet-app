@@ -1,4 +1,16 @@
 // ========================
+// Home
+// ========================
+export type PageState = {
+  state: 'Input' | 'Wallet' | 'Calendar' | 'Payments';
+};
+export type BarInfo = {
+  open: boolean;
+  severity: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+};
+
+// ========================
 // Input Page
 // ========================
 export type CardInfo = {
@@ -21,11 +33,6 @@ export type IncomeAmountErrorInfo = {
   memoMessage: string;
   amountErr: boolean;
   amountMessage: string;
-};
-export type BarInfo = {
-  open: boolean;
-  severity: 'success' | 'error' | 'warning' | 'info';
-  message: string;
 };
 
 // ========================

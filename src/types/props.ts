@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { MonthlyBalance } from './api';
-import type { BarInfo, CardInfo } from './type';
+import type { BarInfo, CardInfo, PageState } from './type';
 
 // ========================
 // Calendar
@@ -101,6 +101,12 @@ export type ToggleButtonProps = {
 // Components
 // ========================
 
+// Footer Props type
+export type FooterProps = {
+  pageState: PageState;
+  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
+};
+
 // Header Props type
 export type HeaderProps = {
   headerType: 'Default' | 'Input';
@@ -111,4 +117,14 @@ export type HeaderProps = {
   onClick1?: () => void;
   onClick2?: () => void;
   onClick3?: () => void;
+};
+
+// ========================
+// Pages
+// ========================
+
+// InputPage Props type
+export type InputPageProps = {
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
