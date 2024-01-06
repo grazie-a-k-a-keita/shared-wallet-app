@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { MonthlyBalance } from './api';
-import type { BarInfo, CardInfo } from './type';
+import type { BarInfo, CardInfo, PageState } from './type';
 
 // ========================
 // Calendar
@@ -100,6 +100,12 @@ export type ToggleButtonProps = {
 // ========================
 // Components
 // ========================
+
+// Footer Props type
+export type FooterProps = {
+  pageState: PageState;
+  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
+};
 
 // Header Props type
 export type HeaderProps = {

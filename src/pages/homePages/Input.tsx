@@ -1,15 +1,15 @@
-import Header from '../components/Header';
-import MuiIconButton from '../components/MUIcomponents/MuiIconButton';
-import MuiInputCard from '../components/MUIcomponents/MuiInputCard';
-import MuiTextField from '../components/MUIcomponents/MuiTextField';
-import MuiTextFieldDate from '../components/MUIcomponents/MuiTextFieldDate';
-import MuiTextFieldNumber from '../components/MUIcomponents/MuiTextFieldNumber';
-import MuiTextFieldSelect from '../components/MUIcomponents/MuiTextFieldSelect';
-import useInputPage from '../hooks/useInputPage';
+import Header from '../../components/Header';
+import MuiIconButton from '../../components/MUIcomponents/MuiIconButton';
+import MuiInputCard from '../../components/MUIcomponents/MuiInputCard';
+import MuiTextField from '../../components/MUIcomponents/MuiTextField';
+import MuiTextFieldDate from '../../components/MUIcomponents/MuiTextFieldDate';
+import MuiTextFieldNumber from '../../components/MUIcomponents/MuiTextFieldNumber';
+import MuiTextFieldSelect from '../../components/MUIcomponents/MuiTextFieldSelect';
+import useInputPage from '../../hooks/useInputPage';
 
 import classes from './Input.module.scss';
 
-import type { InputPageProps } from '../types/props';
+import type { InputPageProps } from '../../types/props';
 
 function Input(props: InputPageProps) {
   const {

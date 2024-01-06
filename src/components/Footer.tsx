@@ -1,5 +1,3 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-
 import calendarMonthOff from '../assets/footerIcon/calendar_month_off.svg';
 import calendarMonthOn from '../assets/footerIcon/calendar_month_on.svg';
 import noteAltOff from '../assets/footerIcon/note_alt_off.svg';
@@ -11,63 +9,83 @@ import walletOn from '../assets/footerIcon/wallet_on.svg';
 
 import classes from './Footer.module.scss';
 
-function Footer() {
-  const pathName = useLocation().pathname;
-  const navigate = useNavigate();
+import type { FooterProps } from '../types/props';
+
+function Footer(props: FooterProps) {
+  const { pageState, setPageState } = props;
+
+  const handleChangePage = (input: 'Input' | 'Wallet' | 'Calendar' | 'Payments') => {
+    const setObj = { state: input };
+    setPageState(setObj);
+  };
 
   return (
     <div className={classes.container}>
       <div
         className={classes.iconButton}
-        onClick={() => navigate('/')}
-        onKeyDown={() => navigate('/')}
+        onClick={() => handleChangePage('Input')}
+        onKeyDown={() => handleChangePage('Input')}
         role='button'
         tabIndex={-1}
       >
-        <img src={pathName === '/' ? noteAltOn : noteAltOff} className={classes.icon} alt='' />
-        <p className={pathName === '/' ? classes.iconLabel_on : classes.iconLabel_off}>入力</p>
+        <img
+          src={pageState.state === 'Input' ? noteAltOn : noteAltOff}
+          className={classes.icon}
+          alt=''
+        />
+        <p className={pageState.state === 'Input' ? classes.iconLabel_on : classes.iconLabel_off}>
+          入力
+        </p>
       </div>
       <div
         className={classes.iconButton}
-        onClick={() => navigate('/wallet')}
-        onKeyDown={() => navigate('/wallet')}
+        onClick={() => handleChangePage('Wallet')}
+        onKeyDown={() => handleChangePage('Wallet')}
         role='button'
         tabIndex={-1}
       >
-        <img src={pathName === '/wallet' ? walletOn : walletOff} className={classes.icon} alt='' />
-        <p className={pathName === '/wallet' ? classes.iconLabel_on : classes.iconLabel_off}>
+        <img
+          src={pageState.state === 'Wallet' ? walletOn : walletOff}
+          className={classes.icon}
+          alt=''
+        />
+        <p className={pageState.state === 'Wallet' ? classes.iconLabel_on : classes.iconLabel_off}>
           資産
         </p>
       </div>
       <div
         className={classes.iconButton}
-        onClick={() => navigate('/calendar')}
-        onKeyDown={() => navigate('/calendar')}
+        onClick={() => handleChangePage('Calendar')}
+        onKeyDown={() => handleChangePage('Calendar')}
         role='button'
         tabIndex={-1}
       >
         <img
-          src={pathName === '/calendar' ? calendarMonthOn : calendarMonthOff}
+          src={pageState.state === 'Calendar' ? calendarMonthOn : calendarMonthOff}
           className={classes.icon}
           alt=''
         />
-        <p className={pathName === '/calendar' ? classes.iconLabel_on : classes.iconLabel_off}>
+        <p
+          className={pageState.state === 'Calendar' ? classes.iconLabel_on : classes.iconLabel_off}
+        >
           カレンダー
         </p>
       </div>
       <div
         className={classes.iconButton}
-        onClick={() => navigate('/payments')}
-        onKeyDown={() => navigate('/payments')}
+        onClick={() => handleChangePage('Payments')}
+        onKeyDown={() => handleChangePage('Payments')}
         role='button'
         tabIndex={-1}
       >
         <img
-          src={pathName === '/payments' ? syncAltOn : syncAltOff}
+          src={pageState.state === 'Payments' ? syncAltOn : syncAltOff}
           className={classes.icon}
           alt=''
         />
-        <p className={pathName === '/payments' ? classes.iconLabel_on : classes.iconLabel_off}>
+        <p
+          className={pageState.state === 'Payments' ? classes.iconLabel_on : classes.iconLabel_off}
+        >
           入出金
         </p>
       </div>
