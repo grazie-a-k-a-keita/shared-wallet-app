@@ -1,4 +1,4 @@
-import Header from '../../components/Header';
+import Header1 from '../../components/Header1';
 import MuiIconButton from '../../components/MUIcomponents/MuiIconButton';
 import MuiInputCard from '../../components/MUIcomponents/MuiInputCard';
 import MuiTextField from '../../components/MUIcomponents/MuiTextField';
@@ -60,13 +60,12 @@ function Input(props: InputPageProps) {
   return (
     <>
       <header>
-        <Header
-          headerType='Input'
+        <Header1
           leftButtonName='支出'
           rightButtonName='補充'
           setToggleStatus={setToggleState}
           amount={toggleState ? totalAmount : incomeAmountInfo}
-          onClick1={saveButtonClick}
+          onClick={saveButtonClick}
         />
       </header>
       <main>

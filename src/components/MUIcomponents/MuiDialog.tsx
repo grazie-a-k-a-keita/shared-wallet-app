@@ -1,124 +1,131 @@
 import * as React from 'react';
 
-import { MenuItem } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Box, MenuItem, TextField, ThemeProvider, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+
+import theme from '../../configs/textFieldTheme';
+import { getCurrentDay } from '../../configs/util';
 
 import MuiButton from './MuiButton';
 
-import type { SelectChangeEvent } from '@mui/material/Select';
-// eslint-disable-next-line import/order
 import type { DialogProps } from '../../types/props';
 
 export interface SimpleDialogProps {
   open: boolean;
-  year: number;
-  month: number;
-  onClick: () => void;
-  onClose: () => void;
+  selectYear: number;
+  selectMonth: number;
+  handleClose: () => void;
   setYear: React.Dispatch<React.SetStateAction<number>>;
   setMonth: React.Dispatch<React.SetStateAction<number>>;
 }
 
+let yearOptions: { value: number; label: string }[] = [];
+
+const monthOptions = [
+  { value: 1, label: '1月' },
+  { value: 2, label: '2月' },
+  { value: 3, label: '3月' },
+  { value: 4, label: '4月' },
+  { value: 5, label: '5月' },
+  { value: 6, label: '6月' },
+  { value: 7, label: '7月' },
+  { value: 8, label: '8月' },
+  { value: 9, label: '9月' },
+  { value: 10, label: '10月' },
+  { value: 11, label: '11月' },
+  { value: 12, label: '12月' },
+];
+
 function SimpleDialog(props: SimpleDialogProps) {
-  const { open, year, month, onClick, onClose, setYear, setMonth } = props;
-  const yearOptions: number[] = [2023, 2024];
-  const monthOptions: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const { open, selectYear, selectMonth, handleClose, setYear, setMonth } = props;
+
+  const [tempYear, setTempYear] = React.useState<number>(selectYear);
+  const [tempMonth, setTempMonth] = React.useState<number>(selectMonth);
 
   React.useEffect(() => {
-    // 現在の年月を取得
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1; // 月は "0-indexed" なので +1 する
-    setYear(currentYear);
-    setMonth(currentMonth);
-  }, [setMonth, setYear]);
+    yearOptions = [];
+    const currentYear: string = getCurrentDay().substring(0, 4);
+    for (let i = 2024; i <= Number(currentYear); i += 1) {
+      yearOptions.push({ value: i, label: `${i}年` });
+    }
 
-  const handleChangeYear = (event: SelectChangeEvent) => {
-    setYear(Number(event.target.value));
+    setTempYear(selectYear);
+    setTempMonth(selectMonth);
+  }, [selectYear, selectMonth]);
+
+  const handleDecision = () => {
+    setYear(tempYear);
+    setMonth(tempMonth);
+    handleClose();
   };
 
-  const handleChangeMonth = (event: SelectChangeEvent) => {
-    setMonth(Number(event.target.value));
+  const handleValueChangeYear = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTempYear(Number(event.target.value));
+  };
+
+  const handleValueChangeMonth = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTempMonth(Number(event.target.value));
   };
 
   return (
-    <Dialog onClose={onClose} open={open}>
-      <Box sx={{ paddingX: 6, paddingY: 2 }}>
-        <p style={{ textAlign: 'center' }}>対象の月を選択してください</p>
-      </Box>
-      <Box sx={{ justifyContent: 'center', width: 360 }}>
-        <Box sx={{ paddingX: 6, paddingY: 2 }}>
-          <FormControl fullWidth>
-            <InputLabel id='year-select-label'>Year</InputLabel>
-            <Select
-              labelId='year-select-label'
-              id='year-select'
-              value={String(year)}
-              label='year'
-              onChange={handleChangeYear}
-            >
-              {yearOptions.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option} 年
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+    <ThemeProvider theme={theme}>
+      <Dialog onClose={handleClose} open={open}>
+        <Box sx={{ padding: '2rem' }}>
+          <Typography fontSize='0.75rem' style={{ color: '#141414' }}>
+            対象の月を選択してください
+          </Typography>
+          <Box sx={{ padding: '0.5rem' }} />
+          <TextField
+            select
+            label='year'
+            value={tempYear}
+            variant='standard'
+            fullWidth
+            onChange={handleValueChangeYear}
+          >
+            {yearOptions.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <Box sx={{ padding: '0.5rem' }} />
+          <TextField
+            select
+            label='month'
+            value={tempMonth}
+            variant='standard'
+            fullWidth
+            onChange={handleValueChangeMonth}
+          >
+            {monthOptions.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <Box sx={{ padding: '1rem' }} />
+          <Box sx={{ textAlign: 'center' }}>
+            <MuiButton buttonName='決定' onclick={handleDecision} />
+          </Box>
         </Box>
-        <Box sx={{ paddingX: 6, paddingY: 2 }}>
-          <FormControl fullWidth>
-            <InputLabel id='month-select-label'>Month</InputLabel>
-            <Select
-              labelId='month-select-label'
-              id='month-select'
-              value={String(month)}
-              label='month'
-              onChange={handleChangeMonth}
-            >
-              {monthOptions.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option} 月
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-      </Box>
-      <Box sx={{ paddingX: 6, paddingY: 2, marginLeft: 'auto' }}>
-        <MuiButton buttonName='決定' onclick={onClick} />
-      </Box>
-    </Dialog>
+      </Dialog>
+    </ThemeProvider>
   );
 }
 
 function MuiDialog(props: DialogProps) {
-  const { setYearTop, setMonthTop } = props;
-  const [open, setOpen] = React.useState(false);
-  const [year, setYear] = React.useState(0);
-  const [month, setMonth] = React.useState(0);
+  const { selectYear, selectMonth, setYear, setMonth, open, setOpen } = props;
 
-  const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const onclick = () => {
-    setYearTop(year);
-    setMonthTop(month);
-    handleClose();
-  };
 
   return (
     <div>
-      <MuiButton buttonName='月選択' onclick={handleClickOpen} />
       <SimpleDialog
         open={open}
-        year={year}
-        month={month}
-        onClick={onclick}
-        onClose={handleClose}
+        selectYear={selectYear}
+        selectMonth={selectMonth}
+        handleClose={handleClose}
         setYear={setYear}
         setMonth={setMonth}
       />

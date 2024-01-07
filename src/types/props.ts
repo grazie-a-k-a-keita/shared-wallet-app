@@ -33,8 +33,12 @@ export type ButtonProps = {
 
 // MuiDialog Props type
 export type DialogProps = {
-  setYearTop: React.Dispatch<React.SetStateAction<number>>;
-  setMonthTop: React.Dispatch<React.SetStateAction<number>>;
+  selectYear: number;
+  selectMonth: number;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // MuiIconButton Props type
@@ -116,18 +120,23 @@ export type FooterProps = {
   setPageState: React.Dispatch<React.SetStateAction<PageState>>;
 };
 
-// Header Props type
-export type HeaderProps = {
-  headerType: 'Default' | 'Input';
-  leftButtonName?: string;
-  rightButtonName?: string;
-  setToggleStatus?: Dispatch<SetStateAction<boolean>>;
-  year?: string;
-  month?: string;
-  amount?: number;
-  onClick1?: () => void;
-  onClick2?: () => void;
-  onClick3?: () => void;
+// Header1 Props type
+export type Header1Props = {
+  leftButtonName: string;
+  rightButtonName: string;
+  setToggleStatus: Dispatch<SetStateAction<boolean>>;
+  amount: number;
+  onClick: () => void;
+};
+
+// Header2 Props type
+export type Header2Props = {
+  year: number;
+  month: number;
+  onClick1: () => void;
+  onClick2: () => void;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // ========================
@@ -142,6 +151,15 @@ export type InputPageProps = {
 
 // WalletPage Props type
 export type WalletPageProps = {
-  year: string;
-  month: string;
+  //
+};
+
+// CalendarPage Props type
+export type CalendarPageProps = {
+  //
+};
+
+// PaymentsPage Props type
+export type PaymentsPageProps = {
+  //
 };

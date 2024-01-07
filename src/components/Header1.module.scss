@@ -33,18 +33,3 @@
   height: $size8;
   padding-right: $size8;
 }
-
-/* year-month */
-.year_month_container {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 $size16;
-  height: $size12;
-}
-
-.year_month_text {
-  text-align: center;
-  padding: 0 $size4;
-  line-height: $size12;
-  @include text($Default_MainYellow, $size4, $Bold);
-}

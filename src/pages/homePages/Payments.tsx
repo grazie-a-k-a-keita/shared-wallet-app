@@ -1,14 +1,5 @@
-import Header from '../../components/Header';
-
 function Payments() {
-  return (
-    <>
-      <header>
-        <Header headerType='Default' />
-      </header>
-      <main />
-    </>
-  );
+  return <main />;
 }
 
 export default Payments;
