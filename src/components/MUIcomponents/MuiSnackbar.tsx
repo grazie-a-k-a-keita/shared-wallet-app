@@ -35,7 +35,7 @@ function MuiSnackbar(props: SnackbarProps) {
   return (
     <ThemeProvider theme={theme}>
       <Stack spacing={2} sx={{ width: '100%' }}>
-        <Snackbar open={open} autoHideDuration={1500} onClose={handleClose} style={snackbarStyle}>
+        <Snackbar open={open} autoHideDuration={2500} onClose={handleClose} style={snackbarStyle}>
           <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
             {message}
           </Alert>
