@@ -98,6 +98,15 @@ export type ToggleButtonProps = {
 };
 
 // ========================
+// MUI Components
+// ========================
+
+// PieChart Props type
+export type PieChartProps = {
+  graphData: { 1: number; 2: number; 3: number; 4: number; 5: number; 6: number; 7: number };
+};
+
+// ========================
 // Components
 // ========================
 
@@ -113,6 +122,8 @@ export type HeaderProps = {
   leftButtonName?: string;
   rightButtonName?: string;
   setToggleStatus?: Dispatch<SetStateAction<boolean>>;
+  year?: string;
+  month?: string;
   amount?: number;
   onClick1?: () => void;
   onClick2?: () => void;
@@ -127,4 +138,10 @@ export type HeaderProps = {
 export type InputPageProps = {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
+
+// WalletPage Props type
+export type WalletPageProps = {
+  year: string;
+  month: string;
 };

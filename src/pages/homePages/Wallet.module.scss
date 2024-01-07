@@ -1,0 +1,57 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.centerBorder {
+  border-right: $Label_Color_Light_Secondary solid $borderLine;
+}
+
+.titleText_1 {
+  @include text($Label_Color_Light_Secondary, $size4, $Bold);
+  line-height: $size8;
+}
+
+.titleText_2 {
+  @include text($Label_Color_Light_Secondary, $size3, $Bold);
+  line-height: $size4;
+  padding: $size2 0 $size2 $size4;
+}
+
+.titleText_3 {
+  @include text($Label_Color_Light_Primary, $size3, $Medium);
+  line-height: $size4;
+  padding: $size8 0;
+  text-align: center;
+}
+
+.amountText_1 {
+  @include text($Default_MainRed, $size6, $Bold);
+  line-height: $size8;
+}
+
+.amountText_2 {
+  @include text($Default_MainRed, $size6, $Bold);
+  line-height: $size8;
+  padding-right: $size7;
+  text-align: right;
+}
+
+.totalAmount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $size8 0;
+  height: $size20;
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.totalPayments {
+  display: flex;
+  height: $size20;
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.payment {
+  width: 50%;
+}

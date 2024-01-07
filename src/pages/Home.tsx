@@ -20,10 +20,13 @@ function Home() {
     message: '',
   });
 
+  const [year] = useState<string>('2024');
+  const [month] = useState<string>('01');
+
   return (
     <>
       {pageState.state === 'Input' && <Input setIsLoading={setIsLoading} setBarInfo={setBarInfo} />}
-      {pageState.state === 'Wallet' && <Wallet />}
+      {pageState.state === 'Wallet' && <Wallet year={year} month={month} />}
       {pageState.state === 'Calendar' && <Calendar />}
       {pageState.state === 'Payments' && <Payments />}
       <footer>

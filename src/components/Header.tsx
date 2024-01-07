@@ -14,6 +14,8 @@ function Header(props: HeaderProps) {
     rightButtonName,
     setToggleStatus,
     amount,
+    year,
+    month,
     onClick1,
     onClick2,
     onClick3,
@@ -45,7 +47,7 @@ function Header(props: HeaderProps) {
       ) : (
         <div className={classes.year_month_container}>
           <MuiIconButton iconType='navigateBefore' iconSize={32} onClick={onClick2 || dummyFunc} />
-          <p className={classes.year_month_text}>2024年 01月</p>
+          <p className={classes.year_month_text}>{`${year}年 ${month}月`}</p>
           <MuiIconButton iconType='navigateNext' iconSize={32} onClick={onClick3 || dummyFunc} />
         </div>
       )}
