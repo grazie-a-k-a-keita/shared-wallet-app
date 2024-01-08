@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -7,6 +8,8 @@ import type { WalletPageBalanceInfo, WalletPageDisplayInfo } from '../types/type
 
 function useFetchWalletPage(props: UseFetchWalletPageProps) {
   const { actionFlag, setIsLoading, year, month } = props;
+
+  const navigate = useNavigate();
 
   const [walletPageBalanceInfo, setWalletPageBalanceInfo] = useState<WalletPageBalanceInfo>({
     totalAssets: 0,
@@ -19,14 +22,24 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
     monthIncome: 0,
   });
 
-  // 年月が変更された場合
+  const isFirstRender = useRef(true);
+
+  // 収支情報の登録、更新（DB更新）が行われた場合
   useEffect(() => {
+    // 初回ロード時はスキップ
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     setIsLoading(true);
+
+    // 収支情報のリセット
+    setWalletPageBalanceInfo({ totalAssets: 0, monthlyBalance: [] });
 
     // API通信
     // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
     const fetchData = async (data: { yearMonth: string }) => {
-      console.log('通信中...');
       try {
         const response = await axios.post<WalletPageBalanceInfo>(
           import.meta.env.VITE_POST_PAYMENT_GET_ALL,
@@ -64,7 +77,61 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
         });
         setWalletPageDisplayInfo(setDisplayData);
       } catch (error) {
-        // TODO
+        navigate('/error');
+      }
+    };
+
+    fetchData({ yearMonth: `${year}-${String(month).padStart(2, '0')}` });
+
+    setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actionFlag]);
+
+  // 年月が変更された場合
+  useEffect(() => {
+    setIsLoading(true);
+
+    // API通信
+    // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
+    const fetchData = async (data: { yearMonth: string }) => {
+      try {
+        const response = await axios.post<WalletPageBalanceInfo>(
+          import.meta.env.VITE_POST_PAYMENT_GET_ALL,
+          data
+        );
+
+        // 同じ月の収支情報をすでに保持している場合は、それを上書きする
+        // 同じ月の収支情報をまだ保持していない場合は、新規追加する
+        const setData = { ...walletPageBalanceInfo };
+        setData.totalAssets = response.data.totalAssets;
+        response.data.monthlyBalance.forEach((resItem) => {
+          let setFlag = false;
+          for (let i = 0; i < setData.monthlyBalance.length; i += 1) {
+            if (resItem.yearMonth === setData.monthlyBalance[i].yearMonth) {
+              setData.monthlyBalance[i] = resItem;
+              setFlag = true;
+              return;
+            }
+          }
+          if (!setFlag) setData.monthlyBalance.push(resItem);
+        });
+        setWalletPageBalanceInfo(setData);
+
+        // WalletPage表示用の変数をセットする
+        const setDisplayData = {
+          totalAssets: setData.totalAssets,
+          monthSpending: 0,
+          monthIncome: 0,
+        };
+        setData.monthlyBalance.forEach((item) => {
+          if (item.yearMonth === data.yearMonth) {
+            setDisplayData.monthSpending = item.monthSpending;
+            setDisplayData.monthIncome = item.monthIncome;
+          }
+        });
+        setWalletPageDisplayInfo(setDisplayData);
+      } catch (error) {
+        navigate('/error');
       }
     };
 
@@ -95,64 +162,6 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
     setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year, month]);
-
-  // 収支情報の登録、更新（DB更新）が行われた場合
-  useEffect(() => {
-    setIsLoading(true);
-
-    // 収支情報のリセット
-    setWalletPageBalanceInfo({ totalAssets: 0, monthlyBalance: [] });
-
-    // API通信
-    // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
-    const fetchData = async (data: { yearMonth: string }) => {
-      console.log('通信中...');
-      try {
-        const response = await axios.post<WalletPageBalanceInfo>(
-          import.meta.env.VITE_POST_PAYMENT_GET_ALL,
-          data
-        );
-
-        // 同じ月の収支情報をすでに保持している場合は、それを上書きする
-        // 同じ月の収支情報をまだ保持していない場合は、新規追加する
-        const setData = { ...walletPageBalanceInfo };
-        setData.totalAssets = response.data.totalAssets;
-        response.data.monthlyBalance.forEach((resItem) => {
-          let setFlag = false;
-          for (let i = 0; i < setData.monthlyBalance.length; i += 1) {
-            if (resItem.yearMonth === setData.monthlyBalance[i].yearMonth) {
-              setData.monthlyBalance[i] = resItem;
-              setFlag = true;
-              return;
-            }
-          }
-          if (!setFlag) setData.monthlyBalance.push(resItem);
-        });
-        setWalletPageBalanceInfo(setData);
-
-        // WalletPage表示用の変数をセットする
-        const setDisplayData = {
-          totalAssets: setData.totalAssets,
-          monthSpending: 0,
-          monthIncome: 0,
-        };
-        setData.monthlyBalance.forEach((item) => {
-          if (item.yearMonth === data.yearMonth) {
-            setDisplayData.monthSpending = item.monthSpending;
-            setDisplayData.monthIncome = item.monthIncome;
-          }
-        });
-        setWalletPageDisplayInfo(setDisplayData);
-      } catch (error) {
-        // TODO
-      }
-    };
-
-    fetchData({ yearMonth: `${year}-${String(month).padStart(2, '0')}` });
-
-    setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [actionFlag]);
 
   return { walletPageDisplayInfo };
 }
