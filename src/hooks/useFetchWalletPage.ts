@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import type { GetAll } from '../types/api';
 import type { UseFetchWalletPageProps } from '../types/props';
-import type { WalletPageBalanceInfo, WalletPageDisplayInfo } from '../types/type';
+import type { WalletPageDisplayInfo } from '../types/type';
 
 function useFetchWalletPage(props: UseFetchWalletPageProps) {
   const { actionFlag, setIsLoading, year, month } = props;
 
   const navigate = useNavigate();
 
-  const [walletPageBalanceInfo, setWalletPageBalanceInfo] = useState<WalletPageBalanceInfo>({
+  const [walletPageBalanceInfo, setWalletPageBalanceInfo] = useState<GetAll>({
     totalAssets: 0,
     monthlyBalance: [],
   });
@@ -24,6 +25,11 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
 
   const isFirstRender = useRef(true);
 
+  useEffect(() => {
+    // 収支情報のリセット
+    setWalletPageBalanceInfo({ totalAssets: 0, monthlyBalance: [] });
+  }, [actionFlag]);
+
   // 収支情報の登録、更新（DB更新）が行われた場合
   useEffect(() => {
     // 初回ロード時はスキップ
@@ -34,17 +40,11 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
 
     setIsLoading(true);
 
-    // 収支情報のリセット
-    setWalletPageBalanceInfo({ totalAssets: 0, monthlyBalance: [] });
-
     // API通信
     // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
     const fetchData = async (data: { yearMonth: string }) => {
       try {
-        const response = await axios.post<WalletPageBalanceInfo>(
-          import.meta.env.VITE_POST_PAYMENT_GET_ALL,
-          data
-        );
+        const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
 
         // 同じ月の収支情報をすでに保持している場合は、それを上書きする
         // 同じ月の収支情報をまだ保持していない場合は、新規追加する
@@ -95,10 +95,7 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
     // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
     const fetchData = async (data: { yearMonth: string }) => {
       try {
-        const response = await axios.post<WalletPageBalanceInfo>(
-          import.meta.env.VITE_POST_PAYMENT_GET_ALL,
-          data
-        );
+        const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
 
         // 同じ月の収支情報をすでに保持している場合は、それを上書きする
         // 同じ月の収支情報をまだ保持していない場合は、新規追加する
@@ -144,7 +141,7 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
       // まだ月の収支情報を持っていない場合はAPI通信を行う
       fetchData({ yearMonth: `${year}-${String(month).padStart(2, '0')}` });
     } else {
-      // すでに月の収支情報を持っている場合はAPI通信スキップし、"walletPageDisplayInfo"を更新する
+      // すでに月の収支情報を持っている場合はAPI通信をスキップし、"walletPageDisplayInfo"を更新する
       const setDisplayData = {
         totalAssets: walletPageBalanceInfo.totalAssets,
         monthSpending: 0,
