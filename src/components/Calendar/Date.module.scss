@@ -1,0 +1,62 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.margin6 {
+  margin-top: $size6;
+}
+
+.margin2 {
+  margin-top: $size2;
+}
+
+.container_under {
+  width: 100%;
+  border-bottom: $Default_MainRed solid $borderLine;
+}
+
+.container_none {
+  width: 100%;
+}
+
+@mixin circle {
+  margin: 0 auto;
+  margin-top: $size4;
+  width: $size6;
+  height: $size6;
+  border-radius: $size32;
+}
+
+@mixin date_text {
+  line-height: $size6;
+  text-align: center;
+}
+
+.circle_today {
+  @include circle();
+  background-color: $Default_MainRed;
+  p {
+    @include text($Default_MainYellow, $size3, $Medium);
+    @include date_text();
+  }
+}
+
+.circle_none {
+  @include circle();
+  background-color: $Background_Color_Light_Primary;
+  p {
+    @include text($Label_Color_Light_Primary, $size3, $Medium);
+    @include date_text();
+  }
+}
+
+.amount_income {
+  @include text($Default_SystemBlue, $size2, $Medium);
+  line-height: $size4;
+  text-align: center;
+}
+
+.amount_spending {
+  @include text($Default_SystemRed, $size2, $Medium);
+  line-height: $size4;
+  text-align: center;
+}

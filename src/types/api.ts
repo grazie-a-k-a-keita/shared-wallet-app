@@ -1,10 +1,3 @@
-// 月の支出、収入
-export type MonthlyBalance = {
-  date: string;
-  spendingTotal: number;
-  incomeTotal: number;
-}[];
-
 // POST /v1/payment/registration
 export type RegistrationData = {
   paymentDate: string;

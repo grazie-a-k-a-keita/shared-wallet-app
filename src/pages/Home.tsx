@@ -53,7 +53,7 @@ function Home() {
         />
       )}
       {pageState.state === 'Wallet' && <Wallet walletPageDisplayInfo={walletPageDisplayInfo} />}
-      {pageState.state === 'Calendar' && <Calendar />}
+      {pageState.state === 'Calendar' && <Calendar year={year} month={month} />}
       {pageState.state === 'Payments' && <Payments />}
 
       {/* Footer */}
