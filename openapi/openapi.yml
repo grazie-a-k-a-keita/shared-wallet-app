@@ -9,7 +9,7 @@ servers:
   - url: https://api.example.com
     description: 本番環境
 paths:
-  /registration:
+  /put:
     post:
       summary: Inputページから入力されたデータを登録するAPI
       tags:
@@ -138,7 +138,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    month:
+                    yearMonth:
                       type: string
                       format: date
                       example: 2024-01
@@ -148,43 +148,44 @@ paths:
                       items:
                         type: object
                         properties:
-                          yearMonth:
-                            type: object
-                            properties:
-                              paymentDate:
-                                type: string
-                                format: date
-                                example: 2024-01-01
-                                description: 収支日
-                              paymentType:
-                                type: boolean
-                                example: true
-                                description: 収支種別
-                              totalAmount:
-                                type: number
-                                example: 500
-                                description: 合計金額
-                              categoryID:
-                                type: number
-                                example: 1
-                                description: カテゴリーID
-                              memo:
-                                type: string
-                                example: マクドナルド
-                                description: メモ（大）
-                              memos:
-                                type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    memo:
-                                      type: string
-                                      example: ハンバーガー
-                                      description: メモ
-                                    amount:
-                                      type: number
-                                      example: 500
-                                      description: 金額
-                                description: メモ（小）
+                          seqId:
+                            type: number
+                            example: 1
+                            description: シーケンスID
+                          paymentDate:
+                            type: string
+                            format: date
+                            example: 2024-01-01
+                            description: 収支日
+                          paymentType:
+                            type: boolean
+                            example: true
+                            description: 収支種別
+                          totalAmount:
+                            type: number
+                            example: 500
+                            description: 合計金額
+                          categoryID:
+                            type: number
+                            example: 1
+                            description: カテゴリーID
+                          memo:
+                            type: string
+                            example: マクドナルド
+                            description: メモ（大）
+                          memos:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                memo:
+                                  type: string
+                                  example: ハンバーガー
+                                  description: メモ
+                                amount:
+                                  type: number
+                                  example: 500
+                                  description: 金額
+                            description: メモ（小）
         '500':
           description: Internal Server Error

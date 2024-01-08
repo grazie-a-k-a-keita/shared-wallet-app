@@ -16,5 +16,44 @@
       { "yearMonth": "2024-11", "monthSpending": 2843, "monthIncome": 15000 },
       { "yearMonth": "2024-12", "monthSpending": 25030, "monthIncome": 30000 }
     ]
-  }
+  },
+  "v1-payment-get-detail": [
+    {
+      "yearMonth": "2024-01",
+      "monthlyPayments": [
+        {
+          "paymentDate": "2024-01-01",
+          "paymentType": true,
+          "totalAmount": 1000,
+          "categoryID": 1,
+          "memo": "ShopA",
+          "memos": [
+            { "memo": "memo_1", "amount": 750 },
+            { "memo": "memo_2", "amount": 250 }
+          ]
+        },
+        {
+          "paymentDate": "2024-01-01",
+          "paymentType": false,
+          "totalAmount": 20000,
+          "categoryID": 0,
+          "memo": "UserA",
+          "memos": []
+        }
+      ]
+    },
+    {
+      "yearMonth": "2024-02",
+      "monthlyPayments": [
+        {
+          "paymentDate": "2024-01-01",
+          "paymentType": true,
+          "totalAmount": 500,
+          "categoryID": 1,
+          "memo": "ShopB",
+          "memos": [{ "memo": "memo_1", "amount": 500 }]
+        }
+      ]
+    }
+  ]
 }

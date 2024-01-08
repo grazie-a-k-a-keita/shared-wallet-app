@@ -2,35 +2,12 @@
 @import '../../styles/variables';
 
 .container {
-  height: $size24;
-  padding: $size1;
-}
-
-.date {
-  margin-bottom: $size4;
-}
-
-.incomeAmount {
-  color: $primary;
-  font-size: $size3;
-  text-align: left;
-  margin-bottom: $size2;
-}
-
-.spendingAmount {
-  color: $error;
-  font-size: $size3;
-  text-align: left;
-  margin-bottom: $size2;
-}
-
-.span {
-  font-size: $size2;
-  margin-right: 1px;
-}
-
-.amount_hide {
-  color: $white;
-  font-size: $size3;
-  margin-bottom: $size2;
+  width: 100%;
+  padding: $size2 0;
+  border-bottom: $Default_MainRed solid $borderLine;
+  p {
+    @include text($Label_Color_Light_Primary, $size3, $Medium);
+    line-height: $size4;
+    text-align: center;
+  }
 }

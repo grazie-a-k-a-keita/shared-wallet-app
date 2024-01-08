@@ -1,11 +1,26 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
-.container_month {
-  display: flex;
-  flex-wrap: wrap;
+.container {
+  height: 100%;
 }
+
 .container_day {
-  width: 14.28571428571429%;
-  border-bottom: $red solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container_date {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: calc(100% - 33px);
+}
+
+.container_week {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 16.66666666666667%;
 }

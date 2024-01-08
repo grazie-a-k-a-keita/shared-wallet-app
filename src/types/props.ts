@@ -1,24 +1,36 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-import type { MonthlyBalance } from './api';
+import type { GetDetail } from './api';
 import type { BarInfo, CardInfo, PageState, WalletPageDisplayInfo } from './type';
 
 // ========================
 // Calendar
 // ========================
 
+// Calendar-Date Props type
+export type DateProps = {
+  date: number;
+  today: boolean;
+  spending: number;
+  income: number;
+  underLine: boolean;
+};
+
 // Calendar-Day Props type
 export type DayProps = {
-  date?: number;
-  spendingTotal?: number;
-  incomeTotal?: number;
+  day: string;
 };
 
 // Calendar-Month Props type
 export type MonthProps = {
-  year: number;
-  month: number;
-  monthlyBalance: MonthlyBalance;
+  daysInfo: {
+    id: string;
+    date: number;
+    thisMonth: boolean;
+    today: boolean;
+    spending: number;
+    income: number;
+  }[];
 };
 
 // ========================
@@ -151,6 +163,14 @@ export type UseFetchWalletPageProps = {
   month: number;
 };
 
+// useFetchPayment
+export type UseFetchPaymentProps = {
+  actionFlag: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  year: number;
+  month: number;
+};
+
 // ========================
 // Pages
 // ========================
@@ -170,7 +190,9 @@ export type WalletPageProps = {
 
 // CalendarPage Props type
 export type CalendarPageProps = {
-  //
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
 };
 
 // PaymentsPage Props type

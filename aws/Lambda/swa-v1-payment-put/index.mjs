@@ -37,7 +37,7 @@ const createResponse = (statusCode) => {
 };
 
 /**
- * swa-v1-payment-registration-post
+ * swa-v1-payment-put
  * @param {*} event
  * @returns
  */
@@ -92,7 +92,7 @@ export const handler = async (event) => {
               CategoryID: { N: String(body.categoryID) },
               Memo: { S: String(body.memo) },
               Memos: { L: memos },
-              createdAt: { S: getDate() },
+              CreatedAt: { S: getDate() },
               UpdatedAt: { S: getDate() },
             },
           },

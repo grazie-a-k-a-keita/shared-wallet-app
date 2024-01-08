@@ -9,6 +9,10 @@ module.exports = function (req, res, next) {
     if (req.url === '/api/v1-payment-get-all') {
       req.url = '/v1-payment-get-all';
     }
+
+    if (req.url === '/api/v1-payment-get-detail') {
+      req.url = '/v1-payment-get-detail';
+    }
   }
 
   next();

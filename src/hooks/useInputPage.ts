@@ -188,7 +188,7 @@ function useInputPage(props: InputPageProps) {
 
     // API通信
     try {
-      await axios.post(import.meta.env.VITE_POST_PAYMENT_REGISTRATION, data);
+      await axios.post(import.meta.env.VITE_POST_PAYMENT_PUT, data);
       setActionFlag(!actionFlag);
     } catch (error) {
       setIsLoading(false);
