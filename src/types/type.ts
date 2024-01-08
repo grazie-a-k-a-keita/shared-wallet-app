@@ -9,6 +9,15 @@ export type BarInfo = {
   severity: 'success' | 'error' | 'warning' | 'info';
   message: string;
 };
+export type WalletPageBalanceInfo = {
+  totalAssets: number;
+  monthlyBalance: { yearMonth: string; monthSpending: number; monthIncome: number }[];
+};
+export type WalletPageDisplayInfo = {
+  totalAssets: number;
+  monthSpending: number;
+  monthIncome: number;
+};
 
 // ========================
 // Input Page

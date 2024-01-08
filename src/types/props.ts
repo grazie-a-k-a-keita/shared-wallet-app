@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { MonthlyBalance } from './api';
-import type { BarInfo, CardInfo, PageState } from './type';
+import type { BarInfo, CardInfo, PageState, WalletPageDisplayInfo } from './type';
 
 // ========================
 // Calendar
@@ -140,18 +140,32 @@ export type Header2Props = {
 };
 
 // ========================
+// Hooks
+// ========================
+
+// useFetchWalletPage
+export type UseFetchWalletPageProps = {
+  actionFlag: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  year: number;
+  month: number;
+};
+
+// ========================
 // Pages
 // ========================
 
 // InputPage Props type
 export type InputPageProps = {
+  actionFlag: boolean;
+  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
 
 // WalletPage Props type
 export type WalletPageProps = {
-  //
+  walletPageDisplayInfo: WalletPageDisplayInfo;
 };
 
 // CalendarPage Props type
