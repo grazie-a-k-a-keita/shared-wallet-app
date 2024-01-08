@@ -5,7 +5,7 @@ import classes from './Month.module.scss';
 import type { MonthProps } from '../../types/props';
 
 function Month(props: MonthProps) {
-  const { days } = props;
+  const { daysInfo } = props;
 
   const renderDayList = () => {
     const dayList: JSX.Element[] = [];
@@ -24,9 +24,16 @@ function Month(props: MonthProps) {
     let weekList: JSX.Element[] = [];
     let columnCount = 1;
 
-    days.forEach((item) => {
+    daysInfo.forEach((item) => {
       weekList.push(
-        <Date key={item.id} date={item.date} today={item.today} underLine={!(columnCount >= 36)} />
+        <Date
+          key={item.id}
+          date={item.date}
+          today={item.today}
+          spending={item.spending}
+          income={item.income}
+          underLine={!(columnCount >= 36)}
+        />
       );
 
       if (columnCount % 7 === 0) {

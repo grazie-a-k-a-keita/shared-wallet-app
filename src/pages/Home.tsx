@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Header2 from '../components/Header2';
 import MuiProgress from '../components/MUIcomponents/MuiProgress';
 import MuiSnackbar from '../components/MUIcomponents/MuiSnackbar';
+import useFetchPayment from '../hooks/useFetchPayment';
 import useFetchWalletPage from '../hooks/useFetchWalletPage';
 import useHomeScreen from '../hooks/useHomeScreen';
 
@@ -26,6 +27,7 @@ function Home() {
 
   const { year, setYear, month, setMonth, handlePreviousMonth, handleNextMonth } = useHomeScreen();
   const { walletPageDisplayInfo } = useFetchWalletPage({ actionFlag, year, month, setIsLoading });
+  const { fetchDataState } = useFetchPayment({ actionFlag, year, month, setIsLoading });
 
   return (
     <>
@@ -53,7 +55,9 @@ function Home() {
         />
       )}
       {pageState.state === 'Wallet' && <Wallet walletPageDisplayInfo={walletPageDisplayInfo} />}
-      {pageState.state === 'Calendar' && <Calendar year={year} month={month} />}
+      {pageState.state === 'Calendar' && (
+        <Calendar year={year} month={month} fetchDataState={fetchDataState} />
+      )}
       {pageState.state === 'Payments' && <Payments />}
 
       {/* Footer */}

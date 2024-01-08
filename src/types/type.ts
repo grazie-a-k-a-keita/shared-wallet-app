@@ -1,18 +1,17 @@
 // ========================
 // Home
 // ========================
+
 export type PageState = {
   state: 'Input' | 'Wallet' | 'Calendar' | 'Payments';
 };
+
 export type BarInfo = {
   open: boolean;
   severity: 'success' | 'error' | 'warning' | 'info';
   message: string;
 };
-export type WalletPageBalanceInfo = {
-  totalAssets: number;
-  monthlyBalance: { yearMonth: string; monthSpending: number; monthIncome: number }[];
-};
+
 export type WalletPageDisplayInfo = {
   totalAssets: number;
   monthSpending: number;
@@ -22,6 +21,7 @@ export type WalletPageDisplayInfo = {
 // ========================
 // Input Page
 // ========================
+
 export type CardInfo = {
   memo: string;
   amount: number;
@@ -33,10 +33,12 @@ export type CardInfo = {
     amountMessage: string;
   };
 }[];
+
 export type SpendingAmountErrorInfo = {
   memoErr: boolean;
   memoMessage: string;
 };
+
 export type IncomeAmountErrorInfo = {
   memoErr: boolean;
   memoMessage: string;
@@ -47,6 +49,7 @@ export type IncomeAmountErrorInfo = {
 // ========================
 // Calendar
 // ========================
+
 export type Days = {
   id: string;
   date: number;

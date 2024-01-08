@@ -3,7 +3,7 @@ import classes from './Date.module.scss';
 import type { DateProps } from '../../types/props';
 
 function Date(props: DateProps) {
-  const { date, today, underLine } = props;
+  const { date, today, spending, income, underLine } = props;
 
   return (
     <div className={underLine ? classes.container_under : classes.container_none}>
@@ -13,11 +13,19 @@ function Date(props: DateProps) {
 
       <div className={classes.margin6} />
 
-      <p className={classes.amount_income}>&yen; {Number(10000).toLocaleString()}</p>
+      {income ? (
+        <p className={classes.amount_income}>&yen; {Number(income).toLocaleString()}</p>
+      ) : (
+        <p className={classes.amount_hide}>&yen; {Number(income).toLocaleString()}</p>
+      )}
 
       <div className={classes.margin2} />
 
-      <p className={classes.amount_spending}>&yen; {Number(10000).toLocaleString()}</p>
+      {spending ? (
+        <p className={classes.amount_spending}>&yen; {Number(spending).toLocaleString()}</p>
+      ) : (
+        <p className={classes.amount_hide}>&yen; {Number(income).toLocaleString()}</p>
+      )}
     </div>
   );
 }

@@ -60,3 +60,9 @@
   line-height: $size4;
   text-align: center;
 }
+
+.amount_hide {
+  @include text($Background_Color_Light_Primary, $size2, $Medium);
+  line-height: $size4;
+  text-align: center;
+}
