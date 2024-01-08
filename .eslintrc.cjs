@@ -21,6 +21,7 @@ module.exports = {
     '.eslintrc.cjs',
     'vitest.setup.ts',
     'serviceWorker.js',
+    'middleware.cjs',
     '**/*.mjs',
   ],
   settings: {

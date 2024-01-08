@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { MonthlyBalance } from './api';
-import type { BarInfo, CardInfo, PageState } from './type';
+import type { BarInfo, CardInfo, PageState, WalletPageDisplayInfo } from './type';
 
 // ========================
 // Calendar
@@ -33,8 +33,12 @@ export type ButtonProps = {
 
 // MuiDialog Props type
 export type DialogProps = {
-  setYearTop: React.Dispatch<React.SetStateAction<number>>;
-  setMonthTop: React.Dispatch<React.SetStateAction<number>>;
+  selectYear: number;
+  selectMonth: number;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // MuiIconButton Props type
@@ -98,6 +102,15 @@ export type ToggleButtonProps = {
 };
 
 // ========================
+// MUI Components
+// ========================
+
+// PieChart Props type
+export type PieChartProps = {
+  graphData: { 1: number; 2: number; 3: number; 4: number; 5: number; 6: number; 7: number };
+};
+
+// ========================
 // Components
 // ========================
 
@@ -107,16 +120,35 @@ export type FooterProps = {
   setPageState: React.Dispatch<React.SetStateAction<PageState>>;
 };
 
-// Header Props type
-export type HeaderProps = {
-  headerType: 'Default' | 'Input';
-  leftButtonName?: string;
-  rightButtonName?: string;
-  setToggleStatus?: Dispatch<SetStateAction<boolean>>;
-  amount?: number;
-  onClick1?: () => void;
-  onClick2?: () => void;
-  onClick3?: () => void;
+// Header1 Props type
+export type Header1Props = {
+  leftButtonName: string;
+  rightButtonName: string;
+  setToggleStatus: Dispatch<SetStateAction<boolean>>;
+  amount: number;
+  onClick: () => void;
+};
+
+// Header2 Props type
+export type Header2Props = {
+  year: number;
+  month: number;
+  onClick1: () => void;
+  onClick2: () => void;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
+};
+
+// ========================
+// Hooks
+// ========================
+
+// useFetchWalletPage
+export type UseFetchWalletPageProps = {
+  actionFlag: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  year: number;
+  month: number;
 };
 
 // ========================
@@ -125,6 +157,23 @@ export type HeaderProps = {
 
 // InputPage Props type
 export type InputPageProps = {
+  actionFlag: boolean;
+  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
+
+// WalletPage Props type
+export type WalletPageProps = {
+  walletPageDisplayInfo: WalletPageDisplayInfo;
+};
+
+// CalendarPage Props type
+export type CalendarPageProps = {
+  //
+};
+
+// PaymentsPage Props type
+export type PaymentsPageProps = {
+  //
 };

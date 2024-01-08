@@ -12,9 +12,10 @@ const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
 const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';
 const BAR_STATUS_MESSAGE_2 = '入力項目に誤りがあります。';
+const BAR_STATUS_MESSAGE_3 = '通信に失敗しました。時間をおいて再度お試しください。';
 
 function useInputPage(props: InputPageProps) {
-  const { setIsLoading, setBarInfo } = props;
+  const { actionFlag, setActionFlag, setIsLoading, setBarInfo } = props;
 
   // トグルボタンの状態管理
   const [toggleState, setToggleState] = useState<boolean>(true);
@@ -187,9 +188,11 @@ function useInputPage(props: InputPageProps) {
 
     // API通信
     try {
-      await axios.put(import.meta.env.VITE_POST_PAYMENT_REGISTRATION, data);
+      await axios.post(import.meta.env.VITE_POST_PAYMENT_REGISTRATION, data);
+      setActionFlag(!actionFlag);
     } catch (error) {
       setIsLoading(false);
+      setBarInfo({ open: true, severity: 'error', message: BAR_STATUS_MESSAGE_3 });
       return;
     }
 

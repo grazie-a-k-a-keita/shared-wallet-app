@@ -6,34 +6,13 @@ import theme from '../../configs/textFieldTheme';
 import type { TextFieldSelectProps } from '../../types/props';
 
 const options = [
-  {
-    value: '1',
-    label: '食費',
-  },
-  {
-    value: '2',
-    label: '外食費',
-  },
-  {
-    value: '3',
-    label: '交通費',
-  },
-  {
-    value: '4',
-    label: '日用品',
-  },
-  {
-    value: '5',
-    label: '娯楽費',
-  },
-  {
-    value: '6',
-    label: '特別費',
-  },
-  {
-    value: '7',
-    label: 'その他',
-  },
+  { value: '1', label: '食費' },
+  { value: '2', label: '外食費' },
+  { value: '3', label: '交通費' },
+  { value: '4', label: '日用品' },
+  { value: '5', label: '娯楽費' },
+  { value: '6', label: '特別費' },
+  { value: '7', label: 'その他' },
 ];
 
 function MuiTextFieldSelect(props: TextFieldSelectProps) {

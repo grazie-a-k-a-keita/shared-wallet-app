@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
 import Footer from '../components/Footer';
+import Header2 from '../components/Header2';
 import MuiProgress from '../components/MUIcomponents/MuiProgress';
 import MuiSnackbar from '../components/MUIcomponents/MuiSnackbar';
+import useFetchWalletPage from '../hooks/useFetchWalletPage';
+import useHomeScreen from '../hooks/useHomeScreen';
 
 import Calendar from './homePages/Calendar';
 import Input from './homePages/Input';
@@ -12,6 +15,7 @@ import Wallet from './homePages/Wallet';
 import type { BarInfo, PageState } from '../types/type';
 
 function Home() {
+  const [actionFlag, setActionFlag] = useState<boolean>(false);
   const [pageState, setPageState] = useState<PageState>({ state: 'Input' });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [barInfo, setBarInfo] = useState<BarInfo>({
@@ -20,15 +24,44 @@ function Home() {
     message: '',
   });
 
+  const { year, setYear, month, setMonth, handlePreviousMonth, handleNextMonth } = useHomeScreen();
+  const { walletPageDisplayInfo } = useFetchWalletPage({ actionFlag, year, month, setIsLoading });
+
   return (
     <>
-      {pageState.state === 'Input' && <Input setIsLoading={setIsLoading} setBarInfo={setBarInfo} />}
-      {pageState.state === 'Wallet' && <Wallet />}
+      {/* Header */}
+      {pageState.state !== 'Input' ? (
+        <header>
+          <Header2
+            year={year}
+            month={month}
+            setYear={setYear}
+            setMonth={setMonth}
+            onClick1={handlePreviousMonth}
+            onClick2={handleNextMonth}
+          />
+        </header>
+      ) : null}
+
+      {/* Main: InputPageのみヘッダーあり */}
+      {pageState.state === 'Input' && (
+        <Input
+          actionFlag={actionFlag}
+          setActionFlag={setActionFlag}
+          setIsLoading={setIsLoading}
+          setBarInfo={setBarInfo}
+        />
+      )}
+      {pageState.state === 'Wallet' && <Wallet walletPageDisplayInfo={walletPageDisplayInfo} />}
       {pageState.state === 'Calendar' && <Calendar />}
       {pageState.state === 'Payments' && <Payments />}
+
+      {/* Footer */}
       <footer>
         <Footer pageState={pageState} setPageState={setPageState} />
       </footer>
+
+      {/* Common Properties */}
       {isLoading ? <MuiProgress /> : null}
       <MuiSnackbar
         open={barInfo.open}

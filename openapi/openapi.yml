@@ -10,7 +10,7 @@ servers:
     description: 本番環境
 paths:
   /registration:
-    put:
+    post:
       summary: Inputページから入力されたデータを登録するAPI
       tags:
         - '/v1/payment'
@@ -24,18 +24,23 @@ paths:
                 paymentDate:
                   type: string
                   format: date
+                  example: 2024-01-01
                   description: 収支日
                 paymentType:
                   type: boolean
+                  example: true
                   description: 収支種別
                 totalAmount:
                   type: number
+                  example: 500
                   description: 合計金額
                 categoryID:
                   type: number
+                  example: 1
                   description: カテゴリーID
                 memo:
                   type: string
+                  example: マクドナルド
                   description: メモ（大）
                 memos:
                   type: array
@@ -44,9 +49,11 @@ paths:
                     properties:
                       memo:
                         type: string
+                        example: ハンバーガー
                         description: メモ
                       amount:
                         type: number
+                        example: 500
                         description: 金額
                   description: メモ（小）
       responses:
@@ -54,11 +61,23 @@ paths:
           description: Created
         '500':
           description: Internal Server Error
-  /get_all:
-    get:
-      summary: 現在の総資産を取得するAPI
+  /get/all:
+    post:
+      summary: 現在の総資産・月間収支を取得するAPI
       tags:
         - '/v1/payment'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yearMonth:
+                  type: string
+                  format: date
+                  example: 2024-01
+                  description: 取得年月
       responses:
         '200':
           description: OK
@@ -69,5 +88,103 @@ paths:
                 properties:
                   totalAssets:
                     type: number
+                    example: 50000
+                    description: 現在総資産
+                  monthlyBalance:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        yearMonth:
+                          type: string
+                          format: date
+                          example: 2024-01
+                          description: 年月
+                        monthSpending:
+                          type: number
+                          example: 500
+                          description: 月間支出
+                        monthIncome:
+                          type: number
+                          example: 30000
+                          description: 月間収入
+                    description: 月間収支
+        '500':
+          description: Internal Server Error
+  /get/detail:
+    post:
+      summary: 月ごとの収支データを取得するAPI
+      tags:
+        - '/v1/payment'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yearMonth:
+                  type: string
+                  format: date
+                  example: 2024-01
+                  description: 取得年月
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    month:
+                      type: string
+                      format: date
+                      example: 2024-01
+                      description: 取得年月
+                    monthlyPayments:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          yearMonth:
+                            type: object
+                            properties:
+                              paymentDate:
+                                type: string
+                                format: date
+                                example: 2024-01-01
+                                description: 収支日
+                              paymentType:
+                                type: boolean
+                                example: true
+                                description: 収支種別
+                              totalAmount:
+                                type: number
+                                example: 500
+                                description: 合計金額
+                              categoryID:
+                                type: number
+                                example: 1
+                                description: カテゴリーID
+                              memo:
+                                type: string
+                                example: マクドナルド
+                                description: メモ（大）
+                              memos:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    memo:
+                                      type: string
+                                      example: ハンバーガー
+                                      description: メモ
+                                    amount:
+                                      type: number
+                                      example: 500
+                                      description: 金額
+                                description: メモ（小）
         '500':
           description: Internal Server Error
