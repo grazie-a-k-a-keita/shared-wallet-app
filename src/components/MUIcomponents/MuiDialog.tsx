@@ -69,7 +69,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dialog onClose={handleClose} open={open}>
+      <Dialog onClose={handleClose} open={open} sx={{ marginBottom: '40vh' }}>
         <Box sx={{ padding: '2rem' }}>
           <Typography fontSize='0.75rem' style={{ color: '#141414' }}>
             対象の月を選択してください
