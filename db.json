@@ -1,3 +1,20 @@
 {
-  "registration": []
+  "v1-payment-registration": {},
+  "v1-payment-get-all": {
+    "totalAssets": 50000,
+    "monthlyBalance": [
+      { "yearMonth": "2024-01", "monthSpending": 12653, "monthIncome": 30000 },
+      { "yearMonth": "2024-02", "monthSpending": 14705, "monthIncome": 15000 },
+      { "yearMonth": "2024-03", "monthSpending": 18000, "monthIncome": 20000 },
+      { "yearMonth": "2024-04", "monthSpending": 5000, "monthIncome": 20000 },
+      { "yearMonth": "2024-05", "monthSpending": 4857, "monthIncome": 25000 },
+      { "yearMonth": "2024-06", "monthSpending": 25004, "monthIncome": 30000 },
+      { "yearMonth": "2024-07", "monthSpending": 20838, "monthIncome": 30000 },
+      { "yearMonth": "2024-08", "monthSpending": 25009, "monthIncome": 40000 },
+      { "yearMonth": "2024-09", "monthSpending": 4567, "monthIncome": 5000 },
+      { "yearMonth": "2024-10", "monthSpending": 15000, "monthIncome": 20000 },
+      { "yearMonth": "2024-11", "monthSpending": 2843, "monthIncome": 15000 },
+      { "yearMonth": "2024-12", "monthSpending": 25030, "monthIncome": 30000 }
+    ]
+  }
 }
