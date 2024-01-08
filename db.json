@@ -1,5 +1,5 @@
 {
-  "v1-payment-registration": {},
+  "v1-payment-put": {},
   "v1-payment-get-all": {
     "totalAssets": 50000,
     "monthlyBalance": [
