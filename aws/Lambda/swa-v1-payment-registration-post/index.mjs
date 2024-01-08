@@ -69,8 +69,8 @@ export const handler = async (event) => {
     const SeqListUpdateItemRes = await client.send(SeqListUpdateItemCom);
     const SeqID = SeqListUpdateItemRes.Attributes.SeqID.N;
 
-    console.log('SeqList UpdateItem Res: ', SeqListUpdateItemRes);
-    console.log('SeqID: ', SeqID);
+    console.info('SeqList UpdateItem Res: ', SeqListUpdateItemRes);
+    console.info('SeqID: ', SeqID);
 
     // PaymentListに登録, TotalAmountを更新, TotalMonthAmountを更新
     const memos = [];
@@ -144,7 +144,7 @@ export const handler = async (event) => {
     const transactWriteItemsCom = new TransactWriteItemsCommand(transactWriteItemsInput);
     const transactWriteItemsRes = await client.send(transactWriteItemsCom);
 
-    console.log('TransactWriteItems Res: ', transactWriteItemsRes);
+    console.info('TransactWriteItems Res: ', transactWriteItemsRes);
 
     return createResponse(201);
   } catch (error) {

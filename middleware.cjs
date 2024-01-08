@@ -1,8 +1,4 @@
 module.exports = function (req, res, next) {
-  console.log(req.headers);
-  console.log(req.method);
-  console.log(req.body);
-
   if (req.method === 'POST') {
     req.method = 'GET';
 
