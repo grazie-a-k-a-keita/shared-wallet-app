@@ -2,7 +2,6 @@ import { DynamoDBClient, GetItemCommand, QueryCommand } from '@aws-sdk/client-dy
 
 const client = new DynamoDBClient('ap-northeast-1');
 const APPLICATION_ID = process.env.APPLICATION_ID;
-const now = new Date(Date.now() + (new Date().getTimezoneOffset() + 9 * 60) * 60 * 1000);
 
 /**
  * レスポンスを作成、返却
@@ -21,7 +20,7 @@ const createResponse = (statusCode, body) => {
 };
 
 /**
- * swa-v1-payment-get-all-post
+ * swa-v1-payment-get-all
  * @param {*} event
  * @returns
  */
