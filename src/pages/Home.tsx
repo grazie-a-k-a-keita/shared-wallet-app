@@ -54,7 +54,14 @@ function Home() {
           setBarInfo={setBarInfo}
         />
       )}
-      {pageState.state === 'Wallet' && <Wallet walletPageDisplayInfo={walletPageDisplayInfo} />}
+      {pageState.state === 'Wallet' && (
+        <Wallet
+          walletPageDisplayInfo={walletPageDisplayInfo}
+          year={year}
+          month={month}
+          fetchDataState={fetchDataState}
+        />
+      )}
       {pageState.state === 'Calendar' && (
         <Calendar year={year} month={month} fetchDataState={fetchDataState} />
       )}

@@ -186,6 +186,9 @@ export type InputPageProps = {
 // WalletPage Props type
 export type WalletPageProps = {
   walletPageDisplayInfo: WalletPageDisplayInfo;
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
 };
 
 // CalendarPage Props type
