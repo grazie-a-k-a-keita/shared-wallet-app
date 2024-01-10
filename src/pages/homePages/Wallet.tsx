@@ -1,11 +1,70 @@
+import { useEffect, useState } from 'react';
+
 import PieChart from '../../components/ReactChartjs2/PieChart';
 
 import classes from './Wallet.module.scss';
 
 import type { WalletPageProps } from '../../types/props';
+import type { PieChartGraphData } from '../../types/type';
 
 function Wallet(props: WalletPageProps) {
-  const { walletPageDisplayInfo } = props;
+  const { walletPageDisplayInfo, year, month, fetchDataState } = props;
+
+  const [pieChartInfo, setPieChartInfo] = useState<PieChartGraphData>({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+  });
+
+  useEffect(() => {
+    const setObj: PieChartGraphData = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+    };
+
+    const filterArray = fetchDataState.filter(
+      (item) => item.yearMonth === `${year}-${String(month).padStart(2, '0')}`
+    );
+
+    filterArray[0]?.monthlyPayments.forEach((item) => {
+      switch (item.categoryID) {
+        case 1:
+          setObj[1] += item.totalAmount;
+          break;
+        case 2:
+          setObj[2] += item.totalAmount;
+          break;
+        case 3:
+          setObj[3] += item.totalAmount;
+          break;
+        case 4:
+          setObj[4] += item.totalAmount;
+          break;
+        case 5:
+          setObj[5] += item.totalAmount;
+          break;
+        case 6:
+          setObj[6] += item.totalAmount;
+          break;
+        case 7:
+          setObj[7] += item.totalAmount;
+          break;
+        default:
+          break;
+      }
+    });
+
+    setPieChartInfo(setObj);
+  }, [year, month, fetchDataState]);
 
   return (
     <main>
@@ -32,17 +91,7 @@ function Wallet(props: WalletPageProps) {
       </div>
       <div>
         <p className={classes.titleText_3}>カテゴリー別の支出</p>
-        <PieChart
-          graphData={{
-            1: 12000,
-            2: 2000,
-            3: 5000,
-            4: 800,
-            5: 8000,
-            6: 5000,
-            7: 1500,
-          }}
-        />
+        <PieChart graphData={pieChartInfo} />
       </div>
     </main>
   );
