@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: $size10;
+  padding: 0 $size4 0 $size4;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.container_left {
+  display: flex;
+}
+
+.container_right {
+  display: flex;
+}
+
+.container_memos {
+  margin: auto 0;
+}
+
+.category_icon {
+  width: $size4;
+  height: $size4;
+  margin: auto 0;
+}
+
+/* text, font */
+
+.category_name {
+  @include text($Label_Color_Light_Secondary, $size4, $Bold);
+  line-height: $size10;
+  margin-left: $size4;
+}
+
+.memo {
+  @include text($Label_Color_Light_Secondary, $size2, $Bold);
+  line-height: $size4;
+  margin-left: $size4;
+}
+
+.income {
+  @include text($Default_SystemBlue, $size3, $Bold);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}
+
+.spending {
+  @include text($Default_SystemRed, $size3, $Bold);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}
+
+.display_none {
+  @include text($Background_Color_Light_Tertiary, $size3, $Bold);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}

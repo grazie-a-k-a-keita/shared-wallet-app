@@ -114,7 +114,32 @@ export type ToggleButtonProps = {
 };
 
 // ========================
-// MUI Components
+// Payments
+// ========================
+
+// PaymentDay Props type
+export type PaymentDayProps = {
+  date: number;
+  day: string;
+  income: number;
+  spending: number;
+};
+
+// PaymentInfo Props type
+export type PaymentInfoProps = {
+  categoryID: number;
+  memo: string;
+  subMemo: string;
+  subAmount: number;
+};
+
+// PaymentsWeek Props type
+export type PaymentWeekProps = {
+  currentWeek: number;
+};
+
+// ========================
+// React Chart js 2
 // ========================
 
 // PieChart Props type
@@ -200,5 +225,7 @@ export type CalendarPageProps = {
 
 // PaymentsPage Props type
 export type PaymentsPageProps = {
-  //
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
 };

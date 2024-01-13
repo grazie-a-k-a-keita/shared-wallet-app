@@ -65,7 +65,9 @@ function Home() {
       {pageState.state === 'Calendar' && (
         <Calendar year={year} month={month} fetchDataState={fetchDataState} />
       )}
-      {pageState.state === 'Payments' && <Payments />}
+      {pageState.state === 'Payments' && (
+        <Payments year={year} month={month} fetchDataState={fetchDataState} />
+      )}
 
       {/* Footer */}
       <footer>
