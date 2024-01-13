@@ -60,7 +60,7 @@ export const handler = async (event) => {
         paymentType: item.PaymentType.BOOL,
         totalAmount: Number(item.TotalAmount.N),
         categoryID: Number(item.CategoryID.N),
-        memo: item.Memo,
+        memo: item.Memo.S,
         memos: [],
       };
 

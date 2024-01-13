@@ -12,6 +12,7 @@
       "yearMonth": "2024-01",
       "monthlyPayments": [
         {
+          "seqId": 1,
           "paymentDate": "2024-01-01",
           "paymentType": true,
           "totalAmount": 5000,
@@ -23,6 +24,7 @@
           ]
         },
         {
+          "seqId": 2,
           "paymentDate": "2024-01-03",
           "paymentType": false,
           "totalAmount": 30000,
@@ -31,6 +33,7 @@
           "memos": []
         },
         {
+          "seqId": 3,
           "paymentDate": "2024-01-11",
           "paymentType": true,
           "totalAmount": 3000,
@@ -39,6 +42,7 @@
           "memos": [{ "memo": "memo_1", "amount": 3000 }]
         },
         {
+          "seqId": 4,
           "paymentDate": "2024-01-23",
           "paymentType": true,
           "totalAmount": 2000,
@@ -52,6 +56,7 @@
       "yearMonth": "2024-02",
       "monthlyPayments": [
         {
+          "seqId": 5,
           "paymentDate": "2024-02-02",
           "paymentType": false,
           "totalAmount": 15000,
@@ -60,6 +65,7 @@
           "memos": []
         },
         {
+          "seqId": 6,
           "paymentDate": "2024-02-01",
           "paymentType": true,
           "totalAmount": 1000,
@@ -68,6 +74,7 @@
           "memos": [{ "memo": "memo_1", "amount": 1000 }]
         },
         {
+          "seqId": 7,
           "paymentDate": "2024-02-21",
           "paymentType": true,
           "totalAmount": 2000,
@@ -76,6 +83,7 @@
           "memos": [{ "memo": "memo_1", "amount": 2000 }]
         },
         {
+          "seqId": 8,
           "paymentDate": "2024-02-12",
           "paymentType": true,
           "totalAmount": 3000,
@@ -84,6 +92,7 @@
           "memos": [{ "memo": "memo_1", "amount": 3000 }]
         },
         {
+          "seqId": 9,
           "paymentDate": "2024-02-15",
           "paymentType": true,
           "totalAmount": 500,
@@ -92,6 +101,7 @@
           "memos": [{ "memo": "memo_1", "amount": 500 }]
         },
         {
+          "seqId": 10,
           "paymentDate": "2024-02-29",
           "paymentType": true,
           "totalAmount": 500,
@@ -100,6 +110,7 @@
           "memos": [{ "memo": "memo_1", "amount": 500 }]
         },
         {
+          "seqId": 11,
           "paymentDate": "2024-02-08",
           "paymentType": true,
           "totalAmount": 8000,

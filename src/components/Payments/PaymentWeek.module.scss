@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  height: $size6;
+  padding-left: $size4;
+  background-color: $Background_Color_Light_Secondary;
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+}
+
+.text {
+  @include text($Default_MainRed, $size4, $Bold);
+  line-height: $size6;
+}
