@@ -22,11 +22,11 @@
 }
 
 .iconLabel_on {
+  @include Default_Body_XS($Default_MainRed);
   line-height: $size4;
-  @include text($Default_MainRed, $size2, $Medium);
 }
 
 .iconLabel_off {
+  @include Default_Body_XS($Label_Color_Light_Secondary);
   line-height: $size4;
-  @include text($Label_Color_Light_Secondary, $size2, $Medium);
 }

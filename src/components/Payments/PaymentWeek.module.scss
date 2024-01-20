@@ -9,6 +9,6 @@
 }
 
 .text {
-  @include text($Default_MainRed, $size4, $Bold);
+  @include Default_Bold_Label_S($Default_MainRed);
   line-height: $size6;
 }

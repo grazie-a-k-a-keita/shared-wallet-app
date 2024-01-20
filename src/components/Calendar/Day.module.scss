@@ -6,7 +6,7 @@
   padding: $size2 0;
   border-bottom: $Default_MainRed solid $borderLine;
   p {
-    @include text($Label_Color_Light_Primary, $size3, $Medium);
+    @include Default_Body_S($Label_Color_Light_Primary);
     line-height: $size4;
     text-align: center;
   }

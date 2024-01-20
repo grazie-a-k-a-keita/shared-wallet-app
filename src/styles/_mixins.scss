@@ -12,9 +12,45 @@
   box-shadow: 0 -0.125rem 2rem -1.25rem rgba(0, 0, 0, 0.5);
 }
 
+/* Font */
+@mixin Default_Bold_Label_XS($color) {
+  color: $color;
+  font-size: $size2;
+  line-height: $size4;
+  font-weight: $Bold;
+}
+
 @mixin Default_Bold_Label_S($color) {
   color: $color;
   font-size: $size3;
   line-height: $size4;
-  font-weight: 700;
+  font-weight: $Bold;
+}
+
+@mixin Default_Bold_Label_M($color) {
+  color: $color;
+  font-size: $size4;
+  line-height: $size6;
+  font-weight: $Bold;
+}
+
+@mixin Default_Bold_Label_L($color) {
+  color: $color;
+  font-size: $size6;
+  line-height: $size8;
+  font-weight: $Bold;
+}
+
+@mixin Default_Body_XS($color) {
+  color: $color;
+  font-size: $size2;
+  line-height: $size4;
+  font-weight: $Medium;
+}
+
+@mixin Default_Body_S($color) {
+  color: $color;
+  font-size: $size3;
+  line-height: $size4;
+  font-weight: $Medium;
 }
