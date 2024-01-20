@@ -11,3 +11,10 @@
 @mixin header_shadow {
   box-shadow: 0 -0.125rem 2rem -1.25rem rgba(0, 0, 0, 0.5);
 }
+
+@mixin Default_Bold_Label_S($color) {
+  color: $color;
+  font-size: $size3;
+  line-height: $size4;
+  font-weight: 700;
+}
