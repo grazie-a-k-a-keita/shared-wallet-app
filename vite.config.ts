@@ -1,56 +1,52 @@
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import { defineConfig } from 'vitest/config';
 
-export default defineConfig({
+export default defineConfig(() => ({
   plugins: [
     react(),
     VitePWA({
-      includeAssets: [
-        'offline.html',
-        'logo.svg',
-        'favicon.ico',
-        'robots.txt',
-        'apple-touch-icon.png',
-      ],
+      includeAssets: ['logo.svg', 'apple-touch-icon.png'],
       manifest: {
-        theme_color: '',
-        background_color: '#83001A',
-        display: 'standalone',
-        scope: '/',
+        id: '/Shared-Wallet-App/',
+        // App Name
+        name: 'Shared Wallet App',
+        // Short App Name
+        short_name: 'SWA',
+        // App Description
+        description: '共有家計簿アプリ',
+        // App Start URL
         start_url: '/',
-        name: 'Shared-Wallet-App',
-        short_name: 'Shared-Wallet-App',
-        description: '\u5171\u6709\u5bb6\u8a08\u7c3f\u30a2\u30d7\u30ea',
+        // Display Mode
+        display: 'standalone',
+        // App Orientation
+        orientation: 'portrait',
+        // Default Theme Colors
+        theme_color: '#83001A',
+        // App page background color to display before the stylesheet is loaded
+        background_color: '#F5F5F5',
+        // favicon and app icon array
         icons: [
           {
-            src: '/icon-192x192.png',
+            src: 'icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/icon-256x256.png',
-            sizes: '256x256',
-            type: 'image/png',
-          },
-          {
-            src: '/icon-384x384.png',
-            sizes: '384x384',
-            type: 'image/png',
-          },
-          {
-            src: '/icon-512x512.png',
+            src: 'icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: '/icon-512x512.png',
+            src: 'icon-512x512-mask.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable',
+            purpose: 'maskable',
           },
         ],
+        // Richer UI install available for desktop
+        screenshots: [],
       },
     }),
   ],
@@ -63,4 +59,4 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
     },
   },
-});
+}));
