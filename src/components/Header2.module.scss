@@ -13,6 +13,6 @@
 .year_month_text {
   text-align: center;
   padding: 0 $size4;
+  @include Default_Bold_Label_M($Default_MainYellow);
   line-height: $size12;
-  @include text($Default_MainYellow, $size4, $Bold);
 }

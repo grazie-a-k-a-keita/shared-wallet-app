@@ -35,7 +35,7 @@
   @include circle();
   background-color: $Default_MainRed;
   p {
-    @include text($Default_MainYellow, $size3, $Medium);
+    @include Default_Body_S($Default_MainYellow);
     @include date_text();
   }
 }
@@ -44,25 +44,25 @@
   @include circle();
   background-color: $Background_Color_Light_Primary;
   p {
-    @include text($Label_Color_Light_Primary, $size3, $Medium);
+    @include Default_Body_S($Label_Color_Light_Primary);
     @include date_text();
   }
 }
 
 .amount_income {
-  @include text($Default_SystemBlue, $size2, $Medium);
+  @include Default_Body_XS($Default_SystemBlue);
   line-height: $size4;
   text-align: center;
 }
 
 .amount_spending {
-  @include text($Default_SystemRed, $size2, $Medium);
+  @include Default_Body_XS($Default_SystemRed);
   line-height: $size4;
   text-align: center;
 }
 
 .amount_hide {
-  @include text($Background_Color_Light_Primary, $size2, $Medium);
+  @include Default_Body_XS($Background_Color_Light_Primary);
   line-height: $size4;
   text-align: center;
 }

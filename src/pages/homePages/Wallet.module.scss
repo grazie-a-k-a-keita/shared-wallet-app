@@ -6,30 +6,30 @@
 }
 
 .titleText_1 {
-  @include text($Label_Color_Light_Secondary, $size4, $Bold);
+  @include Default_Bold_Label_M($Label_Color_Light_Secondary);
   line-height: $size8;
 }
 
 .titleText_2 {
-  @include text($Label_Color_Light_Secondary, $size3, $Bold);
+  @include Default_Bold_Label_S($Label_Color_Light_Secondary);
   line-height: $size4;
   padding: $size2 0 $size2 $size4;
 }
 
 .titleText_3 {
-  @include text($Label_Color_Light_Primary, $size3, $Medium);
+  @include Default_Body_S($Label_Color_Light_Primary);
   line-height: $size4;
   padding: $size8 0;
   text-align: center;
 }
 
 .amountText_1 {
-  @include text($Default_MainRed, $size6, $Bold);
+  @include Default_Bold_Label_L($Default_MainRed);
   line-height: $size8;
 }
 
 .amountText_2 {
-  @include text($Default_MainRed, $size6, $Bold);
+  @include Default_Bold_Label_L($Default_MainRed);
   line-height: $size8;
   padding-right: $size7;
   text-align: right;

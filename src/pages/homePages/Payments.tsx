@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import NotDataIcon from '../../assets/svg/not_data_icon.svg';
 import PaymentDay from '../../components/Payments/PaymentDay';
 import PaymentInfo from '../../components/Payments/PaymentInfo';
 import PaymentWeek from '../../components/Payments/PaymentWeek';
@@ -18,6 +19,7 @@ function Payments(props: PaymentsPageProps) {
 
   const [paymentsInfo, setPaymentsInfo] = useState<PaymentsInfo>([]);
 
+  // 表示するデータの更新を行う
   useEffect(() => {
     const setArray: PaymentsInfo = [];
     const days = getMonthDetails(year, month);
@@ -85,6 +87,7 @@ function Payments(props: PaymentsPageProps) {
   const paymentsDataRender = () => {
     const paymentsDisplay = [];
     let currentWeek = 0;
+    let existData = false;
 
     // 1ヵ月分をループする
     for (let i = 1; i <= paymentsInfo.length; i += 1) {
@@ -96,6 +99,7 @@ function Payments(props: PaymentsPageProps) {
         for (let n = i - 1; n < i + 6; n += 1) {
           if (paymentsInfo[n].dayTotalIncome > 0 || paymentsInfo[n].dayTotalSpending > 0) {
             displayFlag = true;
+            existData = true;
           }
         }
 
@@ -135,6 +139,17 @@ function Payments(props: PaymentsPageProps) {
         paymentsDisplay.push(<div key={`line-${i - 1}`} className={classes.under_line} />);
       }
     }
+
+    // データが1件も存在しない場合
+    if (!existData) {
+      paymentsDisplay.push(
+        <div className={classes.not_data_container}>
+          <img src={NotDataIcon} alt='' className={classes.icon} />
+          <p className={classes.message}>データがありません</p>
+        </div>
+      );
+    }
+
     return paymentsDisplay;
   };
 

@@ -30,33 +30,33 @@
 /* text, font */
 
 .category_name {
-  @include text($Label_Color_Light_Secondary, $size4, $Bold);
+  @include Default_Bold_Label_M($Label_Color_Light_Secondary);
   line-height: $size10;
   margin-left: $size4;
 }
 
 .memo {
-  @include text($Label_Color_Light_Secondary, $size2, $Bold);
+  @include Default_Bold_Label_XS($Label_Color_Light_Secondary);
   line-height: $size4;
   margin-left: $size4;
 }
 
 .income {
-  @include text($Default_SystemBlue, $size3, $Bold);
+  @include Default_Bold_Label_S($Default_SystemBlue);
   line-height: $size10;
   margin-left: $size2;
   width: $size20;
 }
 
 .spending {
-  @include text($Default_SystemRed, $size3, $Bold);
+  @include Default_Bold_Label_S($Default_SystemRed);
   line-height: $size10;
   margin-left: $size2;
   width: $size20;
 }
 
 .display_none {
-  @include text($Background_Color_Light_Tertiary, $size3, $Bold);
+  @include Default_Bold_Label_S($Background_Color_Light_Tertiary);
   line-height: $size10;
   margin-left: $size2;
   width: $size20;
