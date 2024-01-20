@@ -143,9 +143,11 @@ function Payments(props: PaymentsPageProps) {
     // データが1件も存在しない場合
     if (!existData) {
       paymentsDisplay.push(
-        <div className={classes.not_data_container}>
-          <img src={NotDataIcon} alt='' className={classes.icon} />
-          <p className={classes.message}>データがありません</p>
+        <div key='not_data_div' className={classes.not_data_container}>
+          <img key='not_data_icon' src={NotDataIcon} alt='' className={classes.icon} />
+          <p key='not_data_text' className={classes.message}>
+            データがありません
+          </p>
         </div>
       );
     }
