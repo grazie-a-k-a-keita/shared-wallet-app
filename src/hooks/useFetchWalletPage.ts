@@ -41,11 +41,11 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
       return;
     }
 
-    setIsLoading(true);
-
     // API通信
     // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
     const fetchData = async (data: { yearMonth: string }) => {
+      setIsLoading(true);
+
       try {
         const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
 
@@ -81,22 +81,23 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
         setWalletPageDisplayInfo(setDisplayData);
       } catch (error) {
         navigate('/error');
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData({ yearMonth: `${year}-${String(month).padStart(2, '0')}` });
 
-    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionFlag]);
 
   // 年月が変更された場合
   useEffect(() => {
-    setIsLoading(true);
-
     // API通信
     // API通信後、引数の"data.yearMonth"に一致するデータを"walletPageDisplayInfo"にセットする
     const fetchData = async (data: { yearMonth: string }) => {
+      setIsLoading(true);
+
       try {
         const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
 
@@ -132,6 +133,8 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
         setWalletPageDisplayInfo(setDisplayData);
       } catch (error) {
         navigate('/error');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -159,7 +162,6 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
       setWalletPageDisplayInfo(setDisplayData);
     }
 
-    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year, month]);
 

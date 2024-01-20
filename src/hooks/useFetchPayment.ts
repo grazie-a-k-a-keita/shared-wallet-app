@@ -32,10 +32,10 @@ function useFetchPayment(props: UseFetchPaymentProps) {
       return;
     }
 
-    setIsLoading(true);
-
     // API通信
     const fetchData = async (data: { yearMonth: string }) => {
+      setIsLoading(true);
+
       try {
         const response = await axios.post<GetDetail>(
           import.meta.env.VITE_POST_PAYMENT_GET_DETAIL,
@@ -59,21 +59,22 @@ function useFetchPayment(props: UseFetchPaymentProps) {
         setFetchDataState(setData);
       } catch (error) {
         navigate('/error');
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData({ yearMonth: `${year}-${String(month).padStart(2, '0')}` });
 
-    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionFlag]);
 
   // 年月が変更された場合
   useEffect(() => {
-    setIsLoading(true);
-
     // API通信
     const fetchData = async (data: { yearMonth: string }) => {
+      setIsLoading(true);
+
       try {
         const response = await axios.post<GetDetail>(
           import.meta.env.VITE_POST_PAYMENT_GET_DETAIL,
@@ -97,6 +98,8 @@ function useFetchPayment(props: UseFetchPaymentProps) {
         setFetchDataState(setData);
       } catch (error) {
         navigate('/error');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -112,7 +115,6 @@ function useFetchPayment(props: UseFetchPaymentProps) {
       // すでに月の収支情報を持っている場合はAPI通信をスキップする
     }
 
-    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year, month]);
 
