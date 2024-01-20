@@ -9,8 +9,6 @@ import useInputPage from '../../hooks/useInputPage';
 
 import classes from './Input.module.scss';
 
-import type { InputPageProps } from '../../types/props';
-
 function Input(props: InputPageProps) {
   const {
     toggleState,

@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import Month from '../../components/Calendar/Month';
 import { getMonthDetails } from '../../configs/util';
 
-import type { CalendarPageProps, MonthProps } from '../../types/props';
+type CalendarPageProps = {
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
+};
 
 function Calendar(props: CalendarPageProps) {
   const { year, month, fetchDataState } = props;

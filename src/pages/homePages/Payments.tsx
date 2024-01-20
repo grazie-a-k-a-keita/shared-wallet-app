@@ -7,8 +7,11 @@ import { getMonthDetails } from '../../configs/util';
 
 import classes from './Payments.module.scss';
 
-import type { PaymentsPageProps } from '../../types/props';
-import type { PaymentsInfo, PaymentsInfoItem } from '../../types/type';
+type PaymentsPageProps = {
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
+};
 
 function Payments(props: PaymentsPageProps) {
   const { year, month, fetchDataState } = props;

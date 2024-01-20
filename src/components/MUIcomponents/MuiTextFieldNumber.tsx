@@ -3,7 +3,13 @@ import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
 
-import type { TextFieldNumberProps } from '../../types/props';
+type TextFieldNumberProps = {
+  label: string;
+  value?: number;
+  setState: React.Dispatch<React.SetStateAction<number>>;
+  isValue: boolean;
+  errorInfo: { error: boolean; message: string };
+};
 
 function MuiTextFieldNumber(props: TextFieldNumberProps) {
   const { label, value, setState, isValue, errorInfo } = props;
@@ -39,5 +45,9 @@ function MuiTextFieldNumber(props: TextFieldNumberProps) {
     </ThemeProvider>
   );
 }
+
+MuiTextFieldNumber.defaultProps = {
+  value: '',
+};
 
 export default MuiTextFieldNumber;

@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
-import type { GetAll } from '../types/api';
-import type { UseFetchWalletPageProps } from '../types/props';
-import type { WalletPageDisplayInfo } from '../types/type';
+type UseFetchWalletPageProps = {
+  actionFlag: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  year: number;
+  month: number;
+};
 
 function useFetchWalletPage(props: UseFetchWalletPageProps) {
   const { actionFlag, setIsLoading, year, month } = props;

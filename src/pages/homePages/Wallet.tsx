@@ -4,8 +4,12 @@ import PieChart from '../../components/ReactChartjs2/PieChart';
 
 import classes from './Wallet.module.scss';
 
-import type { WalletPageProps } from '../../types/props';
-import type { PieChartGraphData } from '../../types/type';
+type WalletPageProps = {
+  walletPageDisplayInfo: WalletPageDisplayInfo;
+  year: number;
+  month: number;
+  fetchDataState: GetDetail;
+};
 
 function Wallet(props: WalletPageProps) {
   const { walletPageDisplayInfo, year, month, fetchDataState } = props;

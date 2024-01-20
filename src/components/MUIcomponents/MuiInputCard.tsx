@@ -3,12 +3,23 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, Grid, ThemeProvider, Typography } from '@mui/material';
 
 import theme from '../../configs/theme';
+import {
+  BackgroundColorLightSecondary,
+  DefaultMainRed,
+  FontBold,
+  Size4,
+} from '../../styles/variables';
 
 import MuiIconButton from './MuiIconButton';
 import MuiTextField from './MuiTextField';
 import MuiTextFieldNumber from './MuiTextFieldNumber';
 
-import type { InputCardProps } from '../../types/props';
+type InputCardProps = {
+  itemNumber: number;
+  refObject: React.RefObject<HTMLDivElement>;
+  cardInfo: CardInfo;
+  setCardInfo: React.Dispatch<React.SetStateAction<CardInfo>>;
+};
 
 function MuiInputCard(props: InputCardProps) {
   const { itemNumber, refObject, cardInfo, setCardInfo } = props;
@@ -52,10 +63,10 @@ function MuiInputCard(props: InputCardProps) {
   return (
     <ThemeProvider theme={theme}>
       {cardVisible && (
-        <Card sx={{ backgroundColor: '#E5E5E5' }}>
+        <Card sx={{ backgroundColor: BackgroundColorLightSecondary }}>
           <CardContent>
             <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Typography fontSize='1rem' fontWeight='bold' color='#83001a'>
+              <Typography fontSize={Size4} fontWeight={FontBold} color={DefaultMainRed}>
                 Detail
               </Typography>
               <MuiIconButton iconType='delete' iconSize={24} onClick={handleDeleteCard} />

@@ -2,8 +2,12 @@ import { Grid, ThemeProvider, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
+import { Size3, Size5 } from '../../styles/variables';
 
-import type { TextFieldDateProps } from '../../types/props';
+type TextFieldDateProps = {
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+};
 
 function MuiTextFieldDate(props: TextFieldDateProps) {
   const { value, setState } = props;
@@ -14,8 +18,8 @@ function MuiTextFieldDate(props: TextFieldDateProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid style={{ paddingTop: '12px' }} />
-      <Typography fontSize='10.5px' lineHeight='20px' color='#00000099'>
+      <Grid style={{ paddingTop: Size3 }} />
+      <Typography fontSize='10.5px' lineHeight={Size5} color='#00000099'>
         日付
       </Typography>
       <TextField

@@ -9,7 +9,10 @@ import walletOn from '../assets/footerIcon/wallet_on.svg';
 
 import classes from './Footer.module.scss';
 
-import type { FooterProps } from '../types/props';
+type FooterProps = {
+  pageState: PageState;
+  setPageState: React.Dispatch<React.SetStateAction<PageState>>;
+};
 
 function Footer(props: FooterProps) {
   const { pageState, setPageState } = props;

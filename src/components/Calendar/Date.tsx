@@ -1,6 +1,12 @@
 import classes from './Date.module.scss';
 
-import type { DateProps } from '../../types/props';
+type DateProps = {
+  date: number;
+  today: boolean;
+  spending: number;
+  income: number;
+  underLine: boolean;
+};
 
 function Date(props: DateProps) {
   const { date, today, spending, income, underLine } = props;

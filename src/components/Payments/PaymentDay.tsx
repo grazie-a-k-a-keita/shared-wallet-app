@@ -1,6 +1,11 @@
 import classes from './PaymentDay.module.scss';
 
-import type { PaymentDayProps } from '../../types/props';
+type PaymentDayProps = {
+  date: number;
+  day: string;
+  income: number;
+  spending: number;
+};
 
 function PaymentDay(props: PaymentDayProps) {
   const { date, day, income, spending } = props;

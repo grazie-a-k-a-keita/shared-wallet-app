@@ -4,7 +4,14 @@ import classes from './Header2.module.scss';
 import MuiDialog from './MUIcomponents/MuiDialog';
 import MuiIconButton from './MUIcomponents/MuiIconButton';
 
-import type { Header2Props } from '../types/props';
+type Header2Props = {
+  year: number;
+  month: number;
+  onClick1: () => void;
+  onClick2: () => void;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
+};
 
 function Header2(props: Header2Props) {
   const { year, month, onClick1, onClick2, setYear, setMonth } = props;

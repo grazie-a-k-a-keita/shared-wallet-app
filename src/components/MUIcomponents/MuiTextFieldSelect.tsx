@@ -3,7 +3,11 @@ import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
 
-import type { TextFieldSelectProps } from '../../types/props';
+type TextFieldSelectProps = {
+  label: string;
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<number>>;
+};
 
 const options = [
   { value: '1', label: '食費' },

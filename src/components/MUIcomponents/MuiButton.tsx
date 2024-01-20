@@ -3,20 +3,29 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
+import { DefaultMainYellow, Size2, Size3, Size4, Size7 } from '../../styles/variables';
 
-import type { ButtonProps } from '../../types/props';
+type ButtonProps = {
+  buttonName: string;
+  onclick: () => void;
+};
 
 function MuiButton(props: ButtonProps) {
   const { buttonName, onclick } = props;
   return (
     <ThemeProvider theme={theme}>
-      <Button variant='contained' color='red' style={{ padding: '0.5rem 1rem' }} onClick={onclick}>
+      <Button
+        variant='contained'
+        color='red'
+        style={{ padding: `${Size2} ${Size4}` }}
+        onClick={onclick}
+      >
         <Typography
-          fontSize='0.75rem'
-          padding='0 1.75rem'
-          paddingRight='1.75rem'
-          paddingLeft='1.75rem'
-          style={{ color: '#e7c200' }}
+          fontSize={Size3}
+          padding={`0 ${Size7}`}
+          paddingRight={Size7}
+          paddingLeft={Size7}
+          style={{ color: `${DefaultMainYellow}` }}
         >
           {buttonName}
         </Typography>

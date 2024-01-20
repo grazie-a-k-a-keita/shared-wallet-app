@@ -11,7 +11,12 @@ import Train from '../../assets/categoryIcon/train.svg';
 
 import classes from './PaymentInfo.module.scss';
 
-import type { PaymentInfoProps } from '../../types/props';
+type PaymentInfoProps = {
+  categoryID: number;
+  memo: string;
+  subMemo: string;
+  subAmount: number;
+};
 
 function PaymentsInfo(props: PaymentInfoProps) {
   const { categoryID, memo, subMemo, subAmount } = props;

@@ -1,7 +1,9 @@
 import { ArcElement, Chart as ChartJS, Colors, Legend, Tooltip } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-import type { PieChartProps } from '../../types/props';
+type PieChartProps = {
+  graphData: { 1: number; 2: number; 3: number; 4: number; 5: number; 6: number; 7: number };
+};
 
 ChartJS.register(Colors);
 ChartJS.register(ArcElement, Tooltip, Legend);

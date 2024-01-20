@@ -4,10 +4,6 @@ import axios from 'axios';
 
 import { getCurrentDay } from '../configs/util';
 
-import type { RegistrationData } from '../types/api';
-import type { InputPageProps } from '../types/props';
-import type { CardInfo, IncomeAmountErrorInfo, SpendingAmountErrorInfo } from '../types/type';
-
 const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
 const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';
@@ -86,7 +82,7 @@ function useInputPage(props: InputPageProps) {
   const saveButtonClick = async () => {
     setIsLoading(true);
 
-    const data: RegistrationData = {
+    const data: PutRegistrationData = {
       paymentDate: '',
       paymentType: true,
       totalAmount: 0,
