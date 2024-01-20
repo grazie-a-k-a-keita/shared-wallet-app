@@ -2,8 +2,6 @@ import Date from './Date';
 import Day from './Day';
 import classes from './Month.module.scss';
 
-import type { MonthProps } from '../../types/props';
-
 function Month(props: MonthProps) {
   const { daysInfo } = props;
 

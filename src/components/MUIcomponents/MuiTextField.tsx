@@ -3,7 +3,12 @@ import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
 
-import type { TextFieldProps } from '../../types/props';
+type TextFieldProps = {
+  label: string;
+  value?: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  errorInfo: { error: boolean; message: string };
+};
 
 function MuiTextField(props: TextFieldProps) {
   const { label, value, setState, errorInfo } = props;
@@ -26,5 +31,9 @@ function MuiTextField(props: TextFieldProps) {
     </ThemeProvider>
   );
 }
+
+MuiTextField.defaultProps = {
+  value: '',
+};
 
 export default MuiTextField;

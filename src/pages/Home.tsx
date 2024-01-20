@@ -13,8 +13,6 @@ import Input from './homePages/Input';
 import Payments from './homePages/Payments';
 import Wallet from './homePages/Wallet';
 
-import type { BarInfo, PageState } from '../types/type';
-
 function Home() {
   const [actionFlag, setActionFlag] = useState<boolean>(false);
   const [pageState, setPageState] = useState<PageState>({ state: 'Input' });

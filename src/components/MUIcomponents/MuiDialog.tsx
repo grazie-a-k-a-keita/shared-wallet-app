@@ -8,7 +8,14 @@ import { getCurrentDay } from '../../configs/util';
 
 import MuiButton from './MuiButton';
 
-import type { DialogProps } from '../../types/props';
+type DialogProps = {
+  selectYear: number;
+  selectMonth: number;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+  setMonth: React.Dispatch<React.SetStateAction<number>>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export interface SimpleDialogProps {
   open: boolean;

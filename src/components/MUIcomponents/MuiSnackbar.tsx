@@ -8,8 +8,13 @@ import Stack from '@mui/material/Stack';
 import theme from '../../configs/textFieldTheme';
 
 import type { AlertProps } from '@mui/material/Alert';
-// eslint-disable-next-line import/order
-import type { SnackbarProps } from '../../types/props';
+
+type SnackbarProps = {
+  open: boolean;
+  severity: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading

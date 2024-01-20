@@ -4,7 +4,10 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
 
-import type { ButtonProps } from '../../types/props';
+type ButtonProps = {
+  buttonName: string;
+  onclick: () => void;
+};
 
 function MuiButton(props: ButtonProps) {
   const { buttonName, onclick } = props;

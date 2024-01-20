@@ -1,6 +1,8 @@
 import classes from './PaymentWeek.module.scss';
 
-import type { PaymentWeekProps } from '../../types/props';
+type PaymentWeekProps = {
+  currentWeek: number;
+};
 
 function PaymentsWeek(props: PaymentWeekProps) {
   const { currentWeek } = props;

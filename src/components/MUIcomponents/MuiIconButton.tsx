@@ -6,7 +6,11 @@ import libraryAdd from '../../assets/svg/library_add.svg';
 import navigateBefore from '../../assets/svg/navigate_before.svg';
 import navigateNext from '../../assets/svg/navigate_next.svg';
 
-import type { IconButtonProps } from '../../types/props';
+type IconButtonProps = {
+  iconType: 'navigateBefore' | 'navigateNext' | 'delete' | 'libraryAdd';
+  iconSize: 24 | 32;
+  onClick: () => void;
+};
 
 function MuiIconButton(props: IconButtonProps) {
   const { iconType, iconSize, onClick } = props;

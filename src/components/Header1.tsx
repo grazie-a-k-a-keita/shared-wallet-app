@@ -2,7 +2,13 @@ import classes from './Header1.module.scss';
 import MuiButton from './MUIcomponents/MuiButton';
 import ToggleButton from './MUIcomponents/MuiToggleButton';
 
-import type { Header1Props } from '../types/props';
+type Header1Props = {
+  leftButtonName: string;
+  rightButtonName: string;
+  setToggleStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  amount: number;
+  onClick: () => void;
+};
 
 function Header1(props: Header1Props) {
   const { leftButtonName, rightButtonName, setToggleStatus, amount, onClick } = props;

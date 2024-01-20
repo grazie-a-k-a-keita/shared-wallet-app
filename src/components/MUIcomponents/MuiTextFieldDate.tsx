@@ -3,7 +3,10 @@ import TextField from '@mui/material/TextField';
 
 import theme from '../../configs/textFieldTheme';
 
-import type { TextFieldDateProps } from '../../types/props';
+type TextFieldDateProps = {
+  value: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+};
 
 function MuiTextFieldDate(props: TextFieldDateProps) {
   const { value, setState } = props;

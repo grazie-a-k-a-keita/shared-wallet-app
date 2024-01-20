@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
 import { v4 as uuid } from 'uuid';
 
-import type { Days } from '../types/type';
-
 export function getCurrentDay() {
   const now: Date = new Date();
   const yyyy: string = now.getFullYear().toString();

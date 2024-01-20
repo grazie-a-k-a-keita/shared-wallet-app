@@ -4,9 +4,12 @@ import axios from 'axios';
 
 import { getCurrentDay } from '../configs/util';
 
-import type { RegistrationData } from '../types/api';
-import type { InputPageProps } from '../types/props';
-import type { CardInfo, IncomeAmountErrorInfo, SpendingAmountErrorInfo } from '../types/type';
+type InputPageProps = {
+  actionFlag: boolean;
+  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
+};
 
 const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
@@ -86,7 +89,7 @@ function useInputPage(props: InputPageProps) {
   const saveButtonClick = async () => {
     setIsLoading(true);
 
-    const data: RegistrationData = {
+    const data: PutRegistrationData = {
       paymentDate: '',
       paymentType: true,
       totalAmount: 0,

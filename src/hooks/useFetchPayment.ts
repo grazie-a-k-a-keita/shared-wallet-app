@@ -3,8 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
-import type { GetDetail } from '../types/api';
-import type { UseFetchPaymentProps } from '../types/props';
+type UseFetchPaymentProps = {
+  actionFlag: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  year: number;
+  month: number;
+};
 
 function useFetchPayment(props: UseFetchPaymentProps) {
   const { actionFlag, setIsLoading, year, month } = props;

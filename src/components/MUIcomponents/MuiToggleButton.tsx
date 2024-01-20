@@ -6,7 +6,11 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
 
-import type { ToggleButtonProps } from '../../types/props';
+type ToggleButtonProps = {
+  leftButtonName: string;
+  rightButtonName: string;
+  setToggleStatus: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 function MuiToggleButton(props: ToggleButtonProps) {
   const { leftButtonName, rightButtonName, setToggleStatus } = props;

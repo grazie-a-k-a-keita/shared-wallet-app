@@ -1,6 +1,8 @@
 import classes from './Day.module.scss';
 
-import type { DayProps } from '../../types/props';
+type DayProps = {
+  day: string;
+};
 
 function Day(props: DayProps) {
   const { day } = props;

@@ -8,7 +8,12 @@ import MuiIconButton from './MuiIconButton';
 import MuiTextField from './MuiTextField';
 import MuiTextFieldNumber from './MuiTextFieldNumber';
 
-import type { InputCardProps } from '../../types/props';
+type InputCardProps = {
+  itemNumber: number;
+  refObject: React.RefObject<HTMLDivElement>;
+  cardInfo: CardInfo;
+  setCardInfo: React.Dispatch<React.SetStateAction<CardInfo>>;
+};
 
 function MuiInputCard(props: InputCardProps) {
   const { itemNumber, refObject, cardInfo, setCardInfo } = props;
