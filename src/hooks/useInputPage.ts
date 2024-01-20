@@ -4,13 +4,6 @@ import axios from 'axios';
 
 import { getCurrentDay } from '../configs/util';
 
-type InputPageProps = {
-  actionFlag: boolean;
-  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
-};
-
 const ERROR_MESSAGE_1 = '未入力です。';
 const ERROR_MESSAGE_2 = '金額が0円以下です。';
 const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';

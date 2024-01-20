@@ -5,6 +5,7 @@ import Dialog from '@mui/material/Dialog';
 
 import theme from '../../configs/textFieldTheme';
 import { getCurrentDay } from '../../configs/util';
+import { LabelColorLightPrimary, Size2, Size3, Size4, Size8 } from '../../styles/variables';
 
 import MuiButton from './MuiButton';
 
@@ -17,7 +18,7 @@ type DialogProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export interface SimpleDialogProps {
+interface SimpleDialogProps {
   open: boolean;
   selectYear: number;
   selectMonth: number;
@@ -77,11 +78,11 @@ function SimpleDialog(props: SimpleDialogProps) {
   return (
     <ThemeProvider theme={theme}>
       <Dialog onClose={handleClose} open={open} sx={{ marginBottom: '40vh' }}>
-        <Box sx={{ padding: '2rem' }}>
-          <Typography fontSize='0.75rem' style={{ color: '#141414' }}>
+        <Box sx={{ padding: Size8 }}>
+          <Typography fontSize={Size3} style={{ color: LabelColorLightPrimary }}>
             対象の月を選択してください
           </Typography>
-          <Box sx={{ padding: '0.5rem' }} />
+          <Box sx={{ padding: Size2 }} />
           <TextField
             select
             label='year'
@@ -96,7 +97,7 @@ function SimpleDialog(props: SimpleDialogProps) {
               </MenuItem>
             ))}
           </TextField>
-          <Box sx={{ padding: '0.5rem' }} />
+          <Box sx={{ padding: Size2 }} />
           <TextField
             select
             label='month'
@@ -111,7 +112,7 @@ function SimpleDialog(props: SimpleDialogProps) {
               </MenuItem>
             ))}
           </TextField>
-          <Box sx={{ padding: '1rem' }} />
+          <Box sx={{ padding: Size4 }} />
           <Box sx={{ textAlign: 'center' }}>
             <MuiButton buttonName='決定' onclick={handleDecision} />
           </Box>

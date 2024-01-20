@@ -5,6 +5,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '../../configs/theme';
+import { Size8 } from '../../styles/variables';
 
 type ToggleButtonProps = {
   leftButtonName: string;
@@ -34,7 +35,7 @@ function MuiToggleButton(props: ToggleButtonProps) {
     <ThemeProvider theme={theme}>
       <ToggleButtonGroup
         color='yellow'
-        style={{ height: '2rem' }}
+        style={{ height: Size8 }}
         exclusive // 1つの要素のみ選択可能
         fullWidth
         onChange={handleChange}

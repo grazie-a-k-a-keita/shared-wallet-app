@@ -1,14 +1,15 @@
 import { Box, CircularProgress, Modal } from '@mui/material';
 
 import loading from '../../assets/svg/loading.svg';
+import { DefaultMainYellow, Size12 } from '../../styles/variables';
 
 function MuiProgress() {
   return (
     <Modal open sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Box sx={{ position: 'relative', width: '48px', height: '48px' }}>
+      <Box sx={{ position: 'relative', width: Size12, height: Size12 }}>
         <CircularProgress
           size={48}
-          sx={{ color: '#e7c200', position: 'absolute', top: 0, left: 0 }}
+          sx={{ color: DefaultMainYellow, position: 'absolute', top: 0, left: 0 }}
         />
         <img
           src={loading}
