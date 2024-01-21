@@ -64,7 +64,15 @@ function Home() {
         <Calendar year={year} month={month} fetchDataState={fetchDataState} />
       )}
       {pageState.state === 'Payments' && (
-        <Payments year={year} month={month} fetchDataState={fetchDataState} />
+        <Payments
+          year={year}
+          month={month}
+          fetchDataState={fetchDataState}
+          setIsLoading={setIsLoading}
+          actionFlag={actionFlag}
+          setActionFlag={setActionFlag}
+          setBarInfo={setBarInfo}
+        />
       )}
 
       {/* Footer */}

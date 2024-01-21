@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { v4 as uuid } from 'uuid';
+
 import NotDataIcon from '../../assets/svg/not_data_icon.svg';
 import PaymentDay from '../../components/Payments/PaymentDay';
 import PaymentInfo from '../../components/Payments/PaymentInfo';
@@ -12,10 +14,15 @@ type PaymentsPageProps = {
   year: number;
   month: number;
   fetchDataState: GetDetail;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  actionFlag: boolean;
+  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
 
 function Payments(props: PaymentsPageProps) {
-  const { year, month, fetchDataState } = props;
+  const { year, month, fetchDataState, setIsLoading, actionFlag, setActionFlag, setBarInfo } =
+    props;
 
   const [paymentsInfo, setPaymentsInfo] = useState<PaymentsInfo>([]);
 
@@ -105,9 +112,7 @@ function Payments(props: PaymentsPageProps) {
 
         // 1週間中でデータが存在する場合のみ表示する
         if (displayFlag) {
-          paymentsDisplay.push(
-            <PaymentWeek key={`week-${currentWeek}`} currentWeek={currentWeek} />
-          );
+          paymentsDisplay.push(<PaymentWeek key={`week-${uuid()}`} currentWeek={currentWeek} />);
         }
       }
 
@@ -115,7 +120,7 @@ function Payments(props: PaymentsPageProps) {
       if (paymentsInfo[i - 1].dayTotalIncome > 0 || paymentsInfo[i - 1].dayTotalSpending > 0) {
         paymentsDisplay.push(
           <PaymentDay
-            key={`day-${paymentsInfo[i - 1].date}-${paymentsInfo[i - 1].day}`}
+            key={`day-${uuid()}`}
             date={paymentsInfo[i - 1].date}
             day={paymentsInfo[i - 1].day}
             income={paymentsInfo[i - 1].dayTotalIncome}
@@ -126,17 +131,25 @@ function Payments(props: PaymentsPageProps) {
         for (let d = 0; d < paymentsInfo[i - 1].paymentData.length; d += 1) {
           paymentsDisplay.push(
             <PaymentInfo
-              key={`payment-${paymentsInfo[i - 1].date}-${
-                paymentsInfo[i - 1].paymentData[d].memosOrder
-              }`}
+              key={`info-${uuid()}`}
+              paymentDate={`${year}-${String(month).padStart(2, '0')}-${String(
+                paymentsInfo[i - 1].date
+              ).padStart(2, '0')}`}
+              seqId={paymentsInfo[i - 1].paymentData[d].seqId}
+              memosOrder={paymentsInfo[i - 1].paymentData[d].memosOrder}
+              paymentType={paymentsInfo[i - 1].paymentData[d].paymentType}
               categoryID={paymentsInfo[i - 1].paymentData[d].categoryID}
               memo={paymentsInfo[i - 1].paymentData[d].memo}
               subMemo={paymentsInfo[i - 1].paymentData[d].subMemo}
               subAmount={paymentsInfo[i - 1].paymentData[d].subAmount}
+              setIsLoading={setIsLoading}
+              actionFlag={actionFlag}
+              setActionFlag={setActionFlag}
+              setBarInfo={setBarInfo}
             />
           );
         }
-        paymentsDisplay.push(<div key={`line-${i - 1}`} className={classes.under_line} />);
+        paymentsDisplay.push(<div key={`line-${uuid()}`} className={classes.under_line} />);
       }
     }
 

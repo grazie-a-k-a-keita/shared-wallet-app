@@ -8,21 +8,46 @@ import FoodBank from '../../assets/categoryIcon/food_bank.svg';
 import Savings from '../../assets/categoryIcon/savings.svg';
 import Star from '../../assets/categoryIcon/star.svg';
 import Train from '../../assets/categoryIcon/train.svg';
+import MuiDialog2 from '../MUIcomponents/MuiDialog2';
 
 import classes from './PaymentInfo.module.scss';
 
 type PaymentInfoProps = {
+  paymentDate: string;
+  seqId: number;
+  memosOrder: number;
+  paymentType: boolean;
   categoryID: number;
   memo: string;
   subMemo: string;
   subAmount: number;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  actionFlag: boolean;
+  setActionFlag: React.Dispatch<React.SetStateAction<boolean>>;
+  setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
 
 function PaymentsInfo(props: PaymentInfoProps) {
-  const { categoryID, memo, subMemo, subAmount } = props;
+  const {
+    paymentDate,
+    seqId,
+    memosOrder,
+    paymentType,
+    categoryID,
+    memo,
+    subMemo,
+    subAmount,
+    setIsLoading,
+    actionFlag,
+    setActionFlag,
+    setBarInfo,
+  } = props;
 
   const [categoryName, setCategoryName] = useState<string>('');
   const [categoryIcon, setCategoryIcon] = useState<string>('');
+
+  // 編集用ダイアログ
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   useEffect(() => {
     switch (categoryID) {
@@ -63,25 +88,51 @@ function PaymentsInfo(props: PaymentInfoProps) {
     }
   }, [categoryID]);
 
+  const handleDialogOpen = () => setDialogOpen(true);
+
   return (
-    <div className={classes.container}>
-      <div className={classes.container_left}>
-        <img src={categoryIcon} alt='' className={classes.category_icon} />
-        <p className={classes.category_name}>{categoryName}</p>
-        <div className={classes.container_memos}>
-          <p className={classes.memo}>{memo}</p>
-          <p className={classes.memo}>{subMemo}</p>
+    <>
+      <div
+        className={classes.container}
+        onClick={handleDialogOpen}
+        onKeyDown={handleDialogOpen}
+        role='button'
+        tabIndex={-1}
+      >
+        <div className={classes.container_left}>
+          <img src={categoryIcon} alt='' className={classes.category_icon} />
+          <p className={classes.category_name}>{categoryName}</p>
+          <div className={classes.container_memos}>
+            <p className={classes.memo}>{memo}</p>
+            <p className={classes.memo}>{subMemo}</p>
+          </div>
+        </div>
+        <div className={classes.container_right}>
+          <p className={categoryID !== 0 ? classes.display_none : classes.income}>
+            &yen; {subAmount.toLocaleString()}
+          </p>
+          <p className={categoryID !== 0 ? classes.spending : classes.display_none}>
+            &yen; {categoryID === 0 ? '' : subAmount.toLocaleString()}
+          </p>
         </div>
       </div>
-      <div className={classes.container_right}>
-        <p className={categoryID !== 0 ? classes.display_none : classes.income}>
-          &yen; {subAmount.toLocaleString()}
-        </p>
-        <p className={categoryID !== 0 ? classes.spending : classes.display_none}>
-          &yen; {categoryID === 0 ? '' : subAmount.toLocaleString()}
-        </p>
-      </div>
-    </div>
+      <MuiDialog2
+        open={dialogOpen}
+        setOpen={setDialogOpen}
+        paymentDate={paymentDate}
+        seqId={seqId}
+        memosOrder={memosOrder}
+        paymentType={paymentType}
+        categoryID={categoryID}
+        memo={memo}
+        subMemo={subMemo}
+        subAmount={subAmount}
+        setIsLoading={setIsLoading}
+        actionFlag={actionFlag}
+        setActionFlag={setActionFlag}
+        setBarInfo={setBarInfo}
+      />
+    </>
   );
 }
 
