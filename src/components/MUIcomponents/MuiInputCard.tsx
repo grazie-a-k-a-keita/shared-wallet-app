@@ -75,6 +75,7 @@ function MuiInputCard(props: InputCardProps) {
             <Grid sx={{ paddingTop: 1 }} />
             <MuiTextField
               label='メモ（商品名など）'
+              value={cardInfo[itemNumber - 1].memo}
               setState={setMemoInfo}
               errorInfo={{
                 error: cardInfo[itemNumber - 1].errorInfo.memoErr,
