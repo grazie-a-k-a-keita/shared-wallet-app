@@ -1,4 +1,4 @@
-// POST /v1/payment/registration
+// POST /v1/payment/put
 declare type PutRegistrationData = {
   paymentDate: string;
   paymentType: boolean;

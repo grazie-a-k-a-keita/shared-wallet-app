@@ -6,7 +6,7 @@ import { DefaultMainYellow, Size12 } from '../../styles/variables';
 function MuiProgress() {
   return (
     <Modal open sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Box sx={{ position: 'relative', width: Size12, height: Size12 }}>
+      <Box sx={{ position: 'relative', width: Size12, height: Size12, outline: 'none' }}>
         <CircularProgress
           size={48}
           sx={{ color: DefaultMainYellow, position: 'absolute', top: 0, left: 0 }}

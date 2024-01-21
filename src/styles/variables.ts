@@ -15,5 +15,9 @@ export const FontBold = 700;
 // Color
 export const DefaultMainRed = '#83001a';
 export const DefaultMainYellow = '#e7c200';
+
+export const DefaultSystemBlue = '#007aff';
+export const DefaultSystemRed = '#ff3b30';
+
 export const LabelColorLightPrimary = '#141414';
 export const BackgroundColorLightSecondary = '#e5e5e5';

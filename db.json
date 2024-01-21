@@ -1,5 +1,6 @@
 {
   "v1-payment-put": {},
+  "v1-payment-post-item": {},
   "v1-payment-get-all": {
     "totalAssets": 20000,
     "monthlyBalance": [

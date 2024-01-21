@@ -2,13 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import axios from 'axios';
 
+import messageData from '../configs/messageData.json';
 import { getCurrentDay } from '../configs/util';
-
-const ERROR_MESSAGE_1 = '未入力です。';
-const ERROR_MESSAGE_2 = '金額が0円以下です。';
-const BAR_STATUS_MESSAGE_1 = '入力項目を保存しました。';
-const BAR_STATUS_MESSAGE_2 = '入力項目に誤りがあります。';
-const BAR_STATUS_MESSAGE_3 = '通信に失敗しました。時間をおいて再度お試しください。';
 
 function useInputPage(props: InputPageProps) {
   const { actionFlag, setActionFlag, setIsLoading, setBarInfo } = props;
@@ -120,7 +115,7 @@ function useInputPage(props: InputPageProps) {
       // メモが空文字の場合
       if (!data.memo) {
         errObj.memoErr = true;
-        errObj.memoMessage = ERROR_MESSAGE_1;
+        errObj.memoMessage = messageData.ERROR_MESSAGE_1;
         errorFlag = true;
       } else {
         errObj.memoErr = false;
@@ -133,7 +128,7 @@ function useInputPage(props: InputPageProps) {
         // カード内のメモが空文字の場合
         if (cardInfo[i].valid && !cardInfo[i].memo) {
           errCardObj[i].errorInfo.memoErr = true;
-          errCardObj[i].errorInfo.memoMessage = ERROR_MESSAGE_1;
+          errCardObj[i].errorInfo.memoMessage = messageData.ERROR_MESSAGE_1;
           errorFlag = true;
         } else {
           errCardObj[i].errorInfo.memoErr = false;
@@ -142,7 +137,7 @@ function useInputPage(props: InputPageProps) {
         // カード内の金額が0円以下の場合
         if (cardInfo[i].valid && cardInfo[i].amount <= 0) {
           errCardObj[i].errorInfo.amountErr = true;
-          errCardObj[i].errorInfo.amountMessage = ERROR_MESSAGE_2;
+          errCardObj[i].errorInfo.amountMessage = messageData.ERROR_MESSAGE_2;
           errorFlag = true;
         } else {
           errCardObj[i].errorInfo.amountErr = false;
@@ -158,7 +153,7 @@ function useInputPage(props: InputPageProps) {
       // メモが空文字の場合
       if (!data.memo) {
         errObj.memoErr = true;
-        errObj.memoMessage = ERROR_MESSAGE_1;
+        errObj.memoMessage = messageData.ERROR_MESSAGE_1;
         errorFlag = true;
       } else {
         errObj.memoErr = false;
@@ -167,7 +162,7 @@ function useInputPage(props: InputPageProps) {
       // 金額が0円以下の場合
       if (!data.totalAmount || data.totalAmount <= 0) {
         errObj.amountErr = true;
-        errObj.amountMessage = ERROR_MESSAGE_2;
+        errObj.amountMessage = messageData.ERROR_MESSAGE_2;
         errorFlag = true;
       } else {
         errObj.amountErr = false;
@@ -178,7 +173,7 @@ function useInputPage(props: InputPageProps) {
 
     if (errorFlag) {
       setIsLoading(false);
-      setBarInfo({ open: true, severity: 'error', message: BAR_STATUS_MESSAGE_2 });
+      setBarInfo({ open: true, severity: 'error', message: messageData.BAR_STATUS_MESSAGE_2 });
       return;
     }
 
@@ -188,7 +183,7 @@ function useInputPage(props: InputPageProps) {
       setActionFlag(!actionFlag);
     } catch (error) {
       setIsLoading(false);
-      setBarInfo({ open: true, severity: 'error', message: BAR_STATUS_MESSAGE_3 });
+      setBarInfo({ open: true, severity: 'error', message: messageData.BAR_STATUS_MESSAGE_3 });
       return;
     }
 
@@ -205,7 +200,7 @@ function useInputPage(props: InputPageProps) {
     setIncomeError({ memoErr: false, memoMessage: '', amountErr: false, amountMessage: '' });
 
     setIsLoading(false);
-    setBarInfo({ open: true, severity: 'success', message: BAR_STATUS_MESSAGE_1 });
+    setBarInfo({ open: true, severity: 'success', message: messageData.BAR_STATUS_MESSAGE_1 });
   };
 
   return {
