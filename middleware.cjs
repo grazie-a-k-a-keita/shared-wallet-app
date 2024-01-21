@@ -13,6 +13,10 @@ module.exports = function (req, res, next) {
     if (req.url === '/api/v1-payment-get-detail') {
       req.url = '/v1-payment-get-detail';
     }
+
+    if (req.url === '/api/v1-payment-post-item') {
+      req.url = '/v1-payment-post-item';
+    }
   }
 
   next();
