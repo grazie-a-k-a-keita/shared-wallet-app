@@ -107,6 +107,9 @@ body {
   /* font-family 設定 */
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1;
+  /* 端末設定のフォントサイズに依存させない */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; /* Safari */
 }
 ol,
 ul {
