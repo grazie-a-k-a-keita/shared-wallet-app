@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { ThemeProvider } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
@@ -13,7 +15,10 @@ type TextFieldProps = {
 function MuiTextField(props: TextFieldProps) {
   const { label, value, setState, errorInfo } = props;
 
+  const [copyInputValue, setCopyInputValue] = useState<string>(value as string);
+
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCopyInputValue(event.target.value);
     setState(event.target.value);
   };
 
@@ -21,7 +26,7 @@ function MuiTextField(props: TextFieldProps) {
     <ThemeProvider theme={theme}>
       <TextField
         label={label}
-        value={value}
+        value={copyInputValue}
         variant='standard'
         fullWidth
         onChange={handleValueChange}
