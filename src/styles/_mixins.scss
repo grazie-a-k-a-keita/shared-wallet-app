@@ -1,49 +1,56 @@
-@mixin text-2xs($color) {
-  font-size: 0.5rem; /* 8px */
+@mixin text($color, $size, $weight) {
   color: $color;
+  font-size: $size;
+  font-weight: $weight;
 }
 
-@mixin text-xs($color) {
-  font-size: 0.75rem; /* 12px */
-  color: $color;
+@mixin radius {
+  border-radius: 0.25rem;
 }
 
-@mixin text-base($color) {
-  font-size: 1rem; /* 16px */
-  color: $color;
+@mixin header_shadow {
+  box-shadow: 0 -0.125rem 2rem -1.25rem rgba(0, 0, 0, 0.5);
 }
 
-@mixin text-xl($color) {
-  font-size: 1.25rem; /* 20px */
+/* Font */
+@mixin Default_Bold_Label_XS($color) {
   color: $color;
+  font-size: $size2;
+  line-height: $size4;
+  font-weight: $Bold;
 }
 
-@mixin text-2xl($color) {
-  font-size: 1.5rem; /* 24px */
+@mixin Default_Bold_Label_S($color) {
   color: $color;
+  font-size: $size3;
+  line-height: $size4;
+  font-weight: $Bold;
 }
 
-@mixin text-3xl($color) {
-  font-size: 1.75rem; /* 28px */
+@mixin Default_Bold_Label_M($color) {
   color: $color;
+  font-size: $size4;
+  line-height: $size6;
+  font-weight: $Bold;
 }
 
-@mixin text-4xl($color) {
-  font-size: 2rem; /* 32px */
+@mixin Default_Bold_Label_L($color) {
   color: $color;
+  font-size: $size6;
+  line-height: $size8;
+  font-weight: $Bold;
 }
 
-@mixin text-5xl($color) {
-  font-size: 2.25rem; /* 36px */
+@mixin Default_Body_XS($color) {
   color: $color;
+  font-size: $size2;
+  line-height: $size4;
+  font-weight: $Medium;
 }
 
-@mixin text-6xl($color) {
-  font-size: 2.5rem; /* 40px */
+@mixin Default_Body_S($color) {
   color: $color;
-}
-
-@mixin text-7xl($color) {
-  font-size: 2.75rem; /* 44px */
-  color: $color;
+  font-size: $size3;
+  line-height: $size4;
+  font-weight: $Medium;
 }

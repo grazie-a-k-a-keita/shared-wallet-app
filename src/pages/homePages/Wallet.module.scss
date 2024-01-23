@@ -1,0 +1,57 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.centerBorder {
+  border-right: $Label_Color_Light_Secondary solid $borderLine;
+}
+
+.titleText_1 {
+  @include Default_Bold_Label_M($Label_Color_Light_Secondary);
+  line-height: $size8;
+}
+
+.titleText_2 {
+  @include Default_Bold_Label_S($Label_Color_Light_Secondary);
+  line-height: $size4;
+  padding: $size2 0 $size2 $size4;
+}
+
+.titleText_3 {
+  @include Default_Body_S($Label_Color_Light_Primary);
+  line-height: $size4;
+  padding: $size8 0;
+  text-align: center;
+}
+
+.amountText_1 {
+  @include Default_Bold_Label_L($Default_MainRed);
+  line-height: $size8;
+}
+
+.amountText_2 {
+  @include Default_Bold_Label_L($Default_MainRed);
+  line-height: $size8;
+  padding-right: $size7;
+  text-align: right;
+}
+
+.totalAmount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $size8 0;
+  height: $size20;
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.totalPayments {
+  display: flex;
+  height: $size20;
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.payment {
+  width: 50%;
+}

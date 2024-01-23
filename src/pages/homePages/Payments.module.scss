@@ -1,0 +1,24 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.under_line {
+  border-bottom: $Label_Color_Light_Secondary solid $borderLine;
+}
+
+.not_data_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.icon {
+  height: $size12;
+}
+
+.message {
+  text-align: center;
+  padding-top: $size10;
+  @include Default_Bold_Label_S($Label_Color_Light_Secondary);
+}

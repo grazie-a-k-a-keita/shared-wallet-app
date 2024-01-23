@@ -1,0 +1,10 @@
+{
+  "ERROR_MESSAGE_1": "未入力です。",
+  "ERROR_MESSAGE_2": "金額が0円以下です。",
+
+  "BAR_STATUS_MESSAGE_1": "入力項目を保存しました。",
+  "BAR_STATUS_MESSAGE_2": "入力項目に誤りがあります。",
+  "BAR_STATUS_MESSAGE_3": "通信に失敗しました。時間をおいて再度お試しください。",
+  "BAR_STATUS_MESSAGE_4": "選択項目を削除しました。",
+  "BAR_STATUS_MESSAGE_5": "選択項目を更新しました。"
+}

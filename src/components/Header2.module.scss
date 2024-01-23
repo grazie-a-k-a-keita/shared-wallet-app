@@ -1,0 +1,18 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+/* year-month */
+.year_month_container {
+  display: flex;
+  justify-content: space-between;
+  height: $size12;
+  padding: 0 $size16;
+  margin-top: $size2;
+}
+
+.year_month_text {
+  text-align: center;
+  padding: 0 $size4;
+  @include Default_Bold_Label_M($Default_MainYellow);
+  line-height: $size12;
+}

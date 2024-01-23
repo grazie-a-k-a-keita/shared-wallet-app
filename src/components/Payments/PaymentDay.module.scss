@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: $size10;
+  padding: 0 $size4 0 $size4;
+  background-color: $Background_Color_Light_Tertiary;
+}
+
+.container_left {
+  display: flex;
+}
+
+.container_right {
+  display: flex;
+}
+
+/* text, font */
+
+.date {
+  @include Default_Bold_Label_M($Label_Color_Light_Primary);
+  line-height: $size10;
+}
+
+.day {
+  @include Default_Bold_Label_S($Label_Color_Light_Primary);
+  line-height: $size10;
+  margin-left: $size1;
+}
+
+.income {
+  @include Default_Bold_Label_S($Default_SystemBlue);
+  line-height: $size10;
+  width: $size20;
+}
+
+.spending {
+  @include Default_Bold_Label_S($Default_SystemRed);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}

@@ -1,4 +1,37 @@
 /* Color */
-$black: #333333;
-$white: #f4f4f4;
-$gray: #d8d8d8;
+$Default_MainRed: #83001a;
+$Default_MainYellow: #e7c200;
+$Default_SystemBlue: #007aff;
+$Default_SystemRed: #ff3b30;
+$Label_Color_Light_Primary: #141414;
+$Label_Color_Light_Secondary: rgba(0, 0, 0, 0.5);
+$Background_Color_Light_Primary: #f5f5f5;
+$Background_Color_Light_Secondary: #e5e5e5;
+$Background_Color_Light_Tertiary: #efefef;
+
+/* Font Weight */
+$Medium: 500;
+$Bold: 700;
+
+/* Size */
+// ※tailwind CSS のサイズ基準
+$borderLine: 1px;
+$size1: 0.25rem; /* 4px */
+$size2: 0.5rem; /* 8px */
+$size3: 0.75rem; /* 12px */
+$size4: 1rem; /* 16px */
+$size5: 1.25rem; /* 20px */
+$size6: 1.5rem; /* 24px */
+$size7: 1.75rem; /* 28px */
+$size8: 2rem; /* 32px */
+$size9: 2.25rem; /* 36px */
+$size10: 2.5rem; /* 40px */
+$size11: 2.75rem; /* 44px */
+$size12: 3rem; /* 48px */
+$size14: 3.5rem; /* 56px */
+$size16: 4rem; /* 64px */
+$size20: 5rem; /* 80px */
+$size24: 6rem; /* 96px */
+$size28: 7rem; /* 112px */
+$size32: 8rem; /* 128px */
+$size58: 14.5rem; /* 232px */

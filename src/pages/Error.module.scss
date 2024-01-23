@@ -6,6 +6,6 @@
 }
 
 .title {
-  @include text-7xl($black);
+  @include Default_Bold_Label_L('#000000');
   margin-bottom: 1rem;
 }
