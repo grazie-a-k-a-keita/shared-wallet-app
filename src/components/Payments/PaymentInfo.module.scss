@@ -40,6 +40,10 @@
   @include Default_Bold_Label_XS($Label_Color_Light_Secondary);
   line-height: $size4;
   margin-left: $size4;
+  width: $size24;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .income {
