@@ -23,7 +23,7 @@ export default defineConfig(() => ({
         // App Description
         description: '共有家計簿アプリ',
         // App Start URL
-        start_url: '/',
+        start_url: '/login',
         // Display Mode
         display: 'standalone',
         // App Orientation
