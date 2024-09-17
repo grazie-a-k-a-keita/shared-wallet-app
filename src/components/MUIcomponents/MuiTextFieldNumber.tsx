@@ -5,7 +5,7 @@ import theme from '../../configs/textFieldTheme';
 
 type TextFieldNumberProps = {
   label: string;
-  value?: number;
+  value: number;
   setState: React.Dispatch<React.SetStateAction<number>>;
   isValue: boolean;
   errorInfo: { error: boolean; message: string };
@@ -45,9 +45,5 @@ function MuiTextFieldNumber(props: TextFieldNumberProps) {
     </ThemeProvider>
   );
 }
-
-MuiTextFieldNumber.defaultProps = {
-  value: '',
-};
 
 export default MuiTextFieldNumber;

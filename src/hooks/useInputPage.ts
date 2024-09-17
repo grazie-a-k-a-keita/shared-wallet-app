@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import messageData from '../configs/messageData.json';
 import { getCurrentDay } from '../configs/util';
+import { getApiToken } from '../lib/utils';
 
 function useInputPage(props: InputPageProps) {
   const { actionFlag, setActionFlag, setIsLoading, setBarInfo } = props;
@@ -179,7 +180,10 @@ function useInputPage(props: InputPageProps) {
 
     // API通信
     try {
-      await axios.post(import.meta.env.VITE_POST_PAYMENT_PUT, data);
+      const token = await getApiToken();
+      await axios.post(`${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/post/item`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setActionFlag(!actionFlag);
     } catch (error) {
       setIsLoading(false);

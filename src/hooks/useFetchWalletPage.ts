@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import { getApiToken } from '../lib/utils';
+
 type UseFetchWalletPageProps = {
   actionFlag: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,7 +49,13 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
       setIsLoading(true);
 
       try {
-        const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
+        const token = await getApiToken();
+        const response = await axios.get<GetAll>(
+          `${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/get/all/${data.yearMonth}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         // 同じ月の収支情報をすでに保持している場合は、それを上書きする
         // 同じ月の収支情報をまだ保持していない場合は、新規追加する
@@ -99,7 +107,13 @@ function useFetchWalletPage(props: UseFetchWalletPageProps) {
       setIsLoading(true);
 
       try {
-        const response = await axios.post<GetAll>(import.meta.env.VITE_POST_PAYMENT_GET_ALL, data);
+        const token = await getApiToken();
+        const response = await axios.get<GetAll>(
+          `${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/get/all/${data.yearMonth}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         // 同じ月の収支情報をすでに保持している場合は、それを上書きする
         // 同じ月の収支情報をまだ保持していない場合は、新規追加する

@@ -4,6 +4,12 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(() => ({
+  server: {
+    host: true,
+  },
+  define: {
+    global: {},
+  },
   plugins: [
     react(),
     VitePWA({
@@ -17,7 +23,7 @@ export default defineConfig(() => ({
         // App Description
         description: '共有家計簿アプリ',
         // App Start URL
-        start_url: '/',
+        start_url: '/login',
         // Display Mode
         display: 'standalone',
         // App Orientation

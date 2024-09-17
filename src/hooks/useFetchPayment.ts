@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import { getApiToken } from '../lib/utils';
+
 type UseFetchPaymentProps = {
   actionFlag: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,9 +39,12 @@ function useFetchPayment(props: UseFetchPaymentProps) {
       setIsLoading(true);
 
       try {
-        const response = await axios.post<GetDetail>(
-          import.meta.env.VITE_POST_PAYMENT_GET_DETAIL,
-          data
+        const token = await getApiToken();
+        const response = await axios.get<GetDetail>(
+          `${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/get/detail/${data.yearMonth}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
 
         // 同じ月の情報をすでに保持している場合は、それを上書きする
@@ -76,9 +81,12 @@ function useFetchPayment(props: UseFetchPaymentProps) {
       setIsLoading(true);
 
       try {
-        const response = await axios.post<GetDetail>(
-          import.meta.env.VITE_POST_PAYMENT_GET_DETAIL,
-          data
+        const token = await getApiToken();
+        const response = await axios.get<GetDetail>(
+          `${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/get/detail/${data.yearMonth}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
 
         // 同じ月の情報をすでに保持している場合は、それを上書きする
