@@ -9,6 +9,7 @@ import axios from 'axios';
 
 import messageData from '../../configs/messageData.json';
 import theme from '../../configs/textFieldTheme';
+import { getApiToken } from '../../lib/utils';
 import {
   DefaultSystemBlue,
   DefaultSystemRed,
@@ -133,7 +134,10 @@ function SimpleDialog(props: SimpleDialogProps) {
 
     // API通信
     try {
-      await axios.post(import.meta.env.VITE_POST_PAYMENT_POST_ITEM, data);
+      const token = await getApiToken();
+      await axios.put(`${import.meta.env.VITE_API_GATEWAY_URL}/v1/payment/put/item`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       // fetch情報を再更新する
       setActionFlag(!actionFlag);
     } catch (error) {
