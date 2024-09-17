@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,6 +23,16 @@ const FormSchema = z.object({
 function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
+
+  /**
+   * ログイン済みの場合はトップページにリダイレクト
+   */
+  useEffect(() => {
+    auth.currentUser().then((user) => {
+      if (user) navigate('/');
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
