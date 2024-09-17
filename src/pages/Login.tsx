@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import Button from '../components/mui/Button';
 import TextField from '../components/mui/TextField';
+import { useAuth } from '../providers/auth';
 
 import classes from './Login.module.scss';
 
@@ -17,13 +20,19 @@ const FormSchema = z.object({
 });
 
 function Login() {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: { username: '', password: '' },
   });
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    const result = await auth.signIn(data.username, data.password);
+    if (result.success) {
+      navigate('/');
+    }
   };
 
   return (
