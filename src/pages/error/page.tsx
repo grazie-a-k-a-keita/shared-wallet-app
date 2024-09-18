@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from '../providers/auth';
+import classes from '@/pages/error/Page.module.scss';
+import { useAuth } from '@/providers/auth';
 
-import classes from './Error.module.scss';
-
-function Error() {
+export default function Page() {
   const auth = useAuth();
 
   /**
@@ -23,5 +22,3 @@ function Error() {
     </div>
   );
 }
-
-export default Error;

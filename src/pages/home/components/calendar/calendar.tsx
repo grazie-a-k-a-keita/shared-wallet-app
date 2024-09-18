@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import Month from '../../components/Calendar/Month';
-import { getMonthDetails } from '../../configs/util';
+import Month from '@/components/Calendar/Month';
+import { getMonthDetails } from '@/configs/util';
 
 type CalendarPageProps = {
   year: number;
@@ -9,7 +9,7 @@ type CalendarPageProps = {
   fetchDataState: GetDetail;
 };
 
-function Calendar(props: CalendarPageProps) {
+export default function Calendar(props: CalendarPageProps) {
   const { year, month, fetchDataState } = props;
 
   const [monthDetail, setMonthDetail] = useState<MonthProps>({ daysInfo: [] });
@@ -65,5 +65,3 @@ function Calendar(props: CalendarPageProps) {
     </main>
   );
 }
-
-export default Calendar;

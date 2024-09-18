@@ -5,11 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import Button from '../components/mui/Button';
-import TextField from '../components/mui/TextField';
-import { useAuth } from '../providers/auth';
-
-import classes from './Login.module.scss';
+import Button from '@/components/mui/Button';
+import TextField from '@/components/mui/TextField';
+import classes from '@/pages/login/page.module.scss';
+import { useAuth } from '@/providers/auth';
 
 const FormSchema = z.object({
   username: z.string().min(1, {
@@ -20,7 +19,7 @@ const FormSchema = z.object({
   }),
 });
 
-function Login() {
+export default function Page() {
   const auth = useAuth();
   const navigate = useNavigate();
 
@@ -80,5 +79,3 @@ function Login() {
     </main>
   );
 }
-
-export default Login;

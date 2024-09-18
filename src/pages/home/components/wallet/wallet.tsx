@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import PieChart from '../../components/ReactChartjs2/PieChart';
-
-import classes from './Wallet.module.scss';
+import PieChart from '@/components/ReactChartjs2/PieChart';
+import classes from '@/pages/home/components/wallet/wallet.module.scss';
 
 type WalletPageProps = {
   walletPageDisplayInfo: WalletPageDisplayInfo;
@@ -11,7 +10,7 @@ type WalletPageProps = {
   fetchDataState: GetDetail;
 };
 
-function Wallet(props: WalletPageProps) {
+export default function Wallet(props: WalletPageProps) {
   const { walletPageDisplayInfo, year, month, fetchDataState } = props;
 
   const [pieChartInfo, setPieChartInfo] = useState<PieChartGraphData>({
@@ -100,5 +99,3 @@ function Wallet(props: WalletPageProps) {
     </main>
   );
 }
-
-export default Wallet;

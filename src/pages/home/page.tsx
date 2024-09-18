@@ -1,19 +1,15 @@
 import { useState } from 'react';
 
-import Footer from '../components/Footer';
-import Header2 from '../components/Header2';
-import MuiProgress from '../components/MUIcomponents/MuiProgress';
-import MuiSnackbar from '../components/MUIcomponents/MuiSnackbar';
-import useFetchPayment from '../hooks/useFetchPayment';
-import useFetchWalletPage from '../hooks/useFetchWalletPage';
-import useHomeScreen from '../hooks/useHomeScreen';
+import Footer from '@/components/Footer';
+import Header2 from '@/components/Header2';
+import MuiProgress from '@/components/MUIcomponents/MuiProgress';
+import MuiSnackbar from '@/components/MUIcomponents/MuiSnackbar';
+import useFetchPayment from '@/hooks/useFetchPayment';
+import useFetchWalletPage from '@/hooks/useFetchWalletPage';
+import useHomeScreen from '@/hooks/useHomeScreen';
+import { Calendar, Input, Payments, Wallet } from '@/pages/home/components';
 
-import Calendar from './homePages/Calendar';
-import Input from './homePages/Input';
-import Payments from './homePages/Payments';
-import Wallet from './homePages/Wallet';
-
-function Home() {
+export default function Page() {
   const [actionFlag, setActionFlag] = useState<boolean>(false);
   const [pageState, setPageState] = useState<PageState>({ state: 'Input' });
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -91,5 +87,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

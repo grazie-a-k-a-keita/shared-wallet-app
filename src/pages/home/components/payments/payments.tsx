@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 
 import { v4 as uuid } from 'uuid';
 
-import NotDataIcon from '../../assets/svg/not_data_icon.svg';
-import PaymentDay from '../../components/Payments/PaymentDay';
-import PaymentInfo from '../../components/Payments/PaymentInfo';
-import PaymentWeek from '../../components/Payments/PaymentWeek';
-import { getMonthDetails } from '../../configs/util';
-
-import classes from './Payments.module.scss';
+import NotDataIcon from '@/assets/svg/not_data_icon.svg';
+import PaymentDay from '@/components/Payments/PaymentDay';
+import PaymentInfo from '@/components/Payments/PaymentInfo';
+import PaymentWeek from '@/components/Payments/PaymentWeek';
+import { getMonthDetails } from '@/configs/util';
+import classes from '@/pages/home/components/payments/payments.module.scss';
 
 type PaymentsPageProps = {
   year: number;
@@ -20,7 +19,7 @@ type PaymentsPageProps = {
   setBarInfo: React.Dispatch<React.SetStateAction<BarInfo>>;
 };
 
-function Payments(props: PaymentsPageProps) {
+export default function Payments(props: PaymentsPageProps) {
   const { year, month, fetchDataState, setIsLoading, actionFlag, setActionFlag, setBarInfo } =
     props;
 
@@ -170,5 +169,3 @@ function Payments(props: PaymentsPageProps) {
 
   return <main>{paymentsDataRender()}</main>;
 }
-
-export default Payments;
