@@ -7,9 +7,6 @@ export default defineConfig(() => ({
   server: {
     host: true,
   },
-  define: {
-    global: {},
-  },
   plugins: [
     react(),
     VitePWA({
