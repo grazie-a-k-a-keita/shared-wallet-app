@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import classes from './Header2.module.scss';
-import MuiDialog from './MUIcomponents/MuiDialog';
-import MuiIconButton from './MUIcomponents/MuiIconButton';
+import classes from './header2.module.scss';
+
+import MuiDialog from '@/components/MUIcomponents/MuiDialog';
+import MuiIconButton from '@/components/MUIcomponents/MuiIconButton';
 
 type Header2Props = {
   year: number;

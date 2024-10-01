@@ -1,6 +1,7 @@
-import classes from './Header1.module.scss';
-import MuiButton from './MUIcomponents/MuiButton';
-import ToggleButton from './MUIcomponents/MuiToggleButton';
+import classes from './header1.module.scss';
+
+import MuiButton from '@/components//MUIcomponents/MuiButton';
+import ToggleButton from '@/components/MUIcomponents/MuiToggleButton';
 
 type Header1Props = {
   leftButtonName: string;

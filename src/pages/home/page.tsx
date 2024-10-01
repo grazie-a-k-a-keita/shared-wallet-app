@@ -1,9 +1,8 @@
 import { useState } from 'react';
 
-import Footer from '@/components/Footer';
-import Header2 from '@/components/Header2';
 import MuiProgress from '@/components/MUIcomponents/MuiProgress';
 import MuiSnackbar from '@/components/MUIcomponents/MuiSnackbar';
+import { Footer, Header2 } from '@/components/layout';
 import useFetchPayment from '@/hooks/useFetchPayment';
 import useFetchWalletPage from '@/hooks/useFetchWalletPage';
 import useHomeScreen from '@/hooks/useHomeScreen';

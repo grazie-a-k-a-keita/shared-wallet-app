@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
-import { getApiToken } from '../lib/utils';
+import { getApiToken } from '@/lib/utils';
 
 type UseFetchWalletPageProps = {
   actionFlag: boolean;

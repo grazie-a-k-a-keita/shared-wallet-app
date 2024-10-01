@@ -1,10 +1,10 @@
 import { Button as MuiButton, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
-import theme from '../../configs/theme';
-import { DefaultMainYellow, Size2, Size3, Size4, Size7 } from '../../styles/variables';
-
 import type { ButtonProps as MuiButtonProps } from '@mui/material/Button';
+
+import theme from '@/configs/theme';
+import { DefaultMainYellow, Size2, Size3, Size4, Size7 } from '@/styles/variables';
 
 interface ButtonProps extends MuiButtonProps {
   buttonName: string;

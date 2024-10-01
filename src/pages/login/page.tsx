@@ -5,8 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import Button from '@/components/mui/Button';
-import TextField from '@/components/mui/TextField';
+import Button from '@/components/mui/button';
+import TextField from '@/components/mui/text-field';
 import classes from '@/pages/login/page.module.scss';
 import { useAuth } from '@/providers/auth';
 

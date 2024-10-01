@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { getCurrentDay } from '../configs/util';
+import { getCurrentDay } from '@/configs/util';
 
 function useHomeScreen() {
   const [year, setYear] = useState<number>(Number(getCurrentDay().substring(0, 4)));

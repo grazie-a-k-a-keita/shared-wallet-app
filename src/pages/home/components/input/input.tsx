@@ -1,10 +1,10 @@
-import Header1 from '@/components/Header1';
 import MuiIconButton from '@/components/MUIcomponents/MuiIconButton';
 import MuiInputCard from '@/components/MUIcomponents/MuiInputCard';
 import MuiTextField from '@/components/MUIcomponents/MuiTextField';
 import MuiTextFieldDate from '@/components/MUIcomponents/MuiTextFieldDate';
 import MuiTextFieldNumber from '@/components/MUIcomponents/MuiTextFieldNumber';
 import MuiTextFieldSelect from '@/components/MUIcomponents/MuiTextFieldSelect';
+import { Header1 } from '@/components/layout';
 import useInputPage from '@/hooks/useInputPage';
 import classes from '@/pages/home/components/input/input.module.scss';
 

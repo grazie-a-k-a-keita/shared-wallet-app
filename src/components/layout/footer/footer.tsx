@@ -1,20 +1,20 @@
-import calendarMonthOff from '../assets/footerIcon/calendar_month_off.svg';
-import calendarMonthOn from '../assets/footerIcon/calendar_month_on.svg';
-import noteAltOff from '../assets/footerIcon/note_alt_off.svg';
-import noteAltOn from '../assets/footerIcon/note_alt_on.svg';
-import syncAltOff from '../assets/footerIcon/sync_alt_off.svg';
-import syncAltOn from '../assets/footerIcon/sync_alt_on.svg';
-import walletOff from '../assets/footerIcon/wallet_off.svg';
-import walletOn from '../assets/footerIcon/wallet_on.svg';
+import classes from './footer.module.scss';
 
-import classes from './Footer.module.scss';
+import calendarMonthOff from '@/assets/footer-icon/calendar-month-off.svg';
+import calendarMonthOn from '@/assets/footer-icon/calendar-month-on.svg';
+import noteAltOff from '@/assets/footer-icon/note-alt-off.svg';
+import noteAltOn from '@/assets/footer-icon/note-alt-on.svg';
+import syncAltOff from '@/assets/footer-icon/sync-alt-off.svg';
+import syncAltOn from '@/assets/footer-icon/sync-alt-on.svg';
+import walletOff from '@/assets/footer-icon/wallet-off.svg';
+import walletOn from '@/assets/footer-icon/wallet-on.svg';
 
 type FooterProps = {
   pageState: PageState;
   setPageState: React.Dispatch<React.SetStateAction<PageState>>;
 };
 
-function Footer(props: FooterProps) {
+export default function Footer(props: FooterProps) {
   const { pageState, setPageState } = props;
 
   const handleChangePage = (input: 'Input' | 'Wallet' | 'Calendar' | 'Payments') => {
@@ -95,5 +95,3 @@ function Footer(props: FooterProps) {
     </div>
   );
 }
-
-export default Footer;

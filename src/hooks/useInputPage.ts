@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import axios from 'axios';
 
-import messageData from '../configs/messageData.json';
-import { getCurrentDay } from '../configs/util';
-import { getApiToken } from '../lib/utils';
+import messageData from '@/configs/messageData.json';
+import { getCurrentDay } from '@/configs/util';
+import { getApiToken } from '@/lib/utils';
 
 function useInputPage(props: InputPageProps) {
   const { actionFlag, setActionFlag, setIsLoading, setBarInfo } = props;
