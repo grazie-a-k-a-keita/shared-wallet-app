@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { v4 as uuid } from 'uuid';
 
-import NotDataIcon from '@/assets/svg/not_data_icon.svg';
-import PaymentDay from '@/components/Payments/PaymentDay';
-import PaymentInfo from '@/components/Payments/PaymentInfo';
-import PaymentWeek from '@/components/Payments/PaymentWeek';
-import { getMonthDetails } from '@/configs/util';
-import classes from '@/pages/home/components/payments/payments.module.scss';
+import classes from './payments.module.scss';
+
+import NotDataIcon from '@/assets/svg/not-data-icon.svg';
+import { PaymentDay, PaymentInfo, PaymentWeek } from '@/components/payments';
+import { getMonthDetails } from '@/configs/utils';
 
 type PaymentsPageProps = {
   year: number;

@@ -2,8 +2,7 @@ import { useState } from 'react';
 
 import classes from './header2.module.scss';
 
-import MuiDialog from '@/components/MUIcomponents/MuiDialog';
-import MuiIconButton from '@/components/MUIcomponents/MuiIconButton';
+import { MuiDialog, MuiIconButton } from '@/components/mui-components';
 
 type Header2Props = {
   year: number;
@@ -14,7 +13,7 @@ type Header2Props = {
   setMonth: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function Header2(props: Header2Props) {
+export default function Header2(props: Header2Props) {
   const { year, month, onClick1, onClick2, setYear, setMonth } = props;
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
@@ -50,5 +49,3 @@ function Header2(props: Header2Props) {
     </>
   );
 }
-
-export default Header2;

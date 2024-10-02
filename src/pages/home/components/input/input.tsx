@@ -1,12 +1,15 @@
-import MuiIconButton from '@/components/MUIcomponents/MuiIconButton';
-import MuiInputCard from '@/components/MUIcomponents/MuiInputCard';
-import MuiTextField from '@/components/MUIcomponents/MuiTextField';
-import MuiTextFieldDate from '@/components/MUIcomponents/MuiTextFieldDate';
-import MuiTextFieldNumber from '@/components/MUIcomponents/MuiTextFieldNumber';
-import MuiTextFieldSelect from '@/components/MUIcomponents/MuiTextFieldSelect';
+import classes from './input.module.scss';
+
 import { Header1 } from '@/components/layout';
-import useInputPage from '@/hooks/useInputPage';
-import classes from '@/pages/home/components/input/input.module.scss';
+import {
+  MuiIconButton,
+  MuiInputCard,
+  MuiTextField,
+  MuiTextFieldDate,
+  MuiTextFieldNumber,
+  MuiTextFieldSelect,
+} from '@/components/mui-components';
+import useInputPage from '@/hooks/use-input-page';
 
 export default function Input(props: InputPageProps) {
   const {

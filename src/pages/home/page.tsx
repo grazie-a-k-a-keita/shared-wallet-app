@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
-import MuiProgress from '@/components/MUIcomponents/MuiProgress';
-import MuiSnackbar from '@/components/MUIcomponents/MuiSnackbar';
 import { Footer, Header2 } from '@/components/layout';
-import useFetchPayment from '@/hooks/useFetchPayment';
-import useFetchWalletPage from '@/hooks/useFetchWalletPage';
-import useHomeScreen from '@/hooks/useHomeScreen';
+import { MuiProgress, MuiSnackbar } from '@/components/mui-components';
+import useFetchPayment from '@/hooks/use-fetch-payment';
+import useFetchWalletPage from '@/hooks/use-fetch-wallet-page';
+import useHomeScreen from '@/hooks/use-home-screen';
 import { Calendar, Input, Payments, Wallet } from '@/pages/home/components';
 
 export default function Page() {

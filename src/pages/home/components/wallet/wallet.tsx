@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import PieChart from '@/components/ReactChartjs2/PieChart';
-import classes from '@/pages/home/components/wallet/wallet.module.scss';
+import classes from './wallet.module.scss';
+
+import PieChart from '@/components/react-chartjs-2/pie-chart';
 
 type WalletPageProps = {
   walletPageDisplayInfo: WalletPageDisplayInfo;

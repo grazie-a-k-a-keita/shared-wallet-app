@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import Month from '@/components/Calendar/Month';
-import { getMonthDetails } from '@/configs/util';
+import { Month } from '@/components/calendar';
+import { getMonthDetails } from '@/configs/utils';
 
 type CalendarPageProps = {
   year: number;

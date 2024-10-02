@@ -1,7 +1,6 @@
 import classes from './header1.module.scss';
 
-import MuiButton from '@/components//MUIcomponents/MuiButton';
-import ToggleButton from '@/components/MUIcomponents/MuiToggleButton';
+import { MuiButton, MuiToggleButton } from '@/components/mui-components';
 
 type Header1Props = {
   leftButtonName: string;
@@ -11,14 +10,14 @@ type Header1Props = {
   onClick: () => void;
 };
 
-function Header1(props: Header1Props) {
+export default function Header1(props: Header1Props) {
   const { leftButtonName, rightButtonName, setToggleStatus, amount, onClick } = props;
 
   return (
     <>
       <div className={classes.toggleButtonContainer}>
         <div className={classes.toggleButtonBackground}>
-          <ToggleButton
+          <MuiToggleButton
             leftButtonName={leftButtonName}
             rightButtonName={rightButtonName}
             setToggleStatus={setToggleStatus}
@@ -34,5 +33,3 @@ function Header1(props: Header1Props) {
     </>
   );
 }
-
-export default Header1;

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import classes from '@/pages/error/page.module.scss';
+import classes from './page.module.scss';
+
 import { useAuth } from '@/providers/auth';
 
 export default function Page() {
