@@ -1,0 +1,68 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: $size10;
+  padding: 0 $size4 0 $size4;
+  background-color: $Background_Color_Light_Tertiary;
+  cursor: pointer;
+}
+
+.container_left {
+  display: flex;
+}
+
+.container_right {
+  display: flex;
+}
+
+.container_memos {
+  margin: auto 0;
+}
+
+.category_icon {
+  width: $size4;
+  height: $size4;
+  margin: auto 0;
+}
+
+/* text, font */
+
+.category_name {
+  @include Default_Bold_Label_M($Label_Color_Light_Secondary);
+  line-height: $size10;
+  margin-left: $size4;
+}
+
+.memo {
+  @include Default_Bold_Label_XS($Label_Color_Light_Secondary);
+  line-height: $size4;
+  margin-left: $size4;
+  width: $size24;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.income {
+  @include Default_Bold_Label_S($Default_SystemBlue);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}
+
+.spending {
+  @include Default_Bold_Label_S($Default_SystemRed);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}
+
+.display_none {
+  @include Default_Bold_Label_S($Background_Color_Light_Tertiary);
+  line-height: $size10;
+  margin-left: $size2;
+  width: $size20;
+}

@@ -1,0 +1,36 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+/* toggleButton */
+.toggleButtonContainer {
+  width: $size58;
+  margin: 0 auto;
+  margin-top: $size2;
+  padding-bottom: $size4;
+}
+
+.toggleButtonBackground {
+  background-color: $Background_Color_Light_Primary;
+  @include radius;
+}
+
+/* totalAmount */
+.totalAmountContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $size20;
+  background-color: $Background_Color_Light_Tertiary;
+  border-bottom: $borderLine solid $Label_Color_Light_Secondary;
+}
+
+.totalAmount {
+  padding-left: $size8;
+  @include Default_Bold_Label_L($Default_MainRed);
+  line-height: $size20;
+}
+
+.totalAmount_Button {
+  height: $size8;
+  padding-right: $size8;
+}

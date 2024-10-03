@@ -1,0 +1,14 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.mainContainer {
+  padding: 0 $size4;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pt8 {
+  padding-top: $size8;
+}
