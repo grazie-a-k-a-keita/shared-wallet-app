@@ -1,5 +1,4 @@
-// POST /v1/payment/put
-declare type PutRegistrationData = {
+declare type CreateData = {
   paymentDate: string;
   paymentType: boolean;
   totalAmount: number;

@@ -78,7 +78,7 @@ export default function useInputPage(props: InputPageProps) {
   const saveButtonClick = async () => {
     setIsLoading(true);
 
-    const data: PutRegistrationData = {
+    const data: CreateData = {
       paymentDate: '',
       paymentType: true,
       totalAmount: 0,

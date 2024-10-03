@@ -1,5 +1,4 @@
-// POST /v1/payment/post/item
-declare type PostUpdateData = {
+declare type UpdateData = {
   updateFlag: 'Update' | 'Delete';
   seqId: number;
   paymentDate: string;

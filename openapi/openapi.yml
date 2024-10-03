@@ -1,83 +1,31 @@
 openapi: '3.0.2'
+
 info:
-  title: Shared-Wallet-App API
+  title: Shared Wallet App API
   description: 共有家計簿アプリのAPI仕様
   version: '1.0'
+
 servers:
-  - url: http://localhost:3001
+  - url: https://xxxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/Stage
     description: 開発環境
-  - url: https://api.example.com
-    description: 本番環境
+
+security:
+  - authorizationHeader: []
+
 paths:
-  /put:
-    post:
-      summary: Inputページから入力されたデータを登録するAPI
-      tags:
-        - '/v1/payment'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                paymentDate:
-                  type: string
-                  format: date
-                  example: 2024-01-01
-                  description: 収支日
-                paymentType:
-                  type: boolean
-                  example: true
-                  description: 収支種別
-                totalAmount:
-                  type: number
-                  example: 500
-                  description: 合計金額
-                categoryID:
-                  type: number
-                  example: 1
-                  description: カテゴリーID
-                memo:
-                  type: string
-                  example: マクドナルド
-                  description: メモ（大）
-                memos:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      memo:
-                        type: string
-                        example: ハンバーガー
-                        description: メモ
-                      amount:
-                        type: number
-                        example: 500
-                        description: 金額
-                  description: メモ（小）
-      responses:
-        '201':
-          description: Created
-        '500':
-          description: Internal Server Error
-  /get/all:
-    post:
+  /v1/payment/get/all/{yearMonth}:
+    get:
       summary: 現在の総資産・月間収支を取得するAPI
+      description: 現在の総資産と月間収支を取得
       tags:
-        - '/v1/payment'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                yearMonth:
-                  type: string
-                  format: date
-                  example: 2024-01
-                  description: 取得年月
+        - '収支情報'
+      parameters:
+        - name: yearMonth
+          in: path
+          description: 年月（yyyy-MM）
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -111,23 +59,19 @@ paths:
                     description: 月間収支
         '500':
           description: Internal Server Error
-  /get/detail:
-    post:
+  /v1/payment/get/detail/{yearMonth}:
+    get:
       summary: 月ごとの収支データを取得するAPI
+      description: 月ごとの収支データを取得
       tags:
-        - '/v1/payment'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                yearMonth:
-                  type: string
-                  format: date
-                  example: 2024-01
-                  description: 取得年月
+        - '収支情報'
+      parameters:
+        - name: yearMonth
+          in: path
+          description: 年月（yyyy-MM）
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -189,11 +133,65 @@ paths:
                             description: メモ（小）
         '500':
           description: Internal Server Error
-  /post/item:
+  /v1/payment/post/item:
     post:
-      summary: 収支データを更新する
+      summary: 収支データを新規登録するAPI
+      description: 収支データを新規登録する
       tags:
-        - '/v1/payment'
+        - '収支情報'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentDate:
+                  type: string
+                  format: date
+                  example: 2024-01-01
+                  description: 収支日
+                paymentType:
+                  type: boolean
+                  example: true
+                  description: 収支種別
+                totalAmount:
+                  type: number
+                  example: 500
+                  description: 合計金額
+                categoryID:
+                  type: number
+                  example: 1
+                  description: カテゴリーID
+                memo:
+                  type: string
+                  example: マクドナルド
+                  description: メモ（大）
+                memos:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      memo:
+                        type: string
+                        example: ハンバーガー
+                        description: メモ
+                      amount:
+                        type: number
+                        example: 500
+                        description: 金額
+                  description: メモ（小）
+      responses:
+        '201':
+          description: Created
+        '500':
+          description: Internal Server Error
+  /v1/payment/put/item:
+    put:
+      summary: 収支データを更新するAPI
+      description: 収支データを更新
+      tags:
+        - '収支情報'
       requestBody:
         required: true
         content:
@@ -255,3 +253,9 @@ paths:
           description: No Content (Delete)
         '500':
           description: Internal Server Error
+
+components:
+  securitySchemes:
+    authorizationHeader:
+      type: http
+      scheme: bearer

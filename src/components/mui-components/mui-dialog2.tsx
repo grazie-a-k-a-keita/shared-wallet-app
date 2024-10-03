@@ -93,7 +93,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
     setIsLoading(true);
 
-    const data: PostUpdateData = {
+    const data: UpdateData = {
       updateFlag: updateFlag as 'Update' | 'Delete',
       seqId,
       paymentDate,

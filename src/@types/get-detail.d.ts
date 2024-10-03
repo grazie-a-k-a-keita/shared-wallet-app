@@ -1,4 +1,3 @@
-// POST /v1/payment/get/detail
 declare type GetDetail = {
   yearMonth: string;
   monthlyPayments: {
