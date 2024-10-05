@@ -1,0 +1,11 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  text-align: center;
+}
+
+.title {
+  @include Default_Bold_Label_L('#000000');
+  margin-bottom: 1rem;
+}

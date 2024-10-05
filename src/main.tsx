@@ -4,13 +4,15 @@ import { RouterProvider } from 'react-router-dom';
 
 import { registerSW } from 'virtual:pwa-register';
 
-import router from './AppRoute';
-
-import './styles/index.css';
+import router from '@/app-route';
+import { AuthProvider } from '@/providers/auth';
+import '@/styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

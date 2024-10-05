@@ -47,12 +47,11 @@ git checkout -b feature/#13_・・・
 
 ### Skills
 
-| Skill                                         | Description                                                           |
-| --------------------------------------------- | --------------------------------------------------------------------- |
-| [React](https://ja.react.dev/)                | Web とネイティブユーザインターフェースのためのライブラリ              |
-| [PWA Vite](https://vite-pwa-org.netlify.app/) | Vite 開発ツール用の PWA プラグイン                                    |
-| CSS                                           | CSS Modules + [Sass](https://sass-lang.com/)、[MUI](https://mui.com/) |
-| [supabase](https://supabase.com/)             | PostgreSQL、Authentication System、API、Storage...                    |
+| Skill                                             | Description                                                           |
+| ------------------------------------------------- | --------------------------------------------------------------------- |
+| [React](https://ja.react.dev/)                    | Web とネイティブユーザインターフェースのためのライブラリ              |
+| ~~[PWA Vite](https://vite-pwa-org.netlify.app/)~~ | ~~Vite 開発ツール用の PWA プラグイ~~ン                                |
+| CSS                                               | CSS Modules + [Sass](https://sass-lang.com/)、[MUI](https://mui.com/) |
 
 ### Command List
 
@@ -80,7 +79,4 @@ yarn tests:watch
 
 # coverage
 yarn coverage
-
-# ローカルで"json-server"を起動し、http://hocalhost:3001 でアクセスできる
-yarn server
 ```
